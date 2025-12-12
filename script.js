@@ -12,7 +12,36 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Contact form removed - no longer needed
+// Mobile Navigation Functions
+function toggleMobileMenu() {
+    const nav = document.getElementById('mobile-nav');
+    nav.classList.toggle('active');
+}
+
+function closeMobileMenu() {
+    const nav = document.getElementById('mobile-nav');
+    nav.classList.remove('active');
+    // Close any open dropdowns
+    document.querySelectorAll('.dropdown').forEach(dropdown => {
+        dropdown.classList.remove('active');
+    });
+}
+
+function toggleDropdown(event) {
+    event.preventDefault();
+    const dropdown = event.target.parentElement;
+    dropdown.classList.toggle('active');
+}
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', function(event) {
+    const nav = document.getElementById('mobile-nav');
+    const toggle = document.querySelector('.mobile-menu-toggle');
+    
+    if (!nav.contains(event.target) && !toggle.contains(event.target)) {
+        closeMobileMenu();
+    }
+});
 
 
 
@@ -61,28 +90,23 @@ setInterval(() => {
     changeSlide(1);
 }, 5000);
 
-// Dropdown menu functionality
+// Desktop Dropdown menu functionality
 document.addEventListener('DOMContentLoaded', function() {
-    const dropdown = document.querySelector('.dropdown');
-    const dropdownMenu = document.querySelector('.dropdown-menu');
-    
-    if (dropdown && dropdownMenu) {
-        dropdown.addEventListener('mouseenter', function() {
-            dropdownMenu.style.display = 'block';
-        });
+    // Only apply hover effects on desktop
+    if (window.innerWidth > 768) {
+        const dropdown = document.querySelector('.dropdown');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
         
-        dropdown.addEventListener('mouseleave', function() {
-            setTimeout(() => {
-                dropdownMenu.style.display = 'none';
-            }, 100);
-        });
-        
-        dropdownMenu.addEventListener('mouseenter', function() {
-            dropdownMenu.style.display = 'block';
-        });
-        
-        dropdownMenu.addEventListener('mouseleave', function() {
-            dropdownMenu.style.display = 'none';
-        });
+        if (dropdown && dropdownMenu) {
+            dropdown.addEventListener('mouseenter', function() {
+                dropdownMenu.style.display = 'block';
+            });
+            
+            dropdown.addEventListener('mouseleave', function() {
+                setTimeout(() => {
+                    dropdownMenu.style.display = 'none';
+                }, 100);
+            });
+        }
     }
 });
