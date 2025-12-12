@@ -73,9 +73,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Slideshow functionality
 let currentSlide = 0;
-const slides = document.querySelectorAll('.slide');
+let slides = [];
+
+function initializeSlideshow() {
+    slides = document.querySelectorAll('.slide');
+    if (slides.length > 0) {
+        // Simple mobile-friendly approach
+        slides.forEach((slide, index) => {
+            slide.classList.remove('active');
+            if (index === 0) {
+                slide.classList.add('active');
+            }
+        });
+    }
+}
 
 function showSlide(n) {
+    if (slides.length === 0) return;
     slides[currentSlide].classList.remove('active');
     currentSlide = (n + slides.length) % slides.length;
     slides[currentSlide].classList.add('active');
@@ -85,9 +99,47 @@ function changeSlide(direction) {
     showSlide(currentSlide + direction);
 }
 
+// Initialize slideshow when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(() => {
+        initializeSlideshow();
+        
+        // Initialize mobile slideshow
+        if (window.innerWidth <= 768) {
+            const heroContent = document.querySelector('.hero-content');
+            if (heroContent) {
+                heroContent.style.setProperty('--mobile-bg', `url('${mobileImages[0]}')`);
+            }
+        }
+    }, 100);
+});
+
 // Auto-advance slideshow
 setInterval(() => {
-    changeSlide(1);
+    if (slides.length > 0) {
+        changeSlide(1);
+    }
+}, 5000);
+
+// Mobile slideshow using CSS background
+let mobileSlideIndex = 0;
+const mobileImages = ['photo1.png', 'photo2.png'];
+
+function changeMobileSlide() {
+    if (window.innerWidth <= 768) {
+        const heroContent = document.querySelector('.hero-content');
+        if (heroContent) {
+            mobileSlideIndex = (mobileSlideIndex + 1) % mobileImages.length;
+            heroContent.style.setProperty('--mobile-bg', `url('${mobileImages[mobileSlideIndex]}')`);
+        }
+    }
+}
+
+// Auto-advance mobile slideshow
+setInterval(() => {
+    if (window.innerWidth <= 768) {
+        changeMobileSlide();
+    }
 }, 5000);
 
 // Desktop Dropdown menu functionality
