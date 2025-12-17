@@ -129,8 +129,13 @@ function changeMobileSlide() {
     if (window.innerWidth <= 768) {
         const heroContent = document.querySelector('.hero-content');
         if (heroContent) {
-            mobileSlideIndex = (mobileSlideIndex + 1) % mobileImages.length;
-            heroContent.style.setProperty('--mobile-bg', `url('${mobileImages[mobileSlideIndex]}')`);
+            // Trigger animation
+            heroContent.style.animation = 'none';
+            setTimeout(() => {
+                mobileSlideIndex = (mobileSlideIndex + 1) % mobileImages.length;
+                heroContent.style.setProperty('--mobile-bg', `url('${mobileImages[mobileSlideIndex]}')`);
+                heroContent.style.animation = 'fadeSlide 0.8s ease-in-out';
+            }, 50);
         }
     }
 }
