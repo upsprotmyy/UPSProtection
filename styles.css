@@ -825,6 +825,104 @@ footer {
     }
 }
 
+/* About Us Mobile Optimization */
+@media (max-width: 768px) {
+    /* Hero section mobile */
+    .hero {
+        padding: 2rem 0 !important;
+    }
+    
+    .hero h1 {
+        font-size: 2rem !important;
+    }
+    
+    .hero p {
+        font-size: 1.1rem !important;
+    }
+    
+    /* Grid layouts to single column */
+    div[style*="grid-template-columns: 1fr 1fr"] {
+        display: block !important;
+    }
+    
+    div[style*="grid-template-columns: 1fr 1fr"] > div {
+        margin-bottom: 2rem !important;
+    }
+    
+    /* Statistics cards mobile */
+    div[style*="background: #f8fafc; padding: 2rem"] {
+        padding: 1.5rem !important;
+        margin-bottom: 2rem !important;
+    }
+    
+    /* Service cards mobile */
+    div[style*="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))"] {
+        display: block !important;
+    }
+    
+    div[style*="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))"] > div {
+        margin-bottom: 2rem !important;
+    }
+    
+    /* Mission & Vision mobile */
+    div[style*="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;"] {
+        display: block !important;
+    }
+    
+    div[style*="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;"] > div {
+        margin-bottom: 2rem !important;
+    }
+    
+    /* Text sizing mobile */
+    h2[style*="font-size: 2.2rem"] {
+        font-size: 1.8rem !important;
+    }
+    
+    h3[style*="font-size: 1.8rem"] {
+        font-size: 1.5rem !important;
+    }
+    
+    /* Padding adjustments */
+    section[style*="padding: 4rem 0"] {
+        padding: 2rem 0 !important;
+    }
+    
+    div[style*="padding: 2.5rem"] {
+        padding: 1.5rem !important;
+    }
+    
+    div[style*="padding: 3rem 2rem"] {
+        padding: 2rem 1rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Extra small mobile optimization */
+    .hero h1 {
+        font-size: 1.8rem !important;
+    }
+    
+    .hero p {
+        font-size: 1rem !important;
+    }
+    
+    h2[style*="font-size: 2.2rem"] {
+        font-size: 1.5rem !important;
+    }
+    
+    h3[style*="font-size: 1.5rem"] {
+        font-size: 1.3rem !important;
+    }
+    
+    div[style*="padding: 1.5rem"] {
+        padding: 1rem !important;
+    }
+    
+    section[style*="padding: 2rem 0"] {
+        padding: 1.5rem 0 !important;
+    }
+}
+
 /* Touch-friendly improvements */
 @media (hover: none) and (pointer: coarse) {
     .prev, .next {
@@ -853,6 +951,95 @@ footer {
     
     .contact-map iframe {
         height: 250px;
+    }
+}
+
+/* Mobile Optimization for About Us and All Pages */
+@media (max-width: 768px) {
+    /* About Us page specific mobile fixes */
+    section[style*="background: linear-gradient"] {
+        padding: 2rem 0 !important;
+    }
+    
+    section[style*="background: linear-gradient"] h1 {
+        font-size: 2rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    section[style*="background: linear-gradient"] p {
+        font-size: 1.1rem !important;
+    }
+    
+    /* Force grid layouts to single column */
+    div[style*="display: grid; grid-template-columns: 1fr 1fr"] {
+        display: block !important;
+    }
+    
+    div[style*="display: grid; grid-template-columns: 1fr 1fr"] > div {
+        margin-bottom: 2rem !important;
+    }
+    
+    div[style*="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))"] {
+        display: block !important;
+    }
+    
+    div[style*="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))"] > div {
+        margin-bottom: 2rem !important;
+    }
+    
+    /* Typography mobile adjustments */
+    h2[style*="font-size: 2.2rem"] {
+        font-size: 1.8rem !important;
+    }
+    
+    h3[style*="font-size: 1.8rem"] {
+        font-size: 1.5rem !important;
+    }
+    
+    /* Padding mobile adjustments */
+    section[style*="padding: 4rem 0"] {
+        padding: 2rem 0 !important;
+    }
+    
+    div[style*="padding: 2.5rem"] {
+        padding: 1.5rem !important;
+    }
+    
+    div[style*="padding: 3rem 2rem"] {
+        padding: 2rem 1rem !important;
+    }
+    
+    /* Statistics cards mobile */
+    div[style*="background: #f8fafc; padding: 2rem"] {
+        padding: 1.5rem !important;
+        margin-bottom: 2rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Extra small mobile optimization */
+    section[style*="background: linear-gradient"] h1 {
+        font-size: 1.8rem !important;
+    }
+    
+    section[style*="background: linear-gradient"] p {
+        font-size: 1rem !important;
+    }
+    
+    h2[style*="font-size: 2.2rem"] {
+        font-size: 1.5rem !important;
+    }
+    
+    h3[style*="font-size: 1.5rem"] {
+        font-size: 1.3rem !important;
+    }
+    
+    div[style*="padding: 1.5rem"] {
+        padding: 1rem !important;
+    }
+    
+    section[style*="padding: 2rem 0"] {
+        padding: 1.5rem 0 !important;
     }
 }
 
