@@ -46,7 +46,7 @@
 - ✅ Slideshow with smooth fade and zoom transition effects (desktop & mobile)
 - ✅ Contact information updated with new Bintulu address
 - ✅ Google Maps integration for both office locations
-- [ ] Test on various mobile devices
+- ✅ Test on various mobile devices
 - [ ] Verify all navigation links
 - [ ] Cross-browser compatibility check
 
@@ -78,6 +78,7 @@
 - ✅ **Social Media Logo Updated** - Changed embedded link picture from logo1.png to "UPS Emb logo.jpg"
 - ✅ **Equipment Lightbox Added** - Implemented clickable equipment images with full-size viewing and name display
 - ✅ **Equipment Mobile Optimization** - Added mobile navigation and responsive lightbox for equipment page
+- ✅ **Mobile Loading Fix** - Resolved mobile version loading issues with proper CSS targeting and responsive design
 
 ### 🚀 Ready for Deployment
 1. Upload to GitHub repository

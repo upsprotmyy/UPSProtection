@@ -75,6 +75,96 @@
                 right: 15px;
                 font-size: 30px;
             }
+            
+            /* Mobile navigation fix */
+            #mobile-nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                z-index: 9999;
+                max-height: 60vh;
+                overflow-y: auto;
+            }
+            
+            #mobile-nav.active {
+                display: block;
+            }
+            
+            #mobile-nav ul {
+                flex-direction: column;
+                padding: 1rem 0;
+            }
+            
+            #mobile-nav ul li {
+                margin: 0;
+                border-bottom: 1px solid #e5e7eb;
+            }
+            
+            #mobile-nav ul li:last-child {
+                border-bottom: none;
+            }
+            
+            #mobile-nav ul li a {
+                display: block;
+                padding: 1rem 1.5rem;
+                font-size: 1rem;
+                color: #333;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                display: none;
+                box-shadow: none;
+                background: #f8fafc;
+                margin: 0;
+                border-radius: 0;
+                min-width: 100%;
+            }
+            
+            .dropdown.active .dropdown-menu {
+                display: block;
+            }
+            
+            .dropdown-menu li {
+                border-bottom: 1px solid #d1d5db;
+            }
+            
+            .dropdown-menu li a {
+                padding: 0.8rem 2rem;
+                font-size: 0.9rem;
+                color: #666;
+            }
+            
+            /* Equipment gallery mobile optimization */
+            #equipment-gallery {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem !important;
+            }
+            
+            div[style*="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr))"] {
+                display: block !important;
+            }
+            
+            .equipment-card {
+                margin-bottom: 1.5rem !important;
+            }
+            
+            /* Hero section mobile */
+            section[style*="background: linear-gradient"] {
+                padding: 2rem 0 !important;
+            }
+            
+            section[style*="background: linear-gradient"] h1 {
+                font-size: 2rem !important;
+            }
+            
+            section[style*="background: linear-gradient"] p {
+                font-size: 1.1rem !important;
+            }
         }
         
         .close {
