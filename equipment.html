@@ -35,6 +35,32 @@
             }
         }
         
+        /* Smartphone specific fixes */
+        @media (max-width: 480px) {
+            #equipment-gallery {
+                display: block !important;
+                grid-template-columns: none !important;
+            }
+            
+            .equipment-card {
+                display: block !important;
+                width: 100% !important;
+                margin: 0 0 1.5rem 0 !important;
+                background: white !important;
+                border: 1px solid #e5e7eb !important;
+                border-radius: 8px !important;
+                overflow: hidden !important;
+            }
+            
+            .equipment-card img {
+                display: block !important;
+                width: 100% !important;
+                height: 180px !important;
+                object-fit: cover !important;
+                background: #f0f0f0 !important;
+            }
+        }
+        
         .equipment-card:hover img {
             transform: scale(1.05);
         }
@@ -582,19 +608,62 @@
                 }, 500);
             });
             
-            // Simple mobile image fix
-            setTimeout(() => {
-                const cards = document.querySelectorAll('.equipment-card');
-                cards.forEach(card => {
-                    card.style.display = 'block';
-                    const img = card.querySelector('img');
-                    if (img) {
-                        img.style.display = 'block';
-                        img.style.opacity = '1';
-                        img.style.visibility = 'visible';
-                    }
-                });
-            }, 1000);
+            // Smartphone fallback - force content after page load
+            window.addEventListener('load', function() {
+                if (window.innerWidth <= 480) {
+                    setTimeout(() => {
+                        // Force show all content
+                        const allElements = document.querySelectorAll('#equipment-gallery, .equipment-card, .equipment-card img');
+                        allElements.forEach(el => {
+                            el.style.display = 'block';
+                            el.style.opacity = '1';
+                            el.style.visibility = 'visible';
+                        });
+                        
+                        // Force gallery to block layout
+                        const gallery = document.getElementById('equipment-gallery');
+                        if (gallery) {
+                            gallery.style.display = 'block';
+                        }
+                    }, 2000);
+                }
+            });
+            
+            // Smartphone specific fixes
+            if (window.innerWidth <= 480) {
+                // Force display for smartphones
+                const gallery = document.getElementById('equipment-gallery');
+                if (gallery) {
+                    gallery.style.display = 'block';
+                    gallery.style.gridTemplateColumns = 'none';
+                }
+                
+                setTimeout(() => {
+                    const cards = document.querySelectorAll('.equipment-card');
+                    cards.forEach((card, index) => {
+                        card.style.cssText = 'display: block !important; width: 100% !important; margin: 0 0 1.5rem 0 !important; background: white !important; border: 1px solid #e5e7eb !important; border-radius: 8px !important; overflow: hidden !important;';
+                        
+                        const img = card.querySelector('img');
+                        if (img) {
+                            img.style.cssText = 'display: block !important; width: 100% !important; height: 180px !important; object-fit: cover !important; background: #f0f0f0 !important; opacity: 1 !important; visibility: visible !important;';
+                        }
+                    });
+                }, 500);
+            } else {
+                // Tablet and larger mobile devices
+                setTimeout(() => {
+                    const cards = document.querySelectorAll('.equipment-card');
+                    cards.forEach(card => {
+                        card.style.display = 'block';
+                        const img = card.querySelector('img');
+                        if (img) {
+                            img.style.display = 'block';
+                            img.style.opacity = '1';
+                            img.style.visibility = 'visible';
+                        }
+                    });
+                }, 1000);
+            }
         }
     </script>
 </body>
