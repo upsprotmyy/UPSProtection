@@ -252,6 +252,34 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(() => {
         document.body.style.opacity = '1';
     }, 100);
+    
+    // Mobile image loading fix
+    if (window.innerWidth <= 768) {
+        const images = document.querySelectorAll('img');
+        images.forEach(img => {
+            // Force image display on mobile
+            img.style.display = 'block';
+            img.style.opacity = '1';
+            img.style.visibility = 'visible';
+            
+            // Handle image loading errors
+            img.onerror = function() {
+                console.log('Image failed to load on mobile:', this.src);
+                // Try reloading after a delay
+                setTimeout(() => {
+                    this.src = this.src.split('?')[0] + '?mobile=' + Date.now();
+                }, 500);
+            };
+            
+            // Ensure image is loaded
+            if (!img.complete) {
+                img.onload = function() {
+                    this.style.opacity = '1';
+                    this.style.visibility = 'visible';
+                };
+            }
+        });
+    }
 });
 
 // Desktop Dropdown menu functionality

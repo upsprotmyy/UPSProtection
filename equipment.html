@@ -10,6 +10,10 @@
         .equipment-card img {
             cursor: pointer;
             transition: transform 0.3s ease;
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
         }
         
         .equipment-card:hover img {
@@ -151,6 +155,36 @@
             
             .equipment-card {
                 margin-bottom: 1.5rem !important;
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+            
+            /* Mobile image loading fixes */
+            .equipment-card img {
+                width: 100% !important;
+                height: 200px !important;
+                object-fit: cover !important;
+                display: block !important;
+                max-width: 100% !important;
+                border-radius: 8px 8px 0 0 !important;
+            }
+            
+            /* Force image visibility on mobile */
+            img {
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
+            
+            /* Mobile container width fix */
+            .container {
+                width: 100% !important;
+                max-width: 100% !important;
+                padding: 0 15px !important;
+            }
+            
+            /* Mobile section padding */
+            section[style*="padding: 4rem 0"] {
+                padding: 2rem 0 !important;
             }
             
             /* Hero section mobile */
@@ -462,6 +496,33 @@
             if (e.key === 'Escape') {
                 closeLightbox();
             }
+        });
+        
+        // Mobile image loading fix
+        document.addEventListener('DOMContentLoaded', function() {
+            // Force reload images on mobile if they fail to load
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                if (!img.complete || img.naturalHeight === 0) {
+                    img.onerror = function() {
+                        console.log('Image failed to load:', this.src);
+                        // Try reloading the image
+                        setTimeout(() => {
+                            this.src = this.src + '?t=' + Date.now();
+                        }, 1000);
+                    };
+                }
+            });
+        });
+        
+        // Ensure images are visible on mobile
+        window.addEventListener('load', function() {
+            const equipmentImages = document.querySelectorAll('.equipment-card img');
+            equipmentImages.forEach(img => {
+                img.style.display = 'block';
+                img.style.opacity = '1';
+                img.style.visibility = 'visible';
+            });
         });
     </script>
 </body>
