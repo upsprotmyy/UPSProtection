@@ -147,6 +147,113 @@ setInterval(() => {
     }
 }, 5000);
 
+// Professional Scroll Effects
+function initScrollEffects() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+    };
+
+    const scrollObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+
+    // Add scroll animations to elements
+    document.addEventListener('DOMContentLoaded', function() {
+        // Add fade-in class to sections
+        const sections = document.querySelectorAll('section');
+        sections.forEach((section, index) => {
+            if (index > 0) { // Skip hero section
+                section.classList.add('fade-in');
+                scrollObserver.observe(section);
+            }
+        });
+
+        // Add slide-in effects to cards
+        const cards = document.querySelectorAll('.product-card, .service-item, .feature, [style*="background: white; padding: 2rem"]');
+        cards.forEach((card, index) => {
+            card.classList.add('scale-in');
+            card.style.transitionDelay = `${index * 0.1}s`;
+            scrollObserver.observe(card);
+        });
+
+        // Add hover effects to interactive elements
+        const hoverElements = document.querySelectorAll('.product-card, .feature, [style*="box-shadow"]');
+        hoverElements.forEach(element => {
+            element.classList.add('hover-lift');
+        });
+
+        // Animate statistics on scroll
+        const stats = document.querySelectorAll('[style*="font-size: 2.5rem"]');
+        stats.forEach(stat => {
+            stat.classList.add('scale-in');
+            scrollObserver.observe(stat);
+        });
+    });
+}
+
+// Initialize scroll effects
+initScrollEffects();
+
+// Smooth scroll to top functionality
+function addScrollToTop() {
+    // Create scroll to top button
+    const scrollBtn = document.createElement('button');
+    scrollBtn.innerHTML = '↑';
+    scrollBtn.style.cssText = `
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: #1e40af;
+        color: white;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 1000;
+        box-shadow: 0 4px 15px rgba(30, 64, 175, 0.3);
+    `;
+
+    scrollBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    document.body.appendChild(scrollBtn);
+
+    // Show/hide scroll button
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            scrollBtn.style.opacity = '1';
+            scrollBtn.style.visibility = 'visible';
+        } else {
+            scrollBtn.style.opacity = '0';
+            scrollBtn.style.visibility = 'hidden';
+        }
+    });
+}
+
+// Add scroll to top button
+addScrollToTop();
+
+// Professional page loading animation
+document.addEventListener('DOMContentLoaded', function() {
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.5s ease-in-out';
+    
+    setTimeout(() => {
+        document.body.style.opacity = '1';
+    }, 100);
+});
+
 // Desktop Dropdown menu functionality
 document.addEventListener('DOMContentLoaded', function() {
     // Only apply hover effects on desktop

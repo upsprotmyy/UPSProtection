@@ -7,7 +7,7 @@
     <link rel="icon" type="image/x-icon" href="UPS Logo.ico">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body style="background: url('Image/Electrical.jpg'); background-size: cover; background-position: center; background-attachment: fixed; background-repeat: no-repeat;">
     <header>
         <div class="container">
             <div class="logo">
@@ -15,44 +15,50 @@
                     <img src="logo1.png" alt="UPS Protection Malaysia" height="50">
                 </a>
             </div>
-            <nav>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav id="mobile-nav">
                 <ul>
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html" onclick="closeMobileMenu()">Home</a></li>
                     <li class="dropdown">
-                        <a href="#portfolio">Project Portfolio</a>
+                        <a href="#portfolio" onclick="toggleDropdown(event)">Project Portfolio</a>
                         <ul class="dropdown-menu">
-                            <li><a href="substation.html">Substation Testing and Commissioning</a></li>
-                            <li><a href="maintenance.html">Maintenance Project</a></li>
-                            <li><a href="transformer.html">Power Transformer Testing and Commissioning</a></li>
+                            <li><a href="substation.html" onclick="closeMobileMenu()">Substation Testing and Commissioning</a></li>
+                            <li><a href="maintenance.html" onclick="closeMobileMenu()">Maintenance Project</a></li>
+                            <li><a href="transformer.html" onclick="closeMobileMenu()">Power Transformer Testing and Commissioning</a></li>
                         </ul>
                     </li>
-                    <li><a href="equipment.html">Test Equipment</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="equipment.html" onclick="closeMobileMenu()">Test Equipment</a></li>
+                    <li><a href="about.html" onclick="closeMobileMenu()">About Us</a></li>
+                    <li><a href="contact.html" onclick="closeMobileMenu()">Contact Us</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main style="margin-top: 80px;">
-        <section class="hero" style="background: linear-gradient(135deg, #1e40af, #3b82f6); color: white; padding: 4rem 0; text-align: center;">
+        <section class="hero" style="background: linear-gradient(135deg, rgba(30, 64, 175, 0.8), rgba(59, 130, 246, 0.8)), url('Image/Electrical.jpg'); background-size: cover; background-position: center; background-attachment: fixed; color: white; padding: 4rem 0; text-align: center;">
             <div class="container">
                 <h1 style="font-size: 3rem; margin-bottom: 1rem;">About UPS Protection Sdn Bhd</h1>
                 <p style="font-size: 1.3rem; max-width: 800px; margin: 0 auto;">Leading electrical testing, commissioning, and maintenance specialists in Malaysia since 2000</p>
             </div>
         </section>
 
-        <section class="welcome">
+        <section class="welcome" style="background: rgba(248, 250, 252, 0.8); backdrop-filter: blur(1px);">
             <div class="container">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-bottom: 3rem;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; margin-bottom: 3rem;">
                     <div>
-                        <h2 style="color: #1e40af; font-size: 2.2rem; margin-bottom: 1.5rem;">Our Story</h2>
-                        <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">Established in 2000, UPS Protection Sdn Bhd has grown from a small electrical services company to become one of Malaysia's most trusted names in electrical testing and commissioning.</p>
-                        <p style="font-size: 1.1rem; line-height: 1.8;">With over two decades of experience, we have successfully completed more than 1,000 projects across Sarawak and beyond, serving major industries including oil & gas, manufacturing, and infrastructure development.</p>
+                        <h2 style="color: #1e40af; font-size: 2.2rem; margin-bottom: 1.5rem;">History & Philosophy</h2>
+                        <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">UPS Protection Sdn. Bhd. was founded in 2001 by Mr. Lau Sze Chuan who is the Managing Director. After years of effort and contribution towards the business, currently we are one of the leading electrical service providers in Sarawak.</p>
+                        <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">Upon the growth of our company, we have established two branches in Bintulu and Miri as to enhance our job efficiency and effectiveness.</p>
+                        <p style="font-size: 1.1rem; line-height: 1.8;">Our core activity is to provide engineering services in Maintenance, Testing, Commissioning, of Power Station and Substation and Oil and Gas Electrical Installations up to 275KV. For the past few years, we have completed more than 1,000 of projects throughout Malaysia and Brunei Darussalam.</p>
                     </div>
                     <div style="text-align: center;">
                         <div style="background: #f8fafc; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                            <h3 style="color: #1e40af; font-size: 2.5rem; margin-bottom: 0.5rem;">24+</h3>
+                            <h3 style="color: #1e40af; font-size: 2.5rem; margin-bottom: 0.5rem;">23+</h3>
                             <p style="color: #666; font-size: 1.1rem;">Years of Excellence</p>
                             <h3 style="color: #1e40af; font-size: 2.5rem; margin: 1.5rem 0 0.5rem;">1000+</h3>
                             <p style="color: #666; font-size: 1.1rem;">Projects Completed</p>
@@ -61,6 +67,75 @@
                         </div>
                     </div>
                 </div>
+
+        </section>
+
+        <section style="background: rgba(248, 250, 252, 0.8); backdrop-filter: blur(1px); padding: 4rem 0;">
+            <div class="container">
+                <h2 style="text-align: center; color: #1e40af; font-size: 2.2rem; margin-bottom: 3rem;">Our Services</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                    <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                        <div style="background: #1e40af; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 1.5rem;">⚡</div>
+                        <h4 style="color: #1e40af; margin-bottom: 1rem; text-align: center;">Protection Systems</h4>
+                        <p style="color: #666; line-height: 1.6; font-size: 0.95rem;">Testing and commissioning of protection relays and other associated relays in power stations and substations</p>
+                    </div>
+                    <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                        <div style="background: #1e40af; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 1.5rem;">🔌</div>
+                        <h4 style="color: #1e40af; margin-bottom: 1rem; text-align: center;">Primary & Secondary Circuits</h4>
+                        <p style="color: #666; line-height: 1.6; font-size: 0.95rem;">Proofing and commissioning primary and secondary circuits in power stations, substations, power cable and power transformer</p>
+                    </div>
+                    <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                        <div style="background: #1e40af; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 1.5rem;">🏭</div>
+                        <h4 style="color: #1e40af; margin-bottom: 1rem; text-align: center;">Installation & Maintenance</h4>
+                        <p style="color: #666; line-height: 1.6; font-size: 0.95rem;">Electrical equipment installation and maintenance in power stations, substations, factories, plants and mills, shophouses, develop area & etc.</p>
+                    </div>
+                    <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                        <div style="background: #1e40af; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 1.5rem;">💻</div>
+                        <h4 style="color: #1e40af; margin-bottom: 1rem; text-align: center;">System Integration</h4>
+                        <p style="color: #666; line-height: 1.6; font-size: 0.95rem;">Integration of other secondary, SCADA equipment and substation control system (SCS)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(1px); padding: 4rem 0;">
+            <div class="container">
+                <h2 style="text-align: center; color: #1e40af; font-size: 2.2rem; margin-bottom: 1rem;">Technical Capabilities</h2>
+                <p style="text-align: center; font-size: 1.1rem; color: #666; margin-bottom: 3rem;">We provide full facilities to perform maintenance, testing and commissioning for the following services:</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+                    <div style="background: #f8fafc; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #1e40af;">
+                        <ul style="font-size: 0.95rem; line-height: 1.6; color: #555; list-style-type: none; padding: 0; margin: 0;">
+                            <li style="margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">• MV/HV Power Cable</li>
+                            <li style="margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">• MV/HV Air Insulated Switchgear</li>
+                            <li style="margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">• MV/HV Gas Insulated Switchgear</li>
+                            <li style="margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">• MV/HV Insulators, CT/VT/CVT</li>
+                            <li style="margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">• MV/HV Power Transformers</li>
+                            <li style="margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">• HV Auto Transformer</li>
+                            <li style="padding-left: 1rem; position: relative;">• Thermography Inspection</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f8fafc; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #1e40af;">
+                        <ul style="font-size: 0.95rem; line-height: 1.6; color: #555; list-style-type: none; padding: 0; margin: 0;">
+                            <li style="margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">• SF6 Gas Works and Analysis</li>
+                            <li style="margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">• MV/HV Shunt Reactor</li>
+                            <li style="margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">• Partial Discharge Measurement</li>
+                            <li style="margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">• Protective Relays Calibration</li>
+                            <li style="margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">• AC/DC Systems and Battery Bank Discharge Test</li>
+                            <li style="margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">• MV/HV Generator</li>
+                            <li style="padding-left: 1rem; position: relative;">• MV/HV Motor</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f8fafc; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #1e40af;">
+                        <ul style="font-size: 0.95rem; line-height: 1.6; color: #555; list-style-type: none; padding: 0; margin: 0;">
+                            <li style="margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">• MV/HV Circuit Breakers</li>
+                            <li style="margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">• Earthing System</li>
+                            <li style="margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">• Power Quality Analysis</li>
+                            <li style="margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">• MV/HV Capacitor Bank</li>
+                            <li style="padding-left: 1rem; position: relative;">• AC Resonant Test System (up to 460kV)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
             </div>
         </section>
 
@@ -87,7 +162,7 @@
             </div>
         </section>
 
-        <section style="padding: 4rem 0;">
+        <section style="background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(1px); padding: 4rem 0;">
             <div class="container">
                 <h2 style="text-align: center; color: #1e40af; font-size: 2.2rem; margin-bottom: 3rem;">Why Choose UPS Protection?</h2>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;">

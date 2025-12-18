@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clean Tables</title>
+</head>
+<body>
+    <script>
+        // Function to clean customer data from table rows
+        function cleanTable() {
+            const tableRows = document.querySelectorAll('tbody tr');
+            tableRows.forEach(row => {
+                const cells = row.querySelectorAll('td');
+                if (cells.length === 5) { // Has customer column
+                    cells[4].remove(); // Remove last cell (customer)
+                }
+            });
+            
+            // Remove customer header
+            const headers = document.querySelectorAll('th');
+            headers.forEach(header => {
+                if (header.textContent.trim() === 'Customer') {
+                    header.remove();
+                }
+            });
+            
+            return document.documentElement.outerHTML;
+        }
+        
+        console.log('Table cleaning function ready');
+    </script>
+</body>
+</html>
