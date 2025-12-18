@@ -37,9 +37,24 @@
         
         /* Smartphone specific fixes */
         @media (max-width: 480px) {
+            /* Disable scroll animations on mobile */
+            * {
+                animation: none !important;
+                transition: none !important;
+                transform: none !important;
+            }
+            
+            .fade-in, .slide-in-left, .slide-in-right, .scale-in {
+                opacity: 1 !important;
+                transform: none !important;
+                transition: none !important;
+            }
+            
             #equipment-gallery {
                 display: block !important;
                 grid-template-columns: none !important;
+                opacity: 1 !important;
+                transform: none !important;
             }
             
             .equipment-card {
@@ -50,6 +65,9 @@
                 border: 1px solid #e5e7eb !important;
                 border-radius: 8px !important;
                 overflow: hidden !important;
+                opacity: 1 !important;
+                transform: none !important;
+                transition: none !important;
             }
             
             .equipment-card img {
@@ -58,6 +76,8 @@
                 height: 180px !important;
                 object-fit: cover !important;
                 background: #f0f0f0 !important;
+                opacity: 1 !important;
+                transform: none !important;
             }
         }
         
@@ -631,11 +651,22 @@
             
             // Smartphone specific fixes
             if (window.innerWidth <= 480) {
+                // Disable scroll animations on mobile
+                const style = document.createElement('style');
+                style.textContent = `
+                    * { animation: none !important; transition: none !important; }
+                    .fade-in, .slide-in-left, .slide-in-right, .scale-in { opacity: 1 !important; transform: none !important; }
+                `;
+                document.head.appendChild(style);
+                
                 // Force display for smartphones
                 const gallery = document.getElementById('equipment-gallery');
                 if (gallery) {
                     gallery.style.display = 'block';
                     gallery.style.gridTemplateColumns = 'none';
+                    gallery.style.opacity = '1';
+                    gallery.style.transform = 'none';
+                    gallery.classList.remove('fade-in', 'scale-in');
                 }
                 
                 setTimeout(() => {
