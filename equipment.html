@@ -14,6 +14,22 @@
             height: 200px;
             object-fit: cover;
             display: block;
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+        }
+        
+        /* Mobile image loading enhancement */
+        @media (max-width: 768px) {
+            .equipment-card img {
+                background: linear-gradient(45deg, #f8fafc 25%, transparent 25%), 
+                           linear-gradient(-45deg, #f8fafc 25%, transparent 25%), 
+                           linear-gradient(45deg, transparent 75%, #f8fafc 75%), 
+                           linear-gradient(-45deg, transparent 75%, #f8fafc 75%);
+                background-size: 20px 20px;
+                background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+                min-height: 200px !important;
+                display: block !important;
+            }
         }
         
         .equipment-card:hover img {
@@ -167,12 +183,22 @@
                 display: block !important;
                 max-width: 100% !important;
                 border-radius: 8px 8px 0 0 !important;
+                background: #f0f0f0 !important;
+                min-height: 200px !important;
             }
             
             /* Force image visibility on mobile */
             img {
                 opacity: 1 !important;
                 visibility: visible !important;
+                display: block !important;
+            }
+            
+            /* Equipment card mobile fixes */
+            .equipment-card {
+                background: white !important;
+                border: 1px solid #e5e7eb !important;
+                min-height: 300px !important;
             }
             
             /* Mobile container width fix */
@@ -522,8 +548,31 @@
                 img.style.display = 'block';
                 img.style.opacity = '1';
                 img.style.visibility = 'visible';
+                img.style.minHeight = '200px';
+                img.style.background = '#f0f0f0';
+                
+                // Force reload if image is not loaded
+                if (!img.complete || img.naturalHeight === 0) {
+                    const originalSrc = img.src;
+                    img.src = '';
+                    setTimeout(() => {
+                        img.src = originalSrc;
+                    }, 100);
+                }
             });
         });
+        
+        // Additional mobile image fix
+        if (window.innerWidth <= 768) {
+            document.addEventListener('DOMContentLoaded', function() {
+                setTimeout(() => {
+                    const images = document.querySelectorAll('.equipment-card img');
+                    images.forEach(img => {
+                        img.style.cssText += 'display: block !important; opacity: 1 !important; visibility: visible !important;';
+                    });
+                }, 500);
+            });
+        }
     </script>
 </body>
 </html>
