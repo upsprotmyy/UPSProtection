@@ -213,6 +213,22 @@
                 padding: 2rem 0 !important;
             }
             
+            /* Mobile viewport rendering fix */
+            body {
+                -webkit-transform: translateZ(0) !important;
+                transform: translateZ(0) !important;
+                -webkit-backface-visibility: hidden !important;
+                backface-visibility: hidden !important;
+            }
+            
+            /* Force hardware acceleration */
+            #equipment-gallery,
+            .equipment-card {
+                -webkit-transform: translateZ(0) !important;
+                transform: translateZ(0) !important;
+                will-change: transform !important;
+            }
+            
             /* Hero section mobile */
             section[style*="background: linear-gradient"] {
                 padding: 2rem 0 !important;
@@ -572,6 +588,52 @@
                     });
                 }, 500);
             });
+            
+            // Force repaint on scroll for mobile
+            let scrollTimeout;
+            window.addEventListener('scroll', function() {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    const cards = document.querySelectorAll('.equipment-card');
+                    cards.forEach(card => {
+                        card.style.transform = 'translateZ(0)';
+                    });
+                }, 100);
+            });
+            
+            // Force layout recalculation
+            window.addEventListener('resize', function() {
+                const gallery = document.getElementById('equipment-gallery');
+                if (gallery) {
+                    gallery.style.display = 'none';
+                    gallery.offsetHeight; // Trigger reflow
+                    gallery.style.display = 'grid';
+                }
+            });
+            
+            // Intersection Observer to force rendering when scrolling
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const card = entry.target;
+                        card.style.transform = 'translateZ(0)';
+                        card.style.opacity = '1';
+                        card.style.visibility = 'visible';
+                        
+                        const img = card.querySelector('img');
+                        if (img) {
+                            img.style.display = 'block';
+                            img.style.opacity = '1';
+                        }
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            // Observe all equipment cards
+            setTimeout(() => {
+                const cards = document.querySelectorAll('.equipment-card');
+                cards.forEach(card => observer.observe(card));
+            }, 1000);
         }
     </script>
 </body>
