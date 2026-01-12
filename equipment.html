@@ -106,11 +106,54 @@
             text-align: center;
         }
         
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            font-size: 24px;
+            padding: 15px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            z-index: 1001;
+        }
+        
+        .nav-arrow:hover {
+            background: rgba(0,0,0,0.8);
+        }
+        
+        .nav-prev {
+            left: 20px;
+        }
+        
+        .nav-next {
+            right: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-arrow {
+                font-size: 20px;
+                padding: 12px 16px;
+            }
+            
+            .nav-prev {
+                left: 10px;
+            }
+            
+            .nav-next {
+                right: 10px;
+            }
+        }
+        
         .lightbox img {
             width: 100%;
             height: auto;
             border-radius: 8px;
             margin-bottom: 1rem;
+            max-height: 80vh;
+            object-fit: contain;
         }
         
         .lightbox-caption {
@@ -128,15 +171,35 @@
         @media (max-width: 768px) {
             .lightbox-content {
                 max-width: 95%;
-                max-height: 95%;
+                max-height: 85%;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                position: absolute;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .lightbox img {
+                max-height: 65vh;
+                max-width: 85vw;
+                width: auto;
+                height: auto;
+                object-fit: contain;
+                display: block;
+                margin: 0 0 1rem 0;
             }
             
             .lightbox-caption {
                 font-size: 1rem;
+                text-align: center;
             }
             
             .lightbox-model {
                 font-size: 0.9rem;
+                text-align: center;
             }
             
             .close {
@@ -764,7 +827,9 @@
 
     <div id="lightbox" class="lightbox" onclick="closeLightbox()">
         <span class="close">&times;</span>
-        <div class="lightbox-content">
+        <button class="nav-arrow nav-prev" onclick="event.stopPropagation(); navigateImage('prev');">‹</button>
+        <button class="nav-arrow nav-next" onclick="event.stopPropagation(); navigateImage('next');">›</button>
+        <div class="lightbox-content" onclick="event.stopPropagation();">
             <img id="lightbox-img" src="" alt="">
             <div class="lightbox-caption" id="lightbox-caption"></div>
             <div class="lightbox-model" id="lightbox-model"></div>
@@ -783,15 +848,44 @@
             document.getElementById('lightbox-img').alt = img.alt;
             document.getElementById('lightbox-caption').textContent = title;
             document.getElementById('lightbox-model').textContent = model;
+            
+            // Store current image index for navigation
+            const allImages = Array.from(document.querySelectorAll('.equipment-card img'));
+            window.currentImageIndex = allImages.indexOf(img);
         }
         
         function closeLightbox() {
             document.getElementById('lightbox').style.display = 'none';
         }
         
+        function navigateImage(direction) {
+            const allImages = document.querySelectorAll('.equipment-card img');
+            if (direction === 'next') {
+                window.currentImageIndex = (window.currentImageIndex + 1) % allImages.length;
+            } else {
+                window.currentImageIndex = (window.currentImageIndex - 1 + allImages.length) % allImages.length;
+            }
+            
+            const newImg = allImages[window.currentImageIndex];
+            const card = newImg.closest('.equipment-card');
+            const title = card.querySelector('h3').textContent;
+            const model = card.querySelector('p').textContent;
+            
+            document.getElementById('lightbox-img').src = newImg.src;
+            document.getElementById('lightbox-img').alt = newImg.alt;
+            document.getElementById('lightbox-caption').textContent = title;
+            document.getElementById('lightbox-model').textContent = model;
+        }
+        
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeLightbox();
+            if (document.getElementById('lightbox').style.display === 'block') {
+                if (e.key === 'Escape') {
+                    closeLightbox();
+                } else if (e.key === 'ArrowLeft') {
+                    navigateImage('prev');
+                } else if (e.key === 'ArrowRight') {
+                    navigateImage('next');
+                }
             }
         });
         

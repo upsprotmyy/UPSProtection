@@ -89,4 +89,7 @@
 - ✅ Completed Test Equipment gallery (47 verified items)
 - ✅ Implemented clean URLs across entire website
 - ✅ Updated all navigation links to use clean URLs
+- ✅ Added keyboard navigation to equipment lightbox (arrow keys)
+- ✅ Added mouse/touch navigation arrows to lightbox
+- ✅ Fixed mobile lightbox centering and alignment
 **Ready for**: Final testing and deployment
