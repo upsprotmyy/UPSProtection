@@ -92,4 +92,5 @@
 - ✅ Added keyboard navigation to equipment lightbox (arrow keys)
 - ✅ Added mouse/touch navigation arrows to lightbox
 - ✅ Fixed mobile lightbox centering and alignment
+- ✅ Resolved mobile black screen overlay issue
 **Ready for**: Final testing and deployment

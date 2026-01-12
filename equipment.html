@@ -169,27 +169,37 @@
         }
         
         @media (max-width: 768px) {
+            .lightbox {
+                padding: 10px !important;
+            }
+            
+            .lightbox.show {
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+            }
+            
             .lightbox-content {
-                max-width: 95%;
-                max-height: 85%;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                position: absolute;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
+                position: relative !important;
+                top: auto !important;
+                left: auto !important;
+                transform: none !important;
+                max-width: 90% !important;
+                max-height: 90% !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                justify-content: center !important;
             }
             
             .lightbox img {
-                max-height: 65vh;
-                max-width: 85vw;
-                width: auto;
-                height: auto;
-                object-fit: contain;
-                display: block;
-                margin: 0 0 1rem 0;
+                max-height: 60vh !important;
+                max-width: 85vw !important;
+                width: auto !important;
+                height: auto !important;
+                object-fit: contain !important;
+                display: block !important;
+                margin: 0 auto 10px auto !important;
             }
             
             .lightbox-caption {
@@ -843,7 +853,9 @@
             const title = card.querySelector('h3').textContent;
             const model = card.querySelector('p').textContent;
             
-            document.getElementById('lightbox').style.display = 'block';
+            const lightbox = document.getElementById('lightbox');
+            lightbox.style.display = 'block';
+            lightbox.classList.add('show');
             document.getElementById('lightbox-img').src = img.src;
             document.getElementById('lightbox-img').alt = img.alt;
             document.getElementById('lightbox-caption').textContent = title;
@@ -855,7 +867,9 @@
         }
         
         function closeLightbox() {
-            document.getElementById('lightbox').style.display = 'none';
+            const lightbox = document.getElementById('lightbox');
+            lightbox.style.display = 'none';
+            lightbox.classList.remove('show');
         }
         
         function navigateImage(direction) {
