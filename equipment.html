@@ -1,89 +1,110 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="scroll-smooth" lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Equipment - UPS Protection Malaysia</title>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Test Equipment - UPS Protection SDN BHD</title>
     <link rel="icon" type="image/x-icon" href="UPS Logo.ico">
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1E40AF",
+                        "background-light": "#F8FAFC",
+                        "slate-accent": "#475569",
+                    },
+                    fontFamily: {
+                        display: ["Lexend", "sans-serif"],
+                        sans: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                        'xl': "1rem",
+                    },
+                },
+            },
+        };
+    </script>
+    <script>
+        const translations = {
+            en: {
+                home: "Home",
+                projectPortfolio: "Project Portfolio",
+                substationTesting: "Substation Testing and Commissioning",
+                maintenanceProject: "Maintenance Project",
+                transformerTesting: "Power Transformer Testing and Commissioning",
+                testEquipment: "Test Equipment",
+                aboutUs: "About Us",
+                contactUs: "Contact Us",
+                professionalEquipment: "Professional Equipment",
+                test: "Test",
+                equipment: "Equipment",
+                professionalElectricalTesting: "Professional electrical testing equipment for comprehensive power system analysis and commissioning",
+                about: "About",
+                contact: "Contact"
+            },
+            ms: {
+                home: "Laman Utama",
+                projectPortfolio: "Portfolio Projek",
+                substationTesting: "Ujian dan Pentauliahan Pencawang",
+                maintenanceProject: "Projek Penyelenggaraan",
+                transformerTesting: "Ujian dan Pentauliahan Transformer Kuasa",
+                testEquipment: "Peralatan Ujian",
+                aboutUs: "Tentang Kami",
+                contactUs: "Hubungi Kami",
+                professionalEquipment: "Peralatan Profesional",
+                test: "Ujian",
+                equipment: "Peralatan",
+                professionalElectricalTesting: "Peralatan ujian elektrik profesional untuk analisis sistem kuasa menyeluruh dan pentauliahan",
+                about: "Tentang",
+                contact: "Hubungi"
+            },
+            zh: {
+                home: "首页",
+                projectPortfolio: "项目组合",
+                substationTesting: "变电站测试和调试",
+                maintenanceProject: "维护项目",
+                transformerTesting: "电力变压器测试和调试",
+                testEquipment: "测试设备",
+                aboutUs: "关于我们",
+                contactUs: "联系我们",
+                professionalEquipment: "专业设备",
+                test: "测试",
+                equipment: "设备",
+                professionalElectricalTesting: "用于全面电力系统分析和调试的专业电气测试设备",
+                about: "关于",
+                contact: "联系"
+            }
+        };
+        
+        function switchLanguage(lang) {
+            const t = translations[lang];
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (t[key]) {
+                    element.textContent = t[key];
+                }
+            });
+        }
+        
+        function updateCopyright() {
+            const currentYear = new Date().getFullYear();
+            const copyrightElement = document.getElementById('copyright-year');
+            if (copyrightElement) {
+                copyrightElement.textContent = currentYear;
+            }
+        }
+        document.addEventListener('DOMContentLoaded', updateCopyright);
+    </script>
     <style>
-        .equipment-card img {
-            cursor: pointer;
-            transition: transform 0.3s ease;
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            display: block;
-            background: #f8fafc;
-            border: 1px solid #e5e7eb;
-        }
-        
-        /* Mobile image loading enhancement */
-        @media (max-width: 768px) {
-            .equipment-card img {
-                background: #f8fafc;
-                min-height: 200px !important;
-                display: block !important;
-                width: 100% !important;
-                height: 200px !important;
-                object-fit: cover !important;
-            }
-            
-            .equipment-card {
-                display: block !important;
-                margin-bottom: 2rem !important;
-            }
-        }
-        
-        /* Smartphone specific fixes */
-        @media (max-width: 480px) {
-            /* Disable scroll animations on mobile */
-            * {
-                animation: none !important;
-                transition: none !important;
-                transform: none !important;
-            }
-            
-            .fade-in, .slide-in-left, .slide-in-right, .scale-in {
-                opacity: 1 !important;
-                transform: none !important;
-                transition: none !important;
-            }
-            
-            #equipment-gallery {
-                display: block !important;
-                grid-template-columns: none !important;
-                opacity: 1 !important;
-                transform: none !important;
-            }
-            
-            .equipment-card {
-                display: block !important;
-                width: 100% !important;
-                margin: 0 0 1.5rem 0 !important;
-                background: white !important;
-                border: 1px solid #e5e7eb !important;
-                border-radius: 8px !important;
-                overflow: hidden !important;
-                opacity: 1 !important;
-                transform: none !important;
-                transition: none !important;
-            }
-            
-            .equipment-card img {
-                display: block !important;
-                width: 100% !important;
-                height: 180px !important;
-                object-fit: cover !important;
-                background: #f0f0f0 !important;
-                opacity: 1 !important;
-                transform: none !important;
-            }
-        }
-        
-        .equipment-card:hover img {
-            transform: scale(1.05);
-        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Lexend', sans-serif; }
         
         .lightbox {
             display: none;
@@ -104,6 +125,27 @@
             max-width: 90%;
             max-height: 90%;
             text-align: center;
+        }
+        
+        .lightbox img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            max-height: 80vh;
+            object-fit: contain;
+        }
+        
+        .lightbox-caption {
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .lightbox-model {
+            color: #ccc;
+            font-size: 1rem;
         }
         
         .nav-arrow {
@@ -132,40 +174,18 @@
             right: 20px;
         }
         
-        @media (max-width: 768px) {
-            .nav-arrow {
-                font-size: 20px;
-                padding: 12px 16px;
-            }
-            
-            .nav-prev {
-                left: 10px;
-            }
-            
-            .nav-next {
-                right: 10px;
-            }
-        }
-        
-        .lightbox img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            max-height: 80vh;
-            object-fit: contain;
-        }
-        
-        .lightbox-caption {
-            color: white;
-            font-size: 1.2rem;
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
             font-weight: bold;
-            margin-bottom: 0.5rem;
+            cursor: pointer;
         }
         
-        .lightbox-model {
-            color: #ccc;
-            font-size: 1rem;
+        .close:hover {
+            color: #bbb;
         }
         
         @media (max-width: 768px) {
@@ -202,14 +222,17 @@
                 margin: 0 auto 10px auto !important;
             }
             
-            .lightbox-caption {
-                font-size: 1rem;
-                text-align: center;
+            .nav-arrow {
+                font-size: 20px;
+                padding: 12px 16px;
             }
             
-            .lightbox-model {
-                font-size: 0.9rem;
-                text-align: center;
+            .nav-prev {
+                left: 10px;
+            }
+            
+            .nav-next {
+                right: 10px;
             }
             
             .close {
@@ -217,809 +240,577 @@
                 right: 15px;
                 font-size: 30px;
             }
-            
-            /* Mobile navigation fix */
-            #mobile-nav {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: white;
-                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-                z-index: 10000;
-                max-height: 60vh;
-                overflow-y: auto;
-            }
-            
-            header {
-                z-index: 10001 !important;
-            }
-            
-            #mobile-nav.active {
-                display: block;
-            }
-            
-            #mobile-nav ul {
-                flex-direction: column;
-                padding: 1rem 0;
-            }
-            
-            #mobile-nav ul li {
-                margin: 0;
-                border-bottom: 1px solid #e5e7eb;
-            }
-            
-            #mobile-nav ul li:last-child {
-                border-bottom: none;
-            }
-            
-            #mobile-nav ul li a {
-                display: block;
-                padding: 1rem 1.5rem;
-                font-size: 1rem;
-                color: #333;
-            }
-            
-            .dropdown-menu {
-                position: static;
-                display: none;
-                box-shadow: none;
-                background: #f8fafc;
-                margin: 0;
-                border-radius: 0;
-                min-width: 100%;
-            }
-            
-            .dropdown.active .dropdown-menu {
-                display: block;
-            }
-            
-            .dropdown-menu li {
-                border-bottom: 1px solid #d1d5db;
-            }
-            
-            .dropdown-menu li a {
-                padding: 0.8rem 2rem;
-                font-size: 0.9rem;
-                color: #666;
-            }
-            
-            /* Equipment gallery mobile optimization */
-            #equipment-gallery {
-                grid-template-columns: 1fr !important;
-                gap: 1.5rem !important;
-            }
-            
-            div[style*="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr))"] {
-                display: block !important;
-            }
-            
-            .equipment-card {
-                margin-bottom: 1.5rem !important;
-                width: 100% !important;
-                max-width: 100% !important;
-            }
-            
-            /* Mobile image loading fixes */
-            .equipment-card img {
-                width: 100% !important;
-                height: 200px !important;
-                object-fit: cover !important;
-                display: block !important;
-                max-width: 100% !important;
-                border-radius: 8px 8px 0 0 !important;
-                background: #f0f0f0 !important;
-                min-height: 200px !important;
-            }
-            
-            /* Force image visibility on mobile */
-            img {
-                opacity: 1 !important;
-                visibility: visible !important;
-                display: block !important;
-            }
-            
-            /* Equipment card mobile fixes */
-            .equipment-card {
-                background: white !important;
-                border: 1px solid #e5e7eb !important;
-                min-height: 300px !important;
-            }
-            
-            /* Mobile container width fix */
-            .container {
-                width: 100% !important;
-                max-width: 100% !important;
-                padding: 0 15px !important;
-            }
-            
-            /* Mobile section padding */
-            section[style*="padding: 4rem 0"] {
-                padding: 2rem 0 !important;
-            }
-            
-
-            
-            /* Hero section mobile */
-            section[style*="background: linear-gradient"] {
-                padding: 2rem 0 !important;
-            }
-            
-            section[style*="background: linear-gradient"] h1 {
-                font-size: 2rem !important;
-            }
-            
-            section[style*="background: linear-gradient"] p {
-                font-size: 1.1rem !important;
-            }
-        }
-        
-        .close {
-            position: absolute;
-            top: 15px;
-            right: 35px;
-            color: #f1f1f1;
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        
-        .close:hover {
-            color: #bbb;
         }
     </style>
 </head>
-<body>
-    <header>
-        <div class="container">
-            <div class="logo">
+<body class="bg-background-light text-slate-900">
+
+<header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="flex items-center space-x-3">
+            <div class="flex items-center">
                 <a href="/">
-                    <img src="logo1.png" alt="UPS Protection Malaysia" height="50">
+                    <img alt="UPS Protection Logo" class="h-10 object-contain" src="logo1.png"/>
                 </a>
             </div>
-            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
+        </div>
+        <nav class="hidden md:flex space-x-8">
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/" data-translate="home">Home</a>
+            <div class="relative group">
+                <a class="text-slate-600 hover:text-primary transition-colors cursor-pointer" data-translate="projectPortfolio">Project Portfolio</a>
+                <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-slate-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                    <a href="/substation" class="block px-4 py-3 text-sm text-slate-700 hover:bg-slate-50 rounded-t-lg" data-translate="substationTesting">Substation Testing and Commissioning</a>
+                    <a href="/maintenance" class="block px-4 py-3 text-sm text-slate-700 hover:bg-slate-50" data-translate="maintenanceProject">Maintenance Project</a>
+                    <a href="/transformer" class="block px-4 py-3 text-sm text-slate-700 hover:bg-slate-50 rounded-b-lg" data-translate="transformerTesting">Power Transformer Testing and Commissioning</a>
+                </div>
+            </div>
+            <a class="text-primary font-semibold" href="/equipment" data-translate="testEquipment">Test Equipment</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/about" data-translate="aboutUs">About Us</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/contact" data-translate="contactUs">Contact Us</a>
+        </nav>
+        <div class="flex items-center space-x-4">
+            <div class="relative group">
+                <button class="flex items-center space-x-1 text-slate-600 hover:text-primary transition-colors">
+                    <span class="material-icons-outlined text-sm">language</span>
+                    <span class="text-sm">EN</span>
+                </button>
+                <div class="absolute top-full right-0 mt-2 w-32 bg-white rounded-lg shadow-lg border border-slate-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                    <button onclick="switchLanguage('en')" class="block w-full px-4 py-2 text-left text-sm text-slate-700 hover:bg-slate-50 rounded-t-lg">English</button>
+                    <button onclick="switchLanguage('ms')" class="block w-full px-4 py-2 text-left text-sm text-slate-700 hover:bg-slate-50">Bahasa Malaysia</button>
+                    <button onclick="switchLanguage('zh')" class="block w-full px-4 py-2 text-left text-sm text-slate-700 hover:bg-slate-50 rounded-b-lg">中文</button>
+                </div>
+            </div>
+            <button class="md:hidden" id="mobile-menu-toggle">
+                <span class="material-icons-outlined">menu</span>
             </button>
-            <nav id="mobile-nav">
-                <ul>
-                    <li><a href="/" onclick="closeMobileMenu()">Home</a></li>
-                    <li class="dropdown">
-                        <a href="#portfolio" onclick="toggleDropdown(event)">Project Portfolio</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/substation" onclick="closeMobileMenu()">Substation Testing and Commissioning</a></li>
-                            <li><a href="/maintenance" onclick="closeMobileMenu()">Maintenance Project</a></li>
-                            <li><a href="/transformer" onclick="closeMobileMenu()">Power Transformer Testing and Commissioning</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="/equipment" onclick="closeMobileMenu()">Test Equipment</a></li>
-                    <li><a href="/about" onclick="closeMobileMenu()">About Us</a></li>
-                    <li><a href="/contact" onclick="closeMobileMenu()">Contact Us</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <main style="margin-top: 80px;">
-        <section class="hero" style="background: linear-gradient(135deg, #1e40af, #3b82f6); color: white; padding: 4rem 0; text-align: center;">
-            <div class="container">
-                <h1 style="font-size: 3rem; margin-bottom: 1rem;">Test Equipment</h1>
-                <p style="font-size: 1.3rem; max-width: 800px; margin: 0 auto;">Professional electrical testing equipment for comprehensive power system analysis and commissioning</p>
-            </div>
-        </section>
-
-        <section style="padding: 4rem 0; background: #f8fafc;">
-            <div class="container">
-
-                
-                <div id="equipment-gallery" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/10kV HV Insulation Tester Megger MIT 1025.jpg" alt="10kV HV Insulation Tester" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">10kV HV Insulation Tester</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Megger MIT 1025</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/33kV Live Line Tester Metrohm F0257B.jpg" alt="33kV Live Line Tester" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">33kV Live Line Tester</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Metrohm F0257B</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/5kV HV Insultation Tester Megger MIT 515.jpg" alt="5kV HV Insulation Tester" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">5kV HV Insulation Tester</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Megger MIT 515</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/AC DC High Pressure Test Set SEBA KMT T22 124.jpg" alt="AC DC High Pressure Test Set" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">AC DC High Pressure Test Set</h3>
-                            <p style="color: #666; font-size: 0.9rem;">SEBA KMT T22 124</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/AC Hipot Safety Tester Vitrek V70.jpg" alt="AC Hipot Safety Tester" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">AC Hipot Safety Tester</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Vitrek V70</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/AC Resonant Test System YDCK-2000KVA 400KV.jpg" alt="AC Resonant Test System" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">AC Resonant Test System</h3>
-                            <p style="color: #666; font-size: 0.9rem;">YDCK-2000KVA 400KV</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/AC Resonant Test System YDK-15000KVA 300kV.jpg" alt="AC Resonant Test System" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">AC Resonant Test System</h3>
-                            <p style="color: #666; font-size: 0.9rem;">YDK-15000KVA 300kV</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/Advanced 3 Phase Transformer Test System Omicron TESTRANO 600.jpg" alt="Advanced 3 Phase Transformer Test System" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">Advanced 3 Phase Transformer Test System</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Omicron TESTRANO 600</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/Battery Discharge Test Set Pitetech PITE 3980.jpg" alt="Battery Discharge Test Set" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">Battery Discharge Test Set</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Pitetech PITE 3980</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/Circuit Breaker & Overload Relay Test Set Megger MS-2A.jpg" alt="Circuit Breaker & Overload Relay Test Set" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">Circuit Breaker & Overload Relay Test Set</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Megger MS-2A</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/Circuit Breaker Analyzer & Timer DV Power CAT65.jpg" alt="Circuit Breaker Analyzer & Timer" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">Circuit Breaker Analyzer & Timer</h3>
-                            <p style="color: #666; font-size: 0.9rem;">DV Power CAT65</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/Contact Resistance Test Set Vanguard Accu-Ohm 10-200.jpg" alt="Contact Resistance Test Set" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">Contact Resistance Test Set</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Vanguard Accu-Ohm 10-200</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div style="margin-top: 3rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/Current Transformer Analyzer.jpg" alt="Current Transformer Analyzer" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">Current Transformer Analyzer</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Professional CT Analysis</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/Current Transformer Test Set Kingsine KT200.jpg" alt="Current Transformer Test Set" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">Current Transformer Test Set</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Kingsine KT200</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/DC High Pressure Test Set Phenix 475-20.jpg" alt="DC High Pressure Test Set" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">DC High Pressure Test Set</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Phenix 475-20</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/Dielectric Breakdown Test Set HV Diagnostic BA80.jpg" alt="Dielectric Breakdown Test Set" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">Dielectric Breakdown Test Set</h3>
-                            <p style="color: #666; font-size: 0.9rem;">HV Diagnostic BA80</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/DILO SF6 Analyser.jpg" alt="DILO SF6 Analyser" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">DILO SF6 Analyser</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Gas Analysis Equipment</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/Earth Insulation Tester.jpg" alt="Earth Insulation Tester" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">Earth Insulation Tester</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Ground Testing Equipment</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/Earth Tester Kyoritsu 4102A.jpg" alt="Earth Tester" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">Earth Tester</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Kyoritsu 4102A</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/Transformer Turn Ratio Tester Vanguard ATRT-03.jpg" alt="Transformer Turn Ratio Tester" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">Transformer Turn Ratio Tester</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Vanguard ATRT-03</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/Three Phase Secondary Injection Test Set Omicron CMC 356.jpg" alt="Three Phase Secondary Injection Test Set" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">Three Phase Secondary Injection Test Set</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Omicron CMC 356</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/SF6 Gas Analyzer Rapidox SF6 6100.jpg" alt="SF6 Gas Analyzer" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">SF6 Gas Analyzer</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Rapidox SF6 6100</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/Vacuum Bottle Tester Vanguard VBT-60.jpg" alt="Vacuum Bottle Tester" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">Vacuum Bottle Tester</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Vanguard VBT-60</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/Universal Test System Ponovo POM2-6143.jpg" alt="Universal Test System" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">Universal Test System</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Ponovo POM2-6143</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/FDS-PDC Dielectric Response Analyzer Omicron Dirana TMDRA100.jpg" alt="FDS-PDC Dielectric Response Analyzer" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">FDS-PDC Dielectric Response Analyzer</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Omicron Dirana TMDRA100</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/GPS Controlled Time Reference Omicron CMGPS 588.png" alt="GPS Controlled Time Reference" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">GPS Controlled Time Reference</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Omicron CMGPS 588</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/High Voltage Tester HV Hipot GDZG 300.jpg" alt="High Voltage Tester" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">High Voltage Tester</h3>
-                            <p style="color: #666; font-size: 0.9rem;">HV Hipot GDZG 300</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/HV Insultation Tester.jpg" alt="HV Insulation Tester" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">HV Insulation Tester</h3>
-                            <p style="color: #666; font-size: 0.9rem;">High Voltage Testing</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/Insulation Continuity Tester Kyoritsu 3005A.jpg" alt="Insulation Continuity Tester" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">Insulation Continuity Tester</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Kyoritsu 3005A</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/Intelligent Protection Relay Test Set Kingsine K3163i.jpg" alt="Intelligent Protection Relay Test Set" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">Intelligent Protection Relay Test Set</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Kingsine K3163i</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/Low Resistance Ohmmeter Megger DLRO10HD.jpg" alt="Low Resistance Ohmmeter" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">Low Resistance Ohmmeter</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Megger DLRO10HD</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/Megger FRAX 101.jpg" alt="Megger FRAX 101" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">Megger FRAX 101</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Frequency Response Analyzer</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/Omicron PDL 650.jpg" alt="Omicron PDL 650" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">Omicron PDL 650</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Partial Discharge Locator</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/Partial Discharge Analyzer Omicron MPD800.jpg" alt="Partial Discharge Analyzer" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">Partial Discharge Analyzer</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Omicron MPD800</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/Partial Discharge Test Set HVPD PDSINS2 PDS.jpg" alt="Partial Discharge Test Set" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">Partial Discharge Test Set</h3>
-                            <p style="color: #666; font-size: 0.9rem;">HVPD PDSINS2 PDS</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/PD Detector & Locator MERKPD EC4000 PLUS.jpg" alt="PD Detector & Locator" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">PD Detector & Locator</h3>
-                            <p style="color: #666; font-size: 0.9rem;">MERKPD EC4000 PLUS</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/Primary Circuit Breaker Test Set Phenix HC 1.jpg" alt="Primary Circuit Breaker Test Set" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">Primary Circuit Breaker Test Set</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Phenix HC 1</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/Primary Current Injection Test Set 1000A GFUVE Test-901.jpg" alt="Primary Current Injection Test Set" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">Primary Current Injection Test Set</h3>
-                            <p style="color: #666; font-size: 0.9rem;">1000A GFUVE Test-901</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/Primary Injection Test Ponovo T1000.jpg" alt="Primary Injection Test" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">Primary Injection Test</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Ponovo T1000</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/Tan Delta Test Set TOSH TCVT 100.jpg" alt="Tan Delta Test Set" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">Tan Delta Test Set</h3>
-                            <p style="color: #666; font-size: 0.9rem;">TOSH TCVT 100</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/Three Phase DC Winding Resistance Test Set DV Power RMO20-T.jpg" alt="Three Phase DC Winding Resistance Test Set" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">Three Phase DC Winding Resistance Test Set</h3>
-                            <p style="color: #666; font-size: 0.9rem;">DV Power RMO20-T</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/Three Phase Secondary Injection Test Set Ponovo PW460.jpg" alt="Three Phase Secondary Injection Test Set" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">Three Phase Secondary Injection Test Set</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Ponovo PW460</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/Transformer Capacitance Voltage Transformer Omicron Votano 100.jpg" alt="Transformer Capacitance Voltage Transformer" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">Transformer Capacitance Voltage Transformer</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Omicron Votano 100</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/Transformer Oil Filtration Machine Wanmei ZLA-75.jpg" alt="Transformer Oil Filtration Machine" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">Transformer Oil Filtration Machine</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Wanmei ZLA-75</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/Transformer Oil Purifier Lushun ZJA-200.jpg" alt="Transformer Oil Purifier" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">Transformer Oil Purifier</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Lushun ZJA-200</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/Transformer Oil Purifier Lushun ZJA-30.jpg" alt="Transformer Oil Purifier" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">Transformer Oil Purifier</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Lushun ZJA-30</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/Transformer Turns Ratio Tester HV Hipot GDB-III.jpg" alt="Transformer Turns Ratio Tester" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">Transformer Turns Ratio Tester</h3>
-                            <p style="color: #666; font-size: 0.9rem;">HV Hipot GDB-III</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/Transformer Winding Resistance Test Set Vanguard TRM-203.jpg" alt="Transformer Winding Resistance Test Set" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">Transformer Winding Resistance Test Set</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Vanguard TRM-203</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/Universal Test System Ponovo PW431D.jpg" alt="Universal Test System" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">Universal Test System</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Ponovo PW431D</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/Vacuum Pump System Lushun ZJ-300.jpg" alt="Vacuum Pump System" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">Vacuum Pump System</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Lushun ZJ-300</p>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-card" style="background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                        <img src="Image/Test Set/VLF & DC HV Test Set HVA 68-2.jpg" alt="VLF & DC HV Test Set" style="width: 100%; height: 200px; object-fit: cover;" onclick="openLightbox(this)">
-                        <div style="padding: 1.5rem;">
-                            <h3 style="color: #1e40af; margin-bottom: 0.5rem; font-size: 1.1rem;">VLF & DC HV Test Set</h3>
-                            <p style="color: #666; font-size: 0.9rem;">HVA 68-2</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2001 UPS Protection Sdn. Bhd. (540889-K) All rights reserved.</p>
-        </div>
-    </footer>
-
-    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-        <span class="close">&times;</span>
-        <button class="nav-arrow nav-prev" onclick="event.stopPropagation(); navigateImage('prev');">‹</button>
-        <button class="nav-arrow nav-next" onclick="event.stopPropagation(); navigateImage('next');">›</button>
-        <div class="lightbox-content" onclick="event.stopPropagation();">
-            <img id="lightbox-img" src="" alt="">
-            <div class="lightbox-caption" id="lightbox-caption"></div>
-            <div class="lightbox-model" id="lightbox-model"></div>
         </div>
     </div>
+</header>
+
+<!-- Hero Section -->
+<section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+    <div class="absolute inset-0 z-0">
+        <img alt="Test Equipment" class="w-full h-full object-cover opacity-10" src="Image/Electrical.jpg"/>
+        <div class="absolute inset-0 bg-gradient-to-r from-background-light via-background-light/80 to-transparent"></div>
+    </div>
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="max-w-3xl">
+            <span class="inline-block px-4 py-1.5 mb-6 text-sm font-semibold tracking-wider text-primary uppercase bg-blue-50 rounded-full" data-translate="professionalEquipment">
+                Professional Equipment
+            </span>
+            <h1 class="text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight">
+                <span data-translate="test">Test</span> <br/>
+                <span class="text-primary" data-translate="equipment">Equipment</span>
+            </h1>
+            <p class="text-lg lg:text-xl text-slate-600 mb-10 leading-relaxed max-w-2xl" data-translate="professionalElectricalTesting">
+                Professional electrical testing equipment for comprehensive power system analysis and commissioning
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Equipment Gallery -->
+<section class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/10kV HV Insulation Tester Megger MIT 1025.jpg" alt="10kV HV Insulation Tester" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">10kV HV Insulation Tester</h3>
+                    <p class="text-slate-600">Megger MIT 1025</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/33kV Live Line Tester Metrohm F0257B.jpg" alt="33kV Live Line Tester" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">33kV Live Line Tester</h3>
+                    <p class="text-slate-600">Metrohm F0257B</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/5kV HV Insultation Tester Megger MIT 515.jpg" alt="5kV HV Insulation Tester" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">5kV HV Insulation Tester</h3>
+                    <p class="text-slate-600">Megger MIT 515</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/AC DC High Pressure Test Set SEBA KMT T22 124.jpg" alt="AC DC High Pressure Test Set" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">AC DC High Pressure Test Set</h3>
+                    <p class="text-slate-600">SEBA KMT T22 124</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/AC Hipot Safety Tester Vitrek V70.jpg" alt="AC Hipot Safety Tester" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">AC Hipot Safety Tester</h3>
+                    <p class="text-slate-600">Vitrek V70</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/AC Resonant Test System YDCK-2000KVA 400KV.jpg" alt="AC Resonant Test System" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">AC Resonant Test System</h3>
+                    <p class="text-slate-600">YDCK-2000KVA 400KV</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/AC Resonant Test System YDK-15000KVA 300kV.jpg" alt="AC Resonant Test System" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">AC Resonant Test System</h3>
+                    <p class="text-slate-600">YDK-15000KVA 300kV</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/Advanced 3 Phase Transformer Test System Omicron TESTRANO 600.jpg" alt="Advanced 3 Phase Transformer Test System" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Advanced 3 Phase Transformer Test System</h3>
+                    <p class="text-slate-600">Omicron TESTRANO 600</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/Battery Discharge Test Set Pitetech PITE 3980.jpg" alt="Battery Discharge Test Set" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Battery Discharge Test Set</h3>
+                    <p class="text-slate-600">Pitetech PITE 3980</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/Circuit Breaker & Overload Relay Test Set Megger MS-2A.jpg" alt="Circuit Breaker & Overload Relay Test Set" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Circuit Breaker & Overload Relay Test Set</h3>
+                    <p class="text-slate-600">Megger MS-2A</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/Circuit Breaker Analyzer & Timer DV Power CAT65.jpg" alt="Circuit Breaker Analyzer & Timer" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Circuit Breaker Analyzer & Timer</h3>
+                    <p class="text-slate-600">DV Power CAT65</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/Contact Resistance Test Set Vanguard Accu-Ohm 10-200.jpg" alt="Contact Resistance Test Set" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Contact Resistance Test Set</h3>
+                    <p class="text-slate-600">Vanguard Accu-Ohm 10-200</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/Current Transformer Analyzer.jpg" alt="Current Transformer Analyzer" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Current Transformer Analyzer</h3>
+                    <p class="text-slate-600">Professional CT Analysis</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/Current Transformer Test Set Kingsine KT200.jpg" alt="Current Transformer Test Set" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Current Transformer Test Set</h3>
+                    <p class="text-slate-600">Kingsine KT200</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/DC High Pressure Test Set Phenix 475-20.jpg" alt="DC High Pressure Test Set" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">DC High Pressure Test Set</h3>
+                    <p class="text-slate-600">Phenix 475-20</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/Dielectric Breakdown Test Set HV Diagnostic BA80.jpg" alt="Dielectric Breakdown Test Set" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Dielectric Breakdown Test Set</h3>
+                    <p class="text-slate-600">HV Diagnostic BA80</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/DILO SF6 Analyser.jpg" alt="DILO SF6 Analyser" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">DILO SF6 Analyser</h3>
+                    <p class="text-slate-600">Professional SF6 Analysis</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/Earth Insulation Tester.jpg" alt="Earth Insulation Tester" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Earth Insulation Tester</h3>
+                    <p class="text-slate-600">Professional Earth Testing</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/Earth Tester Kyoritsu 4102A.jpg" alt="Earth Tester" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Earth Tester</h3>
+                    <p class="text-slate-600">Kyoritsu 4102A</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/FDS-PDC Dielectric Response Analyzer Omicron Dirana TMDRA100.jpg" alt="FDS-PDC Dielectric Response Analyzer" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">FDS-PDC Dielectric Response Analyzer</h3>
+                    <p class="text-slate-600">Omicron Dirana TMDRA100</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/GPS Controlled Time Reference Omicron CMGPS 588.png" alt="GPS Controlled Time Reference" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">GPS Controlled Time Reference</h3>
+                    <p class="text-slate-600">Omicron CMGPS 588</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/High Voltage Tester HV Hipot GDZG 300.jpg" alt="High Voltage Tester" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">High Voltage Tester</h3>
+                    <p class="text-slate-600">HV Hipot GDZG 300</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/HV Insultation Tester.jpg" alt="HV Insulation Tester" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">HV Insulation Tester</h3>
+                    <p class="text-slate-600">Professional HV Testing</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/Insulation Continuity Tester Kyoritsu 3005A.jpg" alt="Insulation Continuity Tester" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Insulation Continuity Tester</h3>
+                    <p class="text-slate-600">Kyoritsu 3005A</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/Intelligent Protection Relay Test Set Kingsine K3163i.jpg" alt="Intelligent Protection Relay Test Set" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Intelligent Protection Relay Test Set</h3>
+                    <p class="text-slate-600">Kingsine K3163i</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/Low Resistance Ohmmeter Megger DLRO10HD.jpg" alt="Low Resistance Ohmmeter" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Low Resistance Ohmmeter</h3>
+                    <p class="text-slate-600">Megger DLRO10HD</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/Megger FRAX 101.jpg" alt="Megger FRAX 101" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Megger FRAX 101</h3>
+                    <p class="text-slate-600">Frequency Response Analyzer</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/Omicron PDL 650.jpg" alt="Omicron PDL 650" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Omicron PDL 650</h3>
+                    <p class="text-slate-600">Partial Discharge Locator</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/Partial Discharge Analyzer Omicron MPD800.jpg" alt="Partial Discharge Analyzer" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Partial Discharge Analyzer</h3>
+                    <p class="text-slate-600">Omicron MPD800</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/Partial Discharge Test Set HVPD PDSINS2 PDS.jpg" alt="Partial Discharge Test Set" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Partial Discharge Test Set</h3>
+                    <p class="text-slate-600">HVPD PDSINS2 PDS</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/PD Detector & Locator MERKPD EC4000 PLUS.jpg" alt="PD Detector & Locator" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">PD Detector & Locator</h3>
+                    <p class="text-slate-600">MERKPD EC4000 PLUS</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/Primary Circuit Breaker Test Set Phenix HC 1.jpg" alt="Primary Circuit Breaker Test Set" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Primary Circuit Breaker Test Set</h3>
+                    <p class="text-slate-600">Phenix HC 1</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/Primary Current Injection Test Set 1000A GFUVE Test-901.jpg" alt="Primary Current Injection Test Set" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Primary Current Injection Test Set</h3>
+                    <p class="text-slate-600">1000A GFUVE Test-901</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/Primary Injection Test Ponovo T1000.jpg" alt="Primary Injection Test" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Primary Injection Test</h3>
+                    <p class="text-slate-600">Ponovo T1000</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/SF6 Gas Analyzer Rapidox SF6 6100.jpg" alt="SF6 Gas Analyzer" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">SF6 Gas Analyzer</h3>
+                    <p class="text-slate-600">Rapidox SF6 6100</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/Tan Delta Test Set TOSH TCVT 100.jpg" alt="Tan Delta Test Set" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Tan Delta Test Set</h3>
+                    <p class="text-slate-600">TOSH TCVT 100</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/Three Phase DC Winding Resistance Test Set DV Power RMO20-T.jpg" alt="Three Phase DC Winding Resistance Test Set" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Three Phase DC Winding Resistance Test Set</h3>
+                    <p class="text-slate-600">DV Power RMO20-T</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/Three Phase Secondary Injection Test Set Omicron CMC 356.jpg" alt="Three Phase Secondary Injection Test Set" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Three Phase Secondary Injection Test Set</h3>
+                    <p class="text-slate-600">Omicron CMC 356</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/Three Phase Secondary Injection Test Set Ponovo PW460.jpg" alt="Three Phase Secondary Injection Test Set" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Three Phase Secondary Injection Test Set</h3>
+                    <p class="text-slate-600">Ponovo PW460</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/Transformer Capacitance Voltage Transformer Omicron Votano 100.jpg" alt="Transformer Capacitance Voltage Transformer" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Transformer Capacitance Voltage Transformer</h3>
+                    <p class="text-slate-600">Omicron Votano 100</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/Transformer Oil Filtration Machine Wanmei ZLA-75.jpg" alt="Transformer Oil Filtration Machine" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Transformer Oil Filtration Machine</h3>
+                    <p class="text-slate-600">Wanmei ZLA-75</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/Transformer Oil Purifier Lushun ZJA-200.jpg" alt="Transformer Oil Purifier" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Transformer Oil Purifier</h3>
+                    <p class="text-slate-600">Lushun ZJA-200</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/Transformer Oil Purifier Lushun ZJA-30.jpg" alt="Transformer Oil Purifier" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Transformer Oil Purifier</h3>
+                    <p class="text-slate-600">Lushun ZJA-30</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/Transformer Turn Ratio Tester Vanguard ATRT-03.jpg" alt="Transformer Turn Ratio Tester" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Transformer Turn Ratio Tester</h3>
+                    <p class="text-slate-600">Vanguard ATRT-03</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/Transformer Turns Ratio Tester HV Hipot GDB-III.jpg" alt="Transformer Turns Ratio Tester" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Transformer Turns Ratio Tester</h3>
+                    <p class="text-slate-600">HV Hipot GDB-III</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/Transformer Winding Resistance Test Set Vanguard TRM-203.jpg" alt="Transformer Winding Resistance Test Set" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Transformer Winding Resistance Test Set</h3>
+                    <p class="text-slate-600">Vanguard TRM-203</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/Universal Test System Ponovo POM2-6143.jpg" alt="Universal Test System" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Universal Test System</h3>
+                    <p class="text-slate-600">Ponovo POM2-6143</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/Universal Test System Ponovo PW431D.jpg" alt="Universal Test System" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Universal Test System</h3>
+                    <p class="text-slate-600">Ponovo PW431D</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/Vacuum Bottle Tester Vanguard VBT-60.jpg" alt="Vacuum Bottle Tester" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Vacuum Bottle Tester</h3>
+                    <p class="text-slate-600">Vanguard VBT-60</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/Vacuum Pump System Lushun ZJ-300.jpg" alt="Vacuum Pump System" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Vacuum Pump System</h3>
+                    <p class="text-slate-600">Lushun ZJ-300</p>
+                </div>
+            </div>
+            
+            <div class="group bg-background-light rounded-xl border border-slate-200 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden cursor-pointer" onclick="openLightbox(this.querySelector('img'))">
+                <img src="Image/Test Set/VLF & DC HV Test Set HVA 68-2.jpg" alt="VLF & DC HV Test Set" class="w-full h-48 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">VLF & DC HV Test Set</h3>
+                    <p class="text-slate-600">HVA 68-2</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="bg-slate-900 text-slate-400 py-12">
+    <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center pb-12 border-b border-slate-800">
+            <div class="mb-8 md:mb-0">
+                <img alt="UPS Protection Logo" class="h-8 brightness-0 invert" src="logo1.png"/>
+            </div>
+            <div class="flex space-x-8 text-sm uppercase tracking-widest font-semibold">
+                <a class="hover:text-white transition-colors" href="/" data-translate="home">Home</a>
+                <a class="hover:text-white transition-colors" href="/equipment" data-translate="equipment">Equipment</a>
+                <a class="hover:text-white transition-colors" href="/about" data-translate="about">About</a>
+                <a class="hover:text-white transition-colors" href="/contact" data-translate="contact">Contact</a>
+            </div>
+        </div>
+        <div class="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs md:text-sm">
+            <p>© 2001 - <span id="copyright-year">2026</span> UPS Protection Sdn. Bhd. (540889-K) All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <span class="close">&times;</span>
+    <button class="nav-arrow nav-prev" onclick="event.stopPropagation(); navigateImage('prev');">‹</button>
+    <button class="nav-arrow nav-next" onclick="event.stopPropagation(); navigateImage('next');">›</button>
+    <div class="lightbox-content" onclick="event.stopPropagation();">
+        <img id="lightbox-img" src="" alt="">
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+        <div class="lightbox-model" id="lightbox-model"></div>
+    </div>
+</div>
+
+<script>
+    // Lightbox functionality
+    function openLightbox(img) {
+        const card = img.closest('.group');
+        const title = card.querySelector('h3').textContent;
+        const model = card.querySelector('p').textContent;
+        
+        const lightbox = document.getElementById('lightbox');
+        lightbox.style.display = 'block';
+        lightbox.classList.add('show');
+        document.getElementById('lightbox-img').src = img.src;
+        document.getElementById('lightbox-img').alt = img.alt;
+        document.getElementById('lightbox-caption').textContent = title;
+        document.getElementById('lightbox-model').textContent = model;
+        
+        const allImages = Array.from(document.querySelectorAll('.group img'));
+        window.currentImageIndex = allImages.indexOf(img);
+    }
     
-    <script src="script.js"></script>
-    <script>
-        function openLightbox(img) {
-            const card = img.closest('.equipment-card');
-            const title = card.querySelector('h3').textContent;
-            const model = card.querySelector('p').textContent;
-            
-            const lightbox = document.getElementById('lightbox');
-            lightbox.style.display = 'block';
-            lightbox.classList.add('show');
-            document.getElementById('lightbox-img').src = img.src;
-            document.getElementById('lightbox-img').alt = img.alt;
-            document.getElementById('lightbox-caption').textContent = title;
-            document.getElementById('lightbox-model').textContent = model;
-            
-            // Store current image index for navigation
-            const allImages = Array.from(document.querySelectorAll('.equipment-card img'));
-            window.currentImageIndex = allImages.indexOf(img);
+    function closeLightbox() {
+        const lightbox = document.getElementById('lightbox');
+        lightbox.style.display = 'none';
+        lightbox.classList.remove('show');
+    }
+    
+    function navigateImage(direction) {
+        const allImages = document.querySelectorAll('.group img');
+        if (direction === 'next') {
+            window.currentImageIndex = (window.currentImageIndex + 1) % allImages.length;
+        } else {
+            window.currentImageIndex = (window.currentImageIndex - 1 + allImages.length) % allImages.length;
         }
         
-        function closeLightbox() {
-            const lightbox = document.getElementById('lightbox');
-            lightbox.style.display = 'none';
-            lightbox.classList.remove('show');
-        }
+        const newImg = allImages[window.currentImageIndex];
+        const card = newImg.closest('.group');
+        const title = card.querySelector('h3').textContent;
+        const model = card.querySelector('p').textContent;
         
-        function navigateImage(direction) {
-            const allImages = document.querySelectorAll('.equipment-card img');
-            if (direction === 'next') {
-                window.currentImageIndex = (window.currentImageIndex + 1) % allImages.length;
-            } else {
-                window.currentImageIndex = (window.currentImageIndex - 1 + allImages.length) % allImages.length;
-            }
-            
-            const newImg = allImages[window.currentImageIndex];
-            const card = newImg.closest('.equipment-card');
-            const title = card.querySelector('h3').textContent;
-            const model = card.querySelector('p').textContent;
-            
-            document.getElementById('lightbox-img').src = newImg.src;
-            document.getElementById('lightbox-img').alt = newImg.alt;
-            document.getElementById('lightbox-caption').textContent = title;
-            document.getElementById('lightbox-model').textContent = model;
-        }
-        
-        document.addEventListener('keydown', function(e) {
-            if (document.getElementById('lightbox').style.display === 'block') {
-                if (e.key === 'Escape') {
-                    closeLightbox();
-                } else if (e.key === 'ArrowLeft') {
-                    navigateImage('prev');
-                } else if (e.key === 'ArrowRight') {
-                    navigateImage('next');
-                }
-            }
-        });
-        
-        // Mobile image loading fix
-        document.addEventListener('DOMContentLoaded', function() {
-            // Force reload images on mobile if they fail to load
-            const images = document.querySelectorAll('img');
-            images.forEach(img => {
-                if (!img.complete || img.naturalHeight === 0) {
-                    img.onerror = function() {
-                        console.log('Image failed to load:', this.src);
-                        // Try reloading the image
-                        setTimeout(() => {
-                            this.src = this.src + '?t=' + Date.now();
-                        }, 1000);
-                    };
-                }
-            });
-        });
-        
-        // Ensure images are visible on mobile
-        window.addEventListener('load', function() {
-            const equipmentImages = document.querySelectorAll('.equipment-card img');
-            equipmentImages.forEach(img => {
-                img.style.display = 'block';
-                img.style.opacity = '1';
-                img.style.visibility = 'visible';
-                img.style.minHeight = '200px';
-                img.style.background = '#f0f0f0';
-                
-                // Force reload if image is not loaded
-                if (!img.complete || img.naturalHeight === 0) {
-                    const originalSrc = img.src;
-                    img.src = '';
-                    setTimeout(() => {
-                        img.src = originalSrc;
-                    }, 100);
-                }
-            });
-        });
-        
-        // Additional mobile image fix
-        if (window.innerWidth <= 768) {
-            document.addEventListener('DOMContentLoaded', function() {
-                setTimeout(() => {
-                    const images = document.querySelectorAll('.equipment-card img');
-                    images.forEach(img => {
-                        img.style.cssText += 'display: block !important; opacity: 1 !important; visibility: visible !important;';
-                    });
-                }, 500);
-            });
-            
-            // Smartphone fallback - force content after page load
-            window.addEventListener('load', function() {
-                if (window.innerWidth <= 480) {
-                    setTimeout(() => {
-                        // Force show all content
-                        const allElements = document.querySelectorAll('#equipment-gallery, .equipment-card, .equipment-card img');
-                        allElements.forEach(el => {
-                            el.style.display = 'block';
-                            el.style.opacity = '1';
-                            el.style.visibility = 'visible';
-                        });
-                        
-                        // Force gallery to block layout
-                        const gallery = document.getElementById('equipment-gallery');
-                        if (gallery) {
-                            gallery.style.display = 'block';
-                        }
-                    }, 2000);
-                }
-            });
-            
-            // Smartphone specific fixes
-            if (window.innerWidth <= 480) {
-                // Disable scroll animations on mobile
-                const style = document.createElement('style');
-                style.textContent = `
-                    * { animation: none !important; transition: none !important; }
-                    .fade-in, .slide-in-left, .slide-in-right, .scale-in { opacity: 1 !important; transform: none !important; }
-                `;
-                document.head.appendChild(style);
-                
-                // Force display for smartphones
-                const gallery = document.getElementById('equipment-gallery');
-                if (gallery) {
-                    gallery.style.display = 'block';
-                    gallery.style.gridTemplateColumns = 'none';
-                    gallery.style.opacity = '1';
-                    gallery.style.transform = 'none';
-                    gallery.classList.remove('fade-in', 'scale-in');
-                }
-                
-                setTimeout(() => {
-                    const cards = document.querySelectorAll('.equipment-card');
-                    cards.forEach((card, index) => {
-                        card.style.cssText = 'display: block !important; width: 100% !important; margin: 0 0 1.5rem 0 !important; background: white !important; border: 1px solid #e5e7eb !important; border-radius: 8px !important; overflow: hidden !important;';
-                        
-                        const img = card.querySelector('img');
-                        if (img) {
-                            img.style.cssText = 'display: block !important; width: 100% !important; height: 180px !important; object-fit: cover !important; background: #f0f0f0 !important; opacity: 1 !important; visibility: visible !important;';
-                        }
-                    });
-                }, 500);
-            } else {
-                // Tablet and larger mobile devices
-                setTimeout(() => {
-                    const cards = document.querySelectorAll('.equipment-card');
-                    cards.forEach(card => {
-                        card.style.display = 'block';
-                        const img = card.querySelector('img');
-                        if (img) {
-                            img.style.display = 'block';
-                            img.style.opacity = '1';
-                            img.style.visibility = 'visible';
-                        }
-                    });
-                }, 1000);
+        document.getElementById('lightbox-img').src = newImg.src;
+        document.getElementById('lightbox-img').alt = newImg.alt;
+        document.getElementById('lightbox-caption').textContent = title;
+        document.getElementById('lightbox-model').textContent = model;
+    }
+    
+    document.addEventListener('keydown', function(e) {
+        if (document.getElementById('lightbox').style.display === 'block') {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            } else if (e.key === 'ArrowLeft') {
+                navigateImage('prev');
+            } else if (e.key === 'ArrowRight') {
+                navigateImage('next');
             }
         }
-    </script>
+    });
+</script>
+
 </body>
 </html>

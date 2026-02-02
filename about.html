@@ -1,248 +1,393 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="scroll-smooth" lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - UPS Protection Malaysia</title>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>About Us - UPS Protection SDN BHD</title>
     <link rel="icon" type="image/x-icon" href="UPS Logo.ico">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body style="background: url('Image/Electrical.jpg'); background-size: cover; background-position: center; background-attachment: scroll; background-repeat: no-repeat;">
-    <header>
-        <div class="container">
-            <div class="logo">
-                <a href="/">
-                    <img src="logo1.png" alt="UPS Protection Malaysia" height="50">
-                </a>
-            </div>
-            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <nav id="mobile-nav">
-                <ul>
-                    <li><a href="/" onclick="closeMobileMenu()">Home</a></li>
-                    <li class="dropdown">
-                        <a href="#portfolio" onclick="toggleDropdown(event)">Project Portfolio</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/substation" onclick="closeMobileMenu()">Substation Testing and Commissioning</a></li>
-                            <li><a href="/maintenance" onclick="closeMobileMenu()">Maintenance Project</a></li>
-                            <li><a href="/transformer" onclick="closeMobileMenu()">Power Transformer Testing and Commissioning</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="/equipment" onclick="closeMobileMenu()">Test Equipment</a></li>
-                    <li><a href="/about" onclick="closeMobileMenu()">About Us</a></li>
-                    <li><a href="/contact" onclick="closeMobileMenu()">Contact Us</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <main style="margin-top: 80px;">
-        <section class="hero" style="background: linear-gradient(135deg, rgba(30, 64, 175, 0.8), rgba(59, 130, 246, 0.8)), url('Image/Electrical.jpg'); background-size: cover; background-position: center; background-attachment: scroll; color: white; padding: 4rem 0; text-align: center;">
-            <div class="container">
-                <h1 style="font-size: 3rem; margin-bottom: 1rem;">About UPS Protection Sdn Bhd</h1>
-                <p style="font-size: 1.3rem; max-width: 800px; margin: 0 auto;">Leading electrical testing, commissioning, and maintenance specialists in Malaysia since 2001</p>
-            </div>
-        </section>
-
-        <section class="welcome" style="background: rgba(248, 250, 252, 0.95);">
-            <div class="container">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; margin-bottom: 3rem;">
-                    <div>
-                        <h2 style="color: #1e40af; font-size: 2.2rem; margin-bottom: 1.5rem;">History & Philosophy</h2>
-                        <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">UPS Protection Sdn. Bhd. was founded in 2001 by Mr. Lau Sze Chuan who is the Managing Director. After years of effort and contribution towards the business, currently we are one of the leading electrical service providers in Sarawak.</p>
-                        <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">Upon the growth of our company, we have established two branches in Bintulu and Miri as to enhance our job efficiency and effectiveness.</p>
-                        <p style="font-size: 1.1rem; line-height: 1.8;">Our core activity is to provide engineering services in Maintenance, Testing, Commissioning, of Power Station and Substation and Oil and Gas Electrical Installations up to 275KV. For the past few years, we have completed more than 1,000 of projects throughout Malaysia and Brunei Darussalam.</p>
-                    </div>
-                    <div style="text-align: center;">
-                        <div style="background: #f8fafc; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                            <h3 id="years-excellence" style="color: #1e40af; font-size: 2.5rem; margin-bottom: 0.5rem;">24+</h3>
-                            <p style="color: #666; font-size: 1.1rem;">Years of Excellence</p>
-                            <h3 style="color: #1e40af; font-size: 2.5rem; margin: 1.5rem 0 0.5rem;">1000+</h3>
-                            <p style="color: #666; font-size: 1.1rem;">Projects Completed</p>
-                            <h3 style="color: #1e40af; font-size: 2.5rem; margin: 1.5rem 0 0.5rem;">275KV</h3>
-                            <p style="color: #666; font-size: 1.1rem;">Maximum Voltage Capacity</p>
-                        </div>
-                    </div>
-                </div>
-
-        </section>
-
-        <section style="background: rgba(248, 250, 252, 0.95); padding: 4rem 0;">
-            <div class="container">
-                <h2 style="text-align: center; color: #1e40af; font-size: 2.2rem; margin-bottom: 3rem;">Our Services</h2>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-                    <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                        <div style="background: #1e40af; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 1.5rem;">⚡</div>
-                        <h4 style="color: #1e40af; margin-bottom: 1rem; text-align: center;">Protection Systems</h4>
-                        <p style="color: #666; line-height: 1.6; font-size: 0.95rem;">Testing and commissioning of protection relays and other associated relays in power stations and substations</p>
-                    </div>
-                    <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                        <div style="background: #1e40af; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 1.5rem;">🔌</div>
-                        <h4 style="color: #1e40af; margin-bottom: 1rem; text-align: center;">Primary & Secondary Circuits</h4>
-                        <p style="color: #666; line-height: 1.6; font-size: 0.95rem;">Proofing and commissioning primary and secondary circuits in power stations, substations, power cable and power transformer</p>
-                    </div>
-                    <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                        <div style="background: #1e40af; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 1.5rem;">🏭</div>
-                        <h4 style="color: #1e40af; margin-bottom: 1rem; text-align: center;">Installation & Maintenance</h4>
-                        <p style="color: #666; line-height: 1.6; font-size: 0.95rem;">Electrical equipment installation and maintenance in power stations, substations, factories, plants and mills, shophouses, develop area & etc.</p>
-                    </div>
-                    <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                        <div style="background: #1e40af; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 1.5rem;">💻</div>
-                        <h4 style="color: #1e40af; margin-bottom: 1rem; text-align: center;">System Integration</h4>
-                        <p style="color: #666; line-height: 1.6; font-size: 0.95rem;">Integration of other secondary, SCADA equipment and substation control system (SCS)</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section style="background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(1px); padding: 4rem 0;">
-            <div class="container">
-                <h2 style="text-align: center; color: #1e40af; font-size: 2.2rem; margin-bottom: 1rem;">Technical Capabilities</h2>
-                <p style="text-align: center; font-size: 1.1rem; color: #666; margin-bottom: 3rem;">We provide full facilities to perform maintenance, testing and commissioning for the following services:</p>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
-                    <div style="background: white; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #1e40af; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-                        <ul style="font-size: 0.95rem; line-height: 1.6; color: #555; list-style-type: none; padding: 0; margin: 0;">
-                            <li style="margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">• MV/HV Power Cable</li>
-                            <li style="margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">• MV/HV Air Insulated Switchgear</li>
-                            <li style="margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">• MV/HV Gas Insulated Switchgear</li>
-                            <li style="margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">• MV/HV Insulators, CT/VT/CVT</li>
-                            <li style="margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">• MV/HV Power Transformers</li>
-                            <li style="margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">• HV Auto Transformer</li>
-                            <li style="padding-left: 1rem; position: relative;">• Thermography Inspection</li>
-                        </ul>
-                    </div>
-                    <div style="background: white; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #1e40af; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-                        <ul style="font-size: 0.95rem; line-height: 1.6; color: #555; list-style-type: none; padding: 0; margin: 0;">
-                            <li style="margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">• SF6 Gas Works and Analysis</li>
-                            <li style="margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">• MV/HV Shunt Reactor</li>
-                            <li style="margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">• Partial Discharge Measurement</li>
-                            <li style="margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">• Protective Relays Calibration</li>
-                            <li style="margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">• AC/DC Systems and Battery Bank Discharge Test</li>
-                            <li style="margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">• MV/HV Generator</li>
-                            <li style="padding-left: 1rem; position: relative;">• MV/HV Motor</li>
-                        </ul>
-                    </div>
-                    <div style="background: white; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #1e40af; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-                        <ul style="font-size: 0.95rem; line-height: 1.6; color: #555; list-style-type: none; padding: 0; margin: 0;">
-                            <li style="margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">• MV/HV Circuit Breakers</li>
-                            <li style="margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">• Earthing System</li>
-                            <li style="margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">• Power Quality Analysis</li>
-                            <li style="margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">• MV/HV Capacitor Bank</li>
-                            <li style="padding-left: 1rem; position: relative;">• AC Resonant Test System (up to 460kV)</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section style="background: white; padding: 4rem 0;">
-            <div class="container">
-                <h2 style="text-align: center; color: #1e40af; font-size: 2.2rem; margin-bottom: 3rem;">Our Expertise</h2>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-                    <div style="background: #f8fafc; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center;">
-                        <div style="background: #1e40af; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 1.5rem;">⚡</div>
-                        <h3 style="color: #1e40af; margin-bottom: 1rem;">Testing & Commissioning</h3>
-                        <p style="color: #666; line-height: 1.6;">Comprehensive electrical testing services for substations, transformers, and power systems up to 275KV.</p>
-                    </div>
-                    <div style="background: #f8fafc; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center;">
-                        <div style="background: #1e40af; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 1.5rem;">🔧</div>
-                        <h3 style="color: #1e40af; margin-bottom: 1rem;">Maintenance Services</h3>
-                        <p style="color: #666; line-height: 1.6;">Preventive and corrective maintenance programs to ensure optimal performance and safety of electrical systems.</p>
-                    </div>
-                    <div style="background: #f8fafc; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center;">
-                        <div style="background: #1e40af; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 1.5rem;">🏗️</div>
-                        <h3 style="color: #1e40af; margin-bottom: 1rem;">Construction</h3>
-                        <p style="color: #666; line-height: 1.6;">Complete electrical installation and construction services for industrial and commercial projects.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section style="background: rgba(255, 255, 255, 0.92); padding: 4rem 0;">
-            <div class="container">
-                <h2 style="text-align: center; color: #1e40af; font-size: 2.2rem; margin-bottom: 3rem;">Why Choose UPS Protection?</h2>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;">
-                    <div>
-                        <div style="display: flex; align-items: start; margin-bottom: 2rem;">
-                            <div style="background: #1e40af; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem; flex-shrink: 0;">✓</div>
-                            <div>
-                                <h4 style="color: #1e40af; margin-bottom: 0.5rem;">Certified Professionals</h4>
-                                <p style="color: #666; line-height: 1.6;">Our team consists of highly qualified engineers and technicians with extensive industry experience.</p>
-                            </div>
-                        </div>
-                        <div style="display: flex; align-items: start; margin-bottom: 2rem;">
-                            <div style="background: #1e40af; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem; flex-shrink: 0;">✓</div>
-                            <div>
-                                <h4 style="color: #1e40af; margin-bottom: 0.5rem;">Advanced Equipment</h4>
-                                <p style="color: #666; line-height: 1.6;">State-of-the-art testing equipment and tools to ensure accurate and reliable results.</p>
-                            </div>
-                        </div>
-                        <div style="display: flex; align-items: start;">
-                            <div style="background: #1e40af; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem; flex-shrink: 0;">✓</div>
-                            <div>
-                                <h4 style="color: #1e40af; margin-bottom: 0.5rem;">Safety First</h4>
-                                <p style="color: #666; line-height: 1.6;">Strict adherence to safety protocols and international standards in all our operations.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div style="text-align: center;">
-                        <div style="background: linear-gradient(135deg, #1e40af, #3b82f6); color: white; padding: 3rem 2rem; border-radius: 12px;">
-                            <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Company Registration</h3>
-                            <p style="font-size: 1.2rem; margin-bottom: 1rem;">540889-K</p>
-                            <p style="opacity: 0.9;">Registered with Companies Commission of Malaysia (SSM)</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section style="background: #f8fafc; padding: 4rem 0;">
-            <div class="container">
-                <h2 style="text-align: center; color: #1e40af; font-size: 2.2rem; margin-bottom: 3rem;">Our Mission & Vision</h2>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;">
-                    <div style="background: white; padding: 2.5rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                        <h3 style="color: #1e40af; text-align: center; margin-bottom: 1.5rem; font-size: 1.8rem;">Mission</h3>
-                        <ul style="list-style: none; padding: 0;">
-                            <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative; line-height: 1.6;">To provide utmost service to clients and end users.</li>
-                            <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative; line-height: 1.6;">To enhance stakeholders' value and staff welfare.</li>
-                            <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative; line-height: 1.6;">To build up goodwill within the clients and end users.</li>
-                            <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative; line-height: 1.6;">To provide job opportunity to the local community and improve local's lifestyle and living.</li>
-                        </ul>
-                    </div>
-                    <div style="background: white; padding: 2.5rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                        <h3 style="color: #1e40af; text-align: center; margin-bottom: 1.5rem; font-size: 1.8rem;">Vision</h3>
-                        <ul style="list-style: none; padding: 0;">
-                            <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative; line-height: 1.6;">To become a leading Electrical Service provider among Malaysia.</li>
-                            <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative; line-height: 1.6;">To be a reputable Electrical Contractor always delivering beyond expectation.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2001 UPS Protection Sdn. Bhd. (540889-K) All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
     <script>
-        // Auto-update years of excellence
-        document.addEventListener('DOMContentLoaded', function() {
-            const foundingYear = 2001;
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1E40AF",
+                        "background-light": "#F8FAFC",
+                        "slate-accent": "#475569",
+                    },
+                    fontFamily: {
+                        display: ["Lexend", "sans-serif"],
+                        sans: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                        'xl': "1rem",
+                    },
+                },
+            },
+        };
+    </script>
+    <script>
+        function updateCopyright() {
             const currentYear = new Date().getFullYear();
-            const yearsOfExcellence = currentYear - foundingYear;
-            
-            const yearsElement = document.getElementById('years-excellence');
-            if (yearsElement) {
-                yearsElement.textContent = yearsOfExcellence + '+';
+            const copyrightElement = document.getElementById('copyright-year');
+            if (copyrightElement) {
+                copyrightElement.textContent = currentYear;
             }
+        }
+        function updateYearsExperience() {
+            const currentYear = new Date().getFullYear();
+            const yearsExperience = currentYear - 2001;
+            const yearsElements = document.querySelectorAll('.years-experience');
+            yearsElements.forEach(element => {
+                element.textContent = yearsExperience + '+';
+            });
+        }
+        
+        const translations = {
+            en: {
+                home: "Home",
+                projectPortfolio: "Project Portfolio",
+                substationTesting: "Substation Testing and Commissioning",
+                maintenanceProject: "Maintenance Project",
+                transformerTesting: "Power Transformer Testing and Commissioning",
+                testEquipment: "Test Equipment",
+                aboutUs: "About Us",
+                contactUs: "Contact Us",
+                aboutUpsProtection: "About UPS Protection",
+                yearsOf: "Years of",
+                electricalExcellence: "Electrical Excellence",
+                since2001: "Since 2001, we've been Malaysia's trusted partner for electrical testing, commissioning, and maintenance services.",
+                ourStory: "Our Story",
+                establishedIn2001: "UPS Protection Sdn Bhd was established in 2001 with a vision to provide world-class electrical testing, commissioning, and maintenance services across Malaysia. Over the past two decades, we have grown to become a trusted name in the industry.",
+                ourExpertise: "Our expertise spans across high-voltage and low-voltage electrical systems up to 275KV, serving industrial facilities, power plants, and infrastructure projects throughout Malaysia.",
+                projectsCompleted: "Projects Completed",
+                yearsExperience: "Years Experience",
+                ourExpertiseTitle: "Our Expertise",
+                comprehensiveElectrical: "We specialize in comprehensive electrical services for industrial and commercial facilities.",
+                substationTestingService: "Substation Testing",
+                completedProjects: "completed projects",
+                maintenance: "Maintenance",
+                transformerTestingService: "Transformer Testing",
+                testEquipmentService: "Test Equipment",
+                professionalTools: "professional tools",
+                ourLocations: "Our Locations",
+                strategicallyLocated: "Strategically located across Sarawak to serve you better.",
+                mainOffice: "Main Office",
+                bintulu: "Bintulu Branch",
+                miri: "Miri Branch",
+                equipment: "Equipment",
+                about: "About",
+                contact: "Contact"
+            },
+            ms: {
+                home: "Laman Utama",
+                projectPortfolio: "Portfolio Projek",
+                substationTesting: "Ujian dan Pentauliahan Pencawang",
+                maintenanceProject: "Projek Penyelenggaraan",
+                transformerTesting: "Ujian dan Pentauliahan Transformer Kuasa",
+                testEquipment: "Peralatan Ujian",
+                aboutUs: "Tentang Kami",
+                contactUs: "Hubungi Kami",
+                aboutUpsProtection: "Tentang UPS Protection",
+                yearsOf: "Tahun",
+                electricalExcellence: "Kecemerlangan Elektrik",
+                since2001: "Sejak 2001, kami telah menjadi rakan kongsi yang dipercayai Malaysia untuk perkhidmatan ujian elektrik, pentauliahan, dan penyelenggaraan.",
+                ourStory: "Kisah Kami",
+                establishedIn2001: "UPS Protection Sdn Bhd ditubuhkan pada 2001 dengan visi untuk menyediakan perkhidmatan ujian elektrik, pentauliahan, dan penyelenggaraan bertaraf dunia di seluruh Malaysia. Sepanjang dua dekad yang lalu, kami telah berkembang menjadi nama yang dipercayai dalam industri.",
+                ourExpertise: "Kepakaran kami merangkumi sistem elektrik voltan tinggi dan rendah sehingga 275KV, melayani kemudahan industri, loji kuasa, dan projek infrastruktur di seluruh Malaysia.",
+                projectsCompleted: "Projek Selesai",
+                yearsExperience: "Tahun Pengalaman",
+                ourExpertiseTitle: "Kepakaran Kami",
+                comprehensiveElectrical: "Kami pakar dalam perkhidmatan elektrik menyeluruh untuk kemudahan industri dan komersial.",
+                substationTestingService: "Ujian Pencawang",
+                completedProjects: "projek selesai",
+                maintenance: "Penyelenggaraan",
+                transformerTestingService: "Ujian Transformer",
+                testEquipmentService: "Peralatan Ujian",
+                professionalTools: "alat profesional",
+                ourLocations: "Lokasi Kami",
+                strategicallyLocated: "Terletak secara strategik di seluruh Sarawak untuk melayani anda dengan lebih baik.",
+                mainOffice: "Pejabat Utama",
+                bintulu: "Cawangan Bintulu",
+                miri: "Cawangan Miri",
+                equipment: "Peralatan",
+                about: "Tentang",
+                contact: "Hubungi"
+            },
+            zh: {
+                home: "首页",
+                projectPortfolio: "项目组合",
+                substationTesting: "变电站测试和调试",
+                maintenanceProject: "维护项目",
+                transformerTesting: "电力变压器测试和调试",
+                testEquipment: "测试设备",
+                aboutUs: "关于我们",
+                contactUs: "联系我们",
+                aboutUpsProtection: "关于UPS Protection",
+                yearsOf: "年的",
+                electricalExcellence: "电气卓越",
+                since2001: "自2001年以来，我们一直是马来西亚电气测试、调试和维护服务的可信赖合作伙伴。",
+                ourStory: "我们的故事",
+                establishedIn2001: "UPS Protection Sdn Bhd成立于2001年，旨在在马来西亚各地提供世界级的电气测试、调试和维护服务。在过去的二十年中，我们已经成长为行业中的可信赖品牌。",
+                ourExpertise: "我们的专业知识涵盖高达275KV的高压和低压电气系统，为马来西亚各地的工业设施、发电厂和基础设施项目提供服务。",
+                projectsCompleted: "项目完成",
+                yearsExperience: "年经验",
+                ourExpertiseTitle: "我们的专业知识",
+                comprehensiveElectrical: "我们专门为工业和商业设施提供全面的电气服务。",
+                substationTestingService: "变电站测试",
+                completedProjects: "个完成项目",
+                maintenance: "维护",
+                transformerTestingService: "变压器测试",
+                testEquipmentService: "测试设备",
+                professionalTools: "个专业工具",
+                ourLocations: "我们的位置",
+                strategicallyLocated: "战略性地分布在沙捐各地，为您提供更好的服务。",
+                mainOffice: "总办事处",
+                bintulu: "民都鲁分行",
+                miri: "美里分行",
+                equipment: "设备",
+                about: "关于",
+                contact: "联系"
+            }
+        };
+        
+        function switchLanguage(lang) {
+            localStorage.setItem('selectedLanguage', lang);
+            updateContent(lang);
+        }
+        
+        function updateContent(lang) {
+            const t = translations[lang];
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (t[key]) {
+                    element.textContent = t[key];
+                }
+            });
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCopyright();
+            updateYearsExperience();
+            const savedLang = localStorage.getItem('selectedLanguage') || 'en';
+            updateContent(savedLang);
         });
     </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Lexend', sans-serif; }
+    </style>
+</head>
+<body class="bg-background-light text-slate-900">
+
+<header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="flex items-center space-x-3">
+            <div class="flex items-center">
+                <a href="/">
+                    <img alt="UPS Protection Logo" class="h-10 object-contain" src="logo1.png"/>
+                </a>
+            </div>
+        </div>
+        <nav class="hidden md:flex space-x-8">
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/" data-translate="home">Home</a>
+            <div class="relative group">
+                <a class="text-slate-600 hover:text-primary transition-colors cursor-pointer" data-translate="projectPortfolio">Project Portfolio</a>
+                <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-slate-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                    <a href="/substation" class="block px-4 py-3 text-sm text-slate-700 hover:bg-slate-50 rounded-t-lg" data-translate="substationTesting">Substation Testing and Commissioning</a>
+                    <a href="/maintenance" class="block px-4 py-3 text-sm text-slate-700 hover:bg-slate-50" data-translate="maintenanceProject">Maintenance Project</a>
+                    <a href="/transformer" class="block px-4 py-3 text-sm text-slate-700 hover:bg-slate-50 rounded-b-lg" data-translate="transformerTesting">Power Transformer Testing and Commissioning</a>
+                </div>
+            </div>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/equipment" data-translate="testEquipment">Test Equipment</a>
+            <a class="text-primary font-semibold" href="/about" data-translate="aboutUs">About Us</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/contact" data-translate="contactUs">Contact Us</a>
+        </nav>
+        <div class="flex items-center space-x-4">
+            <div class="relative group">
+                <button class="flex items-center space-x-1 text-slate-600 hover:text-primary transition-colors">
+                    <span class="material-icons-outlined text-sm">language</span>
+                    <span class="text-sm">EN</span>
+                </button>
+                <div class="absolute top-full right-0 mt-2 w-32 bg-white rounded-lg shadow-lg border border-slate-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                    <button onclick="switchLanguage('en')" class="block w-full px-4 py-2 text-left text-sm text-slate-700 hover:bg-slate-50 rounded-t-lg">English</button>
+                    <button onclick="switchLanguage('ms')" class="block w-full px-4 py-2 text-left text-sm text-slate-700 hover:bg-slate-50">Bahasa Malaysia</button>
+                    <button onclick="switchLanguage('zh')" class="block w-full px-4 py-2 text-left text-sm text-slate-700 hover:bg-slate-50 rounded-b-lg">中文</button>
+                </div>
+            </div>
+            <button class="md:hidden" id="mobile-menu-toggle">
+                <span class="material-icons-outlined">menu</span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- Hero Section -->
+<section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+    <div class="absolute inset-0 z-0">
+        <img alt="UPS Protection facility" class="w-full h-full object-cover opacity-10" src="Image/Electrical.jpg"/>
+        <div class="absolute inset-0 bg-gradient-to-r from-background-light via-background-light/80 to-transparent"></div>
+    </div>
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="max-w-3xl">
+            <span class="inline-block px-4 py-1.5 mb-6 text-sm font-semibold tracking-wider text-primary uppercase bg-blue-50 rounded-full" data-translate="aboutUpsProtection">
+                About UPS Protection
+            </span>
+            <h1 class="text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight">
+                <span class="years-experience">24+</span> <span data-translate="yearsOf">Years of</span> <br/>
+                <span class="text-primary" data-translate="electricalExcellence">Electrical Excellence</span>
+            </h1>
+            <p class="text-lg lg:text-xl text-slate-600 mb-10 leading-relaxed max-w-2xl" data-translate="since2001">
+                Since 2001, we've been Malaysia's trusted partner for electrical testing, commissioning, and maintenance services.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Company Overview -->
+<section class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+                <h2 class="text-3xl lg:text-4xl font-bold text-slate-900 mb-6" data-translate="ourStory">Our Story</h2>
+                <p class="text-slate-600 mb-6 leading-relaxed" data-translate="establishedIn2001">
+                    UPS Protection Sdn Bhd was established in 2001 with a vision to provide world-class electrical testing, commissioning, and maintenance services across Malaysia. Over the past two decades, we have grown to become a trusted name in the industry.
+                </p>
+                <p class="text-slate-600 mb-8 leading-relaxed" data-translate="ourExpertise">
+                    Our expertise spans across high-voltage and low-voltage electrical systems up to 275KV, serving industrial facilities, power plants, and infrastructure projects throughout Malaysia.
+                </p>
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="text-center p-4 bg-blue-50 rounded-lg">
+                        <div class="text-2xl font-bold text-primary mb-1">237+</div>
+                        <div class="text-sm text-slate-600" data-translate="projectsCompleted">Projects Completed</div>
+                    </div>
+                    <div class="text-center p-4 bg-blue-50 rounded-lg">
+                        <div class="text-2xl font-bold text-primary mb-1"><span class="years-experience">24+</span></div>
+                        <div class="text-sm text-slate-600" data-translate="yearsExperience">Years Experience</div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <img alt="UPS Protection team at work" class="rounded-2xl shadow-2xl w-full object-cover aspect-square" src="Image/Electrical.jpg"/>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Overview -->
+<section class="py-20 bg-slate-50">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl lg:text-4xl font-bold text-slate-900 mb-4" data-translate="ourExpertiseTitle">Our Expertise</h2>
+            <p class="text-slate-600 text-lg max-w-2xl mx-auto" data-translate="comprehensiveElectrical">
+                We specialize in comprehensive electrical services for industrial and commercial facilities.
+            </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="text-center p-6">
+                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span class="material-icons-outlined text-primary text-2xl">electrical_services</span>
+                </div>
+                <h3 class="font-semibold text-slate-900 mb-2" data-translate="substationTestingService">Substation Testing</h3>
+                <p class="text-slate-600 text-sm">141 <span data-translate="completedProjects">completed projects</span></p>
+            </div>
+            <div class="text-center p-6">
+                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span class="material-icons-outlined text-primary text-2xl">build</span>
+                </div>
+                <h3 class="font-semibold text-slate-900 mb-2" data-translate="maintenance">Maintenance</h3>
+                <p class="text-slate-600 text-sm">89 <span data-translate="completedProjects">completed projects</span></p>
+            </div>
+            <div class="text-center p-6">
+                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span class="material-icons-outlined text-primary text-2xl">transform</span>
+                </div>
+                <h3 class="font-semibold text-slate-900 mb-2" data-translate="transformerTestingService">Transformer Testing</h3>
+                <p class="text-slate-600 text-sm">7 <span data-translate="completedProjects">completed projects</span></p>
+            </div>
+            <div class="text-center p-6">
+                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span class="material-icons-outlined text-primary text-2xl">precision_manufacturing</span>
+                </div>
+                <h3 class="font-semibold text-slate-900 mb-2" data-translate="testEquipmentService">Test Equipment</h3>
+                <p class="text-slate-600 text-sm">47 <span data-translate="professionalTools">professional tools</span></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Locations -->
+<section class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl lg:text-4xl font-bold text-slate-900 mb-4" data-translate="ourLocations">Our Locations</h2>
+            <p class="text-slate-600 text-lg max-w-2xl mx-auto" data-translate="strategicallyLocated">
+                Strategically located across Sarawak to serve you better.
+            </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-background-light rounded-xl p-8 border border-slate-200">
+                <div class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+                    <span class="material-icons-outlined text-primary text-2xl">location_city</span>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-3" data-translate="mainOffice">Main Office</h3>
+                <p class="text-slate-600 mb-4">Kuching, Sarawak, Malaysia</p>
+                <p class="text-primary font-semibold">+6 082-504 958</p>
+            </div>
+            <div class="bg-background-light rounded-xl p-8 border border-slate-200">
+                <div class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+                    <span class="material-icons-outlined text-primary text-2xl">business</span>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-3" data-translate="bintulu">Bintulu Branch</h3>
+                <p class="text-slate-600 mb-4">Bintulu, Sarawak</p>
+                <p class="text-primary font-semibold">+6 086-344275</p>
+            </div>
+            <div class="bg-background-light rounded-xl p-8 border border-slate-200">
+                <div class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+                    <span class="material-icons-outlined text-primary text-2xl">apartment</span>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-3" data-translate="miri">Miri Branch</h3>
+                <p class="text-slate-600 mb-4">Miri, Sarawak</p>
+                <p class="text-primary font-semibold">+6 085-643723</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="bg-slate-900 text-slate-400 py-12">
+    <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center pb-12 border-b border-slate-800">
+            <div class="mb-8 md:mb-0">
+                <img alt="UPS Protection Logo" class="h-8 brightness-0 invert" src="logo1.png"/>
+            </div>
+            <div class="flex space-x-8 text-sm uppercase tracking-widest font-semibold">
+                <a class="hover:text-white transition-colors" href="/" data-translate="home">Home</a>
+                <a class="hover:text-white transition-colors" href="/equipment" data-translate="equipment">Equipment</a>
+                <a class="hover:text-white transition-colors" href="/about" data-translate="about">About</a>
+                <a class="hover:text-white transition-colors" href="/contact" data-translate="contact">Contact</a>
+            </div>
+        </div>
+        <div class="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs md:text-sm">
+            <p>© 2001 - <span id="copyright-year">2026</span> UPS Protection Sdn. Bhd. (540889-K) All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Mobile menu toggle
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenuToggle && mobileMenu) {
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    }
+</script>
+
 </body>
 </html>

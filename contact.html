@@ -1,88 +1,383 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="scroll-smooth" lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - UPS Protection Malaysia</title>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Contact Us - UPS Protection SDN BHD</title>
     <link rel="icon" type="image/x-icon" href="UPS Logo.ico">
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1E40AF",
+                        "background-light": "#F8FAFC",
+                        "slate-accent": "#475569",
+                    },
+                    fontFamily: {
+                        display: ["Lexend", "sans-serif"],
+                        sans: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                        'xl': "1rem",
+                    },
+                },
+            },
+        };
+    </script>
+    <script>
+        function updateCopyright() {
+            const currentYear = new Date().getFullYear();
+            const copyrightElement = document.getElementById('copyright-year');
+            if (copyrightElement) {
+                copyrightElement.textContent = currentYear;
+            }
+        }
+        
+        const translations = {
+            en: {
+                home: "Home",
+                projectPortfolio: "Project Portfolio",
+                substationTesting: "Substation Testing and Commissioning",
+                maintenanceProject: "Maintenance Project",
+                transformerTesting: "Power Transformer Testing and Commissioning",
+                testEquipment: "Test Equipment",
+                aboutUs: "About Us",
+                contactUs: "Contact Us",
+                getInTouch: "Get In Touch",
+                contact: "Contact",
+                upsProtection: "UPS Protection",
+                readyToDiscuss: "Ready to discuss your electrical testing and maintenance needs? We're here to help.",
+                mainOffice: "Main Office",
+                bintulu: "Bintulu Branch",
+                miri: "Miri Branch",
+                findUs: "Find Us",
+                visitMainOffice: "Visit our main office in Kuching, Sarawak",
+                visitBintulu: "Visit our Bintulu office in Bintulu, Sarawak",
+                ourServices: "Our Services",
+                constructionMaintenance: "Construction, Maintenance, Testing and Commissioning of Electrical Installation up to 275KV",
+                substationTestingService: "Substation Testing",
+                comprehensiveTestingSubstation: "Comprehensive testing and commissioning of electrical substations",
+                viewProjects: "View Projects",
+                maintenanceServices: "Maintenance Services",
+                professionalMaintenance: "Professional maintenance and repair services",
+                transformerTestingService: "Transformer Testing",
+                specializedTesting: "Specialized testing and commissioning of power transformers",
+                equipment: "Equipment",
+                about: "About"
+            },
+            ms: {
+                home: "Laman Utama",
+                projectPortfolio: "Portfolio Projek",
+                substationTesting: "Ujian dan Pentauliahan Pencawang",
+                maintenanceProject: "Projek Penyelenggaraan",
+                transformerTesting: "Ujian dan Pentauliahan Transformer Kuasa",
+                testEquipment: "Peralatan Ujian",
+                aboutUs: "Tentang Kami",
+                contactUs: "Hubungi Kami",
+                getInTouch: "Hubungi Kami",
+                contact: "Hubungi",
+                upsProtection: "UPS Protection",
+                readyToDiscuss: "Bersedia untuk membincangkan keperluan ujian dan penyelenggaraan elektrik anda? Kami di sini untuk membantu.",
+                mainOffice: "Pejabat Utama",
+                bintulu: "Cawangan Bintulu",
+                miri: "Cawangan Miri",
+                findUs: "Cari Kami",
+                visitMainOffice: "Lawati pejabat utama kami di Kuching, Sarawak",
+                visitBintulu: "Lawati pejabat Bintulu kami di Bintulu, Sarawak",
+                ourServices: "Perkhidmatan Kami",
+                constructionMaintenance: "Pembinaan, Penyelenggaraan, Ujian dan Pentauliahan Pemasangan Elektrik sehingga 275KV",
+                substationTestingService: "Ujian Pencawang",
+                comprehensiveTestingSubstation: "Ujian dan pentauliahan menyeluruh pencawang elektrik",
+                viewProjects: "Lihat Projek",
+                maintenanceServices: "Perkhidmatan Penyelenggaraan",
+                professionalMaintenance: "Perkhidmatan penyelenggaraan dan pembaikan profesional",
+                transformerTestingService: "Ujian Transformer",
+                specializedTesting: "Ujian dan pentauliahan khusus transformer kuasa",
+                equipment: "Peralatan",
+                about: "Tentang"
+            },
+            zh: {
+                home: "首页",
+                projectPortfolio: "项目组合",
+                substationTesting: "变电站测试和调试",
+                maintenanceProject: "维护项目",
+                transformerTesting: "电力变压器测试和调试",
+                testEquipment: "测试设备",
+                aboutUs: "关于我们",
+                contactUs: "联系我们",
+                getInTouch: "联系我们",
+                contact: "联系",
+                upsProtection: "UPS Protection",
+                readyToDiscuss: "准备讨论您的电气测试和维护需求？我们在这里帮助您。",
+                mainOffice: "总办事处",
+                bintulu: "民都鲁分行",
+                miri: "美里分行",
+                findUs: "找到我们",
+                visitMainOffice: "参观我们在沙捐古晴的总办事处",
+                visitBintulu: "参观我们在沙捐民都鲁的办事处",
+                ourServices: "我们的服务",
+                constructionMaintenance: "建设、维护、测试和调试高达275KV的电气安装",
+                substationTestingService: "变电站测试",
+                comprehensiveTestingSubstation: "全面的电气变电站测试和调试",
+                viewProjects: "查看项目",
+                maintenanceServices: "维护服务",
+                professionalMaintenance: "专业的维护和维修服务",
+                transformerTestingService: "变压器测试",
+                specializedTesting: "专业的电力变压器测试和调试",
+                equipment: "设备",
+                about: "关于"
+            }
+        };
+        
+        function switchLanguage(lang) {
+            localStorage.setItem('selectedLanguage', lang);
+            updateContent(lang);
+        }
+        
+        function updateContent(lang) {
+            const t = translations[lang];
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (t[key]) {
+                    element.textContent = t[key];
+                }
+            });
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCopyright();
+            const savedLang = localStorage.getItem('selectedLanguage') || 'en';
+            updateContent(savedLang);
+        });
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Lexend', sans-serif; }
+    </style>
 </head>
-<body>
-    <header>
-        <div class="container">
-            <div class="logo">
+<body class="bg-background-light text-slate-900">
+
+<header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="flex items-center space-x-3">
+            <div class="flex items-center">
                 <a href="/">
-                    <img src="logo1.png" alt="UPS Protection Malaysia" height="50">
+                    <img alt="UPS Protection Logo" class="h-10 object-contain" src="logo1.png"/>
                 </a>
             </div>
-            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <nav id="mobile-nav">
-                <ul>
-                    <li><a href="/" onclick="closeMobileMenu()">Home</a></li>
-                    <li class="dropdown">
-                        <a href="#portfolio" onclick="toggleDropdown(event)">Project Portfolio</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/substation" onclick="closeMobileMenu()">Substation Testing and Commissioning</a></li>
-                            <li><a href="/maintenance" onclick="closeMobileMenu()">Maintenance Project</a></li>
-                            <li><a href="/transformer" onclick="closeMobileMenu()">Power Transformer Testing and Commissioning</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="/equipment" onclick="closeMobileMenu()">Test Equipment</a></li>
-                    <li><a href="/about" onclick="closeMobileMenu()">About Us</a></li>
-                    <li><a href="/contact" onclick="closeMobileMenu()">Contact Us</a></li>
-                </ul>
-            </nav>
         </div>
-    </header>
-
-    <main style="margin-top: 80px;">
-        <section class="contact">
-            <div class="container">
-                <h2>Contact Us</h2>
-                <div class="contact-info">
-                    <div class="contact-details">
-                        <h3>Kuching Main Headquarter:</h3>
-                        <p>Ground & 1st Floor, Lot 3263,<br>
-                        TT3 Commercial Centre, Tabuan Tranquility,<br>
-                        Jalan Canna, 93350 Kuching, Sarawak<br>
-                        <strong>Tel:</strong> +6 082-504 958</p>
-                        
-                        <h3 style="margin-top: 2rem;">Bintulu Branch:</h3>
-                        <p>No.267-268, Ground Floor, Bintulu Sentral, Phase 2,<br>
-                        Jalan Tanjung Kidurong,<br>
-                        97000 Bintulu, Sarawak<br>
-                        <strong>Tel:</strong> +6 086-344275</p>
-                        
-                        <h3 style="margin-top: 2rem;">Miri Branch:</h3>
-                        <p>Lot 9283, Lorong Perkasa 7A/1,<br>
-                        Curtin Water,<br>
-                        98000 Miri, Sarawak, Malaysia.<br>
-                        <strong>Tel:</strong> +6 085-643723</p>
-                    </div>
-                    <div class="contact-map">
-                        <h3>Our Kuching Main Office Location</h3>
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.6234567890123!2d110.3875929!3d1.5129144!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31fba7aa9b42d3cb%3A0xcb6fc521a2db6c1!2sUPS%20Protection%20Sdn.%20Bhd.!5e0!3m2!1sen!2smy!4v1234567890123!5m2!1sen!2smy" width="100%" height="250" style="border:0; border-radius: 8px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        <p style="margin-top: 0.5rem; text-align: center;"><a href="https://www.google.com/maps/dir//UPS+Protection+Sdn.+Bhd.,+Jalan+Canna,+Kuching,+Sarawak/@1.52,110.35,2180m/data=!3m2!1e3!4b1!4m8!4m7!1m0!1m5!1m1!1s0x31fba7aa9b42d3cb:0xcb6fc521a2db6c1!2m2!1d110.3905929!2d1.5129144?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA2OUgBUAM%3D" target="_blank" style="color: #1e40af; text-decoration: none;">📍 View Kuching location</a></p>
-                        
-                        <h3 style="margin-top: 2rem;">Our Bintulu Branch Location</h3>
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3979.123456789!2d113.0576846!3d3.2052792!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x321dc10001506a7b%3A0xae281cf3c3fd61d8!2sUPS%20Protection%20Sdn%20Bhd!5e0!3m2!1sen!2smy!4v1234567890124!5m2!1sen!2smy" width="100%" height="250" style="border:0; border-radius: 8px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        <p style="margin-top: 0.5rem; text-align: center;"><a href="https://www.google.com/maps/place/UPS+Protection+Sdn+Bhd/@3.2052792,113.0606846,1089m/data=!3m2!1e3!4b1!4m6!3m5!1s0x321dc10001506a7b:0xae281cf3c3fd61d8!8m2!3d3.2052792!4d113.0606846!16s%2Fg%2F11wc4fpbwv?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA2OUgBUAM%3D" target="_blank" style="color: #1e40af; text-decoration: none;">📍 View Bintulu location</a></p>
-                    </div>
+        <nav class="hidden md:flex space-x-8">
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/" data-translate="home">Home</a>
+            <div class="relative group">
+                <a class="text-slate-600 hover:text-primary transition-colors cursor-pointer" data-translate="projectPortfolio">Project Portfolio</a>
+                <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-slate-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                    <a href="/substation" class="block px-4 py-3 text-sm text-slate-700 hover:bg-slate-50 rounded-t-lg" data-translate="substationTesting">Substation Testing and Commissioning</a>
+                    <a href="/maintenance" class="block px-4 py-3 text-sm text-slate-700 hover:bg-slate-50" data-translate="maintenanceProject">Maintenance Project</a>
+                    <a href="/transformer" class="block px-4 py-3 text-sm text-slate-700 hover:bg-slate-50 rounded-b-lg" data-translate="transformerTesting">Power Transformer Testing and Commissioning</a>
                 </div>
             </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2001 UPS Protection Sdn. Bhd. (540889-K) All rights reserved.</p>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/equipment" data-translate="testEquipment">Test Equipment</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/about" data-translate="aboutUs">About Us</a>
+            <a class="text-primary font-semibold" href="/contact" data-translate="contactUs">Contact Us</a>
+        </nav>
+        <div class="flex items-center space-x-4">
+            <div class="relative group">
+                <button class="flex items-center space-x-1 text-slate-600 hover:text-primary transition-colors">
+                    <span class="material-icons-outlined text-sm">language</span>
+                    <span class="text-sm">EN</span>
+                </button>
+                <div class="absolute top-full right-0 mt-2 w-32 bg-white rounded-lg shadow-lg border border-slate-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                    <button onclick="switchLanguage('en')" class="block w-full px-4 py-2 text-left text-sm text-slate-700 hover:bg-slate-50 rounded-t-lg">English</button>
+                    <button onclick="switchLanguage('ms')" class="block w-full px-4 py-2 text-left text-sm text-slate-700 hover:bg-slate-50">Bahasa Malaysia</button>
+                    <button onclick="switchLanguage('zh')" class="block w-full px-4 py-2 text-left text-sm text-slate-700 hover:bg-slate-50 rounded-b-lg">中文</button>
+                </div>
+            </div>
+            <button class="md:hidden" id="mobile-menu-toggle">
+                <span class="material-icons-outlined">menu</span>
+            </button>
         </div>
-    </footer>
+    </div>
+</header>
 
-    <script src="script.js"></script>
+<!-- Hero Section -->
+<section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+    <div class="absolute inset-0 z-0">
+        <img alt="Contact UPS Protection" class="w-full h-full object-cover opacity-10" src="Image/Electrical.jpg"/>
+        <div class="absolute inset-0 bg-gradient-to-r from-background-light via-background-light/80 to-transparent"></div>
+    </div>
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="max-w-3xl">
+            <span class="inline-block px-4 py-1.5 mb-6 text-sm font-semibold tracking-wider text-primary uppercase bg-blue-50 rounded-full" data-translate="getInTouch">
+                Get In Touch
+            </span>
+            <h1 class="text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight">
+                <span data-translate="contact">Contact</span> <br/>
+                <span class="text-primary" data-translate="upsProtection">UPS Protection</span>
+            </h1>
+            <p class="text-lg lg:text-xl text-slate-600 mb-10 leading-relaxed max-w-2xl" data-translate="readyToDiscuss">
+                Ready to discuss your electrical testing and maintenance needs? We're here to help.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Information -->
+<section class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            <div class="bg-background-light rounded-xl p-8 border border-slate-200 text-center">
+                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <span class="material-icons-outlined text-primary text-2xl">location_city</span>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-3" data-translate="mainOffice">Main Office</h3>
+                <p class="text-slate-600 mb-2">Kuching, Sarawak, Malaysia</p>
+                <p class="text-primary font-semibold text-lg">+6 082-504 958</p>
+            </div>
+            <div class="bg-background-light rounded-xl p-8 border border-slate-200 text-center">
+                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <span class="material-icons-outlined text-primary text-2xl">business</span>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-3" data-translate="bintulu">Bintulu Branch</h3>
+                <p class="text-slate-600 mb-2">Bintulu, Sarawak</p>
+                <p class="text-primary font-semibold text-lg">+6 086-344275</p>
+            </div>
+            <div class="bg-background-light rounded-xl p-8 border border-slate-200 text-center">
+                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <span class="material-icons-outlined text-primary text-2xl">apartment</span>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-3" data-translate="miri">Miri Branch</h3>
+                <p class="text-slate-600 mb-2">Miri, Sarawak</p>
+                <p class="text-primary font-semibold text-lg">+6 085-643723</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Location Section -->
+<section class="py-20 bg-slate-50">
+    <div class="container mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div>
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl lg:text-4xl font-bold text-slate-900 mb-4" data-translate="findUs">Find Us</h2>
+                    <p class="text-slate-600 text-lg" data-translate="visitMainOffice">Visit our main office in Kuching, Sarawak</p>
+                </div>
+                <div class="bg-white rounded-xl overflow-hidden border border-slate-200 shadow-lg">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.6708469757!2d110.385722!3d1.5129144!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31fba7aa9b42d3cb:0xcb6fc521a2db6c1!2sUPS%20Protection%20Sdn.%20Bhd.!5e0!3m2!1sen!2smy!4v1234567890123!5m2!1sen!2smy" 
+                        width="100%" 
+                        height="400" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        class="w-full">
+                    </iframe>
+                </div>
+            </div>
+            
+            <div>
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl lg:text-4xl font-bold text-slate-900 mb-4" data-translate="findUs">Find Us</h2>
+                    <p class="text-slate-600 text-lg" data-translate="visitBintulu">Visit our Bintulu office in Bintulu, Sarawak</p>
+                </div>
+                <div class="bg-white rounded-xl overflow-hidden border border-slate-200 shadow-lg">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.6708469757!2d113.0558137!3d3.2052792!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x321dc10001506a7b:0xae281cf3c3fd61d8!2sUPS%20Protection%20Sdn%20Bhd!5e0!3m2!1sen!2smy!4v1234567890123!5m2!1sen!2smy" 
+                        width="100%" 
+                        height="400" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        class="w-full">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Overview -->
+<section class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl lg:text-4xl font-bold text-slate-900 mb-4" data-translate="ourServices">Our Services</h2>
+            <p class="text-slate-600 text-lg max-w-2xl mx-auto" data-translate="constructionMaintenance">
+                Construction, Maintenance, Testing and Commissioning of Electrical Installation up to 275KV
+            </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-white rounded-xl p-8 border border-slate-200">
+                <div class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+                    <span class="material-icons-outlined text-primary text-2xl">electrical_services</span>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-3" data-translate="substationTestingService">Substation Testing</h3>
+                <p class="text-slate-600 mb-4" data-translate="comprehensiveTestingSubstation">Comprehensive testing and commissioning of electrical substations</p>
+                <a href="/substation" class="inline-flex items-center font-semibold text-primary hover:underline">
+                    <span data-translate="viewProjects">View Projects</span> <span class="material-icons-outlined ml-1 text-sm">arrow_forward</span>
+                </a>
+            </div>
+            <div class="bg-white rounded-xl p-8 border border-slate-200">
+                <div class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+                    <span class="material-icons-outlined text-primary text-2xl">build</span>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-3" data-translate="maintenanceServices">Maintenance Services</h3>
+                <p class="text-slate-600 mb-4" data-translate="professionalMaintenance">Professional maintenance and repair services</p>
+                <a href="/maintenance" class="inline-flex items-center font-semibold text-primary hover:underline">
+                    <span data-translate="viewProjects">View Projects</span> <span class="material-icons-outlined ml-1 text-sm">arrow_forward</span>
+                </a>
+            </div>
+            <div class="bg-white rounded-xl p-8 border border-slate-200">
+                <div class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+                    <span class="material-icons-outlined text-primary text-2xl">transform</span>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-3" data-translate="transformerTestingService">Transformer Testing</h3>
+                <p class="text-slate-600 mb-4" data-translate="specializedTesting">Specialized testing and commissioning of power transformers</p>
+                <a href="/transformer" class="inline-flex items-center font-semibold text-primary hover:underline">
+                    <span data-translate="viewProjects">View Projects</span> <span class="material-icons-outlined ml-1 text-sm">arrow_forward</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="bg-slate-900 text-slate-400 py-12">
+    <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center pb-12 border-b border-slate-800">
+            <div class="mb-8 md:mb-0">
+                <img alt="UPS Protection Logo" class="h-8 brightness-0 invert" src="logo1.png"/>
+            </div>
+            <div class="flex space-x-8 text-sm uppercase tracking-widest font-semibold">
+                <a class="hover:text-white transition-colors" href="/" data-translate="home">Home</a>
+                <a class="hover:text-white transition-colors" href="/equipment" data-translate="equipment">Equipment</a>
+                <a class="hover:text-white transition-colors" href="/about" data-translate="about">About</a>
+                <a class="hover:text-white transition-colors" href="/contact" data-translate="contact">Contact</a>
+            </div>
+        </div>
+        <div class="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs md:text-sm">
+            <p>© 2001 - <span id="copyright-year">2026</span> UPS Protection Sdn. Bhd. (540889-K) All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Mobile menu toggle
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenuToggle && mobileMenu) {
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    }
+</script>
+
 </body>
 </html>

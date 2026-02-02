@@ -1,189 +1,690 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="scroll-smooth" lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maintenance Project - UPS Protection Malaysia</title>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Maintenance Projects - UPS Protection SDN BHD</title>
     <link rel="icon" type="image/x-icon" href="UPS Logo.ico">
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1E40AF",
+                        "background-light": "#F8FAFC",
+                        "slate-accent": "#475569",
+                    },
+                    fontFamily: {
+                        display: ["Lexend", "sans-serif"],
+                        sans: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                        'xl': "1rem",
+                    },
+                },
+            },
+        };
+    </script>
+    <script>
+        const translations = {
+            en: {
+                home: "Home",
+                projectPortfolio: "Project Portfolio",
+                substationTesting: "Substation Testing and Commissioning",
+                maintenanceProject: "Maintenance Project",
+                transformerTesting: "Power Transformer Testing and Commissioning",
+                testEquipment: "Test Equipment",
+                aboutUs: "About Us",
+                contactUs: "Contact Us",
+                projectsCompleted: "Projects Completed",
+                maintenance: "Maintenance",
+                projects: "Projects",
+                professionalMaintenance: "Professional maintenance and repair services for electrical systems and equipment across Malaysia",
+                no: "No.",
+                maintenanceProjectHeader: "Maintenance Project",
+                completionDate: "Completion Date",
+                info: "info",
+                maintenanceProjectsCompleted: "maintenance projects completed from 2001 to 2009",
+                equipment: "Equipment",
+                about: "About",
+                contact: "Contact"
+            },
+            ms: {
+                home: "Laman Utama",
+                projectPortfolio: "Portfolio Projek",
+                substationTesting: "Ujian dan Pentauliahan Pencawang",
+                maintenanceProject: "Projek Penyelenggaraan",
+                transformerTesting: "Ujian dan Pentauliahan Transformer Kuasa",
+                testEquipment: "Peralatan Ujian",
+                aboutUs: "Tentang Kami",
+                contactUs: "Hubungi Kami",
+                projectsCompleted: "Projek Selesai",
+                maintenance: "Penyelenggaraan",
+                projects: "Projek",
+                professionalMaintenance: "Perkhidmatan penyelenggaraan dan pembaikan profesional untuk sistem dan peralatan elektrik di seluruh Malaysia",
+                no: "No.",
+                maintenanceProjectHeader: "Projek Penyelenggaraan",
+                completionDate: "Tarikh Siap",
+                info: "maklumat",
+                maintenanceProjectsCompleted: "projek penyelenggaraan selesai dari 2001 hingga 2009",
+                equipment: "Peralatan",
+                about: "Tentang",
+                contact: "Hubungi"
+            },
+            zh: {
+                home: "首页",
+                projectPortfolio: "项目组合",
+                substationTesting: "变电站测试和调试",
+                maintenanceProject: "维护项目",
+                transformerTesting: "电力变压器测试和调试",
+                testEquipment: "测试设备",
+                aboutUs: "关于我们",
+                contactUs: "联系我们",
+                projectsCompleted: "项目完成",
+                maintenance: "维护",
+                projects: "项目",
+                professionalMaintenance: "为马来西亚各地的电气系统和设备提供专业维护和维修服务",
+                no: "编号",
+                maintenanceProjectHeader: "维护项目",
+                completionDate: "完成日期",
+                info: "信息",
+                maintenanceProjectsCompleted: "个维护项目于2001年至2009年完成",
+                equipment: "设备",
+                about: "关于",
+                contact: "联系"
+            }
+        };
+        
+        function switchLanguage(lang) {
+            const t = translations[lang];
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (t[key]) {
+                    element.textContent = t[key];
+                }
+            });
+        }
+        
+        function updateCopyright() {
+            const currentYear = new Date().getFullYear();
+            const copyrightElement = document.getElementById('copyright-year');
+            if (copyrightElement) {
+                copyrightElement.textContent = currentYear;
+            }
+        }
+        document.addEventListener('DOMContentLoaded', updateCopyright);
+    </script>
     <style>
-        .table-container {
-            padding: 2rem 0;
-            overflow-x: auto;
-        }
-        
-        .project-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 2rem 0;
-            font-size: 0.9rem;
-        }
-        
-        .project-table th,
-        .project-table td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-            vertical-align: top;
-        }
-        
-        .project-table th {
-            background-color: #1e40af;
-            color: white;
-            font-weight: bold;
-            position: sticky;
-            top: 0;
-        }
-        
-        .project-table tr:nth-child(even) {
-            background-color: #f8fafc;
-        }
-        
-        .project-table tr:hover {
-            background-color: #e2e8f0;
-        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Lexend', sans-serif; }
     </style>
 </head>
-<body>
-    <header>
-        <div class="container">
-            <div class="logo">
-                <img src="logo1.png" alt="UPS Protection Malaysia" height="50">
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li class="dropdown">
-                        <a href="#portfolio">Project Portfolio</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/substation">Substation Testing and Commissioning</a></li>
-                            <li><a href="/maintenance">Maintenance Project</a></li>
-                            <li><a href="/transformer">Power Transformer Testing and Commissioning</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="/equipment">Test Equipment</a></li>
-                    <li><a href="/about">About Us</a></li>
-                    <li><a href="/contact">Contact Us</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+<body class="bg-background-light text-slate-900">
 
-    <main style="margin-top: 80px;">
-        <section class="table-container">
-            <div class="container">
-                <h1 style="color: #1e40af; margin-bottom: 2rem;">Maintenance Projects</h1>
-                
-                <table class="project-table">
-                    <thead>
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="flex items-center space-x-3">
+            <div class="flex items-center">
+                <a href="/">
+                    <img alt="UPS Protection Logo" class="h-10 object-contain" src="logo1.png"/>
+                </a>
+            </div>
+        </div>
+        <nav class="hidden md:flex space-x-8">
+            <a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="/" data-translate="home">Home</a>
+            <div class="relative group">
+                <a class="text-primary font-semibold cursor-pointer" data-translate="projectPortfolio">Project Portfolio</a>
+                <div class="absolute top-full left-0 mt-2 w-64 bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-slate-200 dark:border-slate-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                    <a href="/substation" class="block px-4 py-3 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 rounded-t-lg" data-translate="substationTesting">Substation Testing and Commissioning</a>
+                    <a href="/maintenance" class="block px-4 py-3 text-sm text-primary font-semibold hover:bg-slate-50 dark:hover:bg-slate-700" data-translate="maintenanceProject">Maintenance Project</a>
+                    <a href="/transformer" class="block px-4 py-3 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 rounded-b-lg" data-translate="transformerTesting">Power Transformer Testing and Commissioning</a>
+                </div>
+            </div>
+            <a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="/equipment" data-translate="testEquipment">Test Equipment</a>
+            <a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="/about" data-translate="aboutUs">About Us</a>
+            <a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="/contact" data-translate="contactUs">Contact Us</a>
+        </nav>
+        <div class="flex items-center space-x-4">
+            <div class="relative group">
+                <button class="flex items-center space-x-1 text-slate-600 hover:text-primary transition-colors">
+                    <span class="material-icons-outlined text-sm">language</span>
+                    <span class="text-sm">EN</span>
+                </button>
+                <div class="absolute top-full right-0 mt-2 w-32 bg-white rounded-lg shadow-lg border border-slate-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                    <button onclick="switchLanguage('en')" class="block w-full px-4 py-2 text-left text-sm text-slate-700 hover:bg-slate-50 rounded-t-lg">English</button>
+                    <button onclick="switchLanguage('ms')" class="block w-full px-4 py-2 text-left text-sm text-slate-700 hover:bg-slate-50">Bahasa Malaysia</button>
+                    <button onclick="switchLanguage('zh')" class="block w-full px-4 py-2 text-left text-sm text-slate-700 hover:bg-slate-50 rounded-b-lg">中文</button>
+                </div>
+            </div>
+            <button class="md:hidden" id="mobile-menu-toggle">
+                <span class="material-icons-outlined">menu</span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- Hero Section -->
+<section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+    <div class="absolute inset-0 z-0">
+        <img alt="Maintenance Projects" class="w-full h-full object-cover opacity-10 dark:opacity-20" src="Image/Electrical.jpg"/>
+        <div class="absolute inset-0 bg-gradient-to-r from-background-light via-background-light/80 to-transparent dark:from-background-dark dark:via-background-dark/80"></div>
+    </div>
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="max-w-3xl">
+            <span class="inline-block px-4 py-1.5 mb-6 text-sm font-semibold tracking-wider text-primary uppercase bg-blue-50 dark:bg-blue-900/30 rounded-full" data-translate="projectsCompleted">
+                89 Projects Completed
+            </span>
+            <h1 class="text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white mb-6 leading-tight">
+                <span data-translate="maintenance">Maintenance</span> <br/>
+                <span class="text-primary" data-translate="projects">Projects</span>
+            </h1>
+            <p class="text-lg lg:text-xl text-slate-600 dark:text-slate-400 mb-10 leading-relaxed max-w-2xl" data-translate="professionalMaintenance">
+                Professional maintenance and repair services for electrical systems and equipment across Malaysia
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Table -->
+<section class="py-20 bg-white dark:bg-slate-900/50">
+    <div class="container mx-auto px-6">
+        <div class="bg-background-light dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead class="bg-primary text-white">
                         <tr>
-                            <th>No.</th>
-                            <th>Maintenance Project</th>
-                            <th>Completion Date</th>
+                            <th class="px-6 py-4 text-left font-semibold" data-translate="no">No.</th>
+                            <th class="px-6 py-4 text-left font-semibold" data-translate="maintenanceProjectHeader">Maintenance Project</th>
+                            <th class="px-6 py-4 text-left font-semibold" data-translate="completionDate">Completion Date</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr><td>1</td><td>Manuply Wood Sdn Bhd - 11KV Main Intake, 415V Switchboard</td><td>June 2001, June 2004</td></tr>
-                        <tr><td>2</td><td>UPM, Bintulu - 11KV Main Intake, 11KV Sub-Main</td><td>August 2001</td></tr>
-                        <tr><td>3</td><td>Bright Wood Sdn Bhd - 11KV Main Intake</td><td>September 2001, December 2002, November 2003</td></tr>
-                        <tr><td>4</td><td>Kinjun 33/11KV S/S, Bintulu</td><td>September 2001</td></tr>
-                        <tr><td>5</td><td>Saratok 33/11KV S/S</td><td>September 2001</td></tr>
-                        <tr><td>6</td><td>Kindurong 33/11KV S/S, Bintulu</td><td>September 2001</td></tr>
-                        <tr><td>7</td><td>Medan 33/11KV S/S, Bintulu</td><td>September 2001</td></tr>
-                        <tr><td>8</td><td>Alan Road 33/11KV S/S, Sibu</td><td>September 2001</td></tr>
-                        <tr><td>9</td><td>Town 33/11 KV S/S, Bintulu</td><td>September 2001</td></tr>
-                        <tr><td>10</td><td>SESCO Western Region 33/11Kv S/S - Battery Capacity Test, DC Charger Commissioning</td><td>September 2002</td></tr>
-                        <tr><td>11</td><td>TEMBUNGO "A" Offshore Platform, KK - Relay Calibration Test</td><td>October 2002</td></tr>
-                        <tr><td>12</td><td>1st Silicon (M) Sdn Bhd - 33KV Switchgear – Relay Maintenance works</td><td>November 2002</td></tr>
-                        <tr><td>13</td><td>Bypass 33/11Kv S/S, Kuching</td><td>December 2002</td></tr>
-                        <tr><td>14</td><td>CHOICE Super Mall, LV MSB</td><td>January 2003</td></tr>
-                        <tr><td>15</td><td>132Kv Power Cable, Kidurong Bintulu - Sheath Test</td><td>February 2003</td></tr>
-                        <tr><td>16</td><td>Tukau Quarters "A" Offshore Platform - CT and VT Primary Injection Test, LV Busbar Conductivity Test, Neutral Earthing Test</td><td>February 2003</td></tr>
-                        <tr><td>17</td><td>ERB WEST Offshore Platform, KK - Protective Relay Calibration Test At EWG-A, EWQ-A & EWP-A.</td><td>April 2003</td></tr>
-                        <tr><td>18</td><td>SESCO SARAWAK REGIONS - 33Kv Substations Directional O/C and E/F Relay Secondary Injection Test</td><td>June 2003</td></tr>
-                        <tr><td>19</td><td>FURNAMA HOTEL, LIMBANG - MSB & AMF relay testing and switchboard servicing.</td><td>July 2003</td></tr>
-                        <tr><td>20</td><td>1st SILICON (M) SDN BHD - MV/LV Protective Relay Calibration Test.</td><td>April 2004</td></tr>
-                        <tr><td>21</td><td>ERB WEST Offshore Platform, KK - Lightning & earthing systems test</td><td>May 2004</td></tr>
-                        <tr><td>22</td><td>Nestle Noodle Plant Kuching - MSB & AMF Board Servicing</td><td>June 2004</td></tr>
-                        <tr><td>23</td><td>Baronia Offshore Platform - HV & LV Protective Relay Calibration Test</td><td>August 2004</td></tr>
-                        <tr><td>24</td><td>RIHGA Hotel, Miri - MSB primary injection test</td><td>October 2004</td></tr>
-                        <tr><td>25</td><td>Purnama Hotel, Limbang - MSB, SSB & AMF Board general servicing and calibration</td><td>November 2004</td></tr>
-                        <tr><td>26</td><td>Balai Polis & Perumahan, Tebedu - Relay calibration</td><td>December 2004</td></tr>
-                        <tr><td>27</td><td>FFM Flour Mill, Kuching - Relay Calibration</td><td>February 2005</td></tr>
-                        <tr><td>28</td><td>Samling Plywood (Baramas) Miri - HV & LV relay calibration</td><td>May 2005</td></tr>
-                        <tr><td>29</td><td>Sibu Hospital - UPS System Battery Discharge Test</td><td>June 2005</td></tr>
-                        <tr><td>30</td><td>CMS Cement Bintulu - Relay calibration</td><td>July 2005</td></tr>
-                        <tr><td>31</td><td>MLNG Bintulu - LPG / Module 4 – HV & LV protective relay calibration</td><td>August 2005</td></tr>
-                        <tr><td>32</td><td>New Court Kuching - LV protective relay calibration</td><td>August 2005</td></tr>
-                        <tr><td>33</td><td>Samling Plywood, Miri - HV & LV relay calibration</td><td>September 2005</td></tr>
-                        <tr><td>34</td><td>Hwang-DBS Securities, Kuching - LV protective relay calibration</td><td>November 2005</td></tr>
-                        <tr><td>35</td><td>Komag USA, Kuching - LV ACB maintenance</td><td>January 2006</td></tr>
-                        <tr><td>36</td><td>LPG Bottling Plant, Bintulu - LV protective relay calibration</td><td>January 2006</td></tr>
-                        <tr><td>37</td><td>FFM Flour Mill, Kuching - Relay Calibration</td><td>February 2006</td></tr>
-                        <tr><td>38</td><td>GT plywood Bintulu - HV & LV relay calibration</td><td>March 2006</td></tr>
-                        <tr><td>39</td><td>MLNG Bintulu - Module 8 Turnaround Shutdown (HV & LV protective relay calibration</td><td>March 2006</td></tr>
-                        <tr><td>40</td><td>GT Plywood Bintulu - Protective relay calibration, VCB hipot test, CT test</td><td>April 2006</td></tr>
-                        <tr><td>41</td><td>GT Plywood & Brightwood - HV & LV Protective relay calibration</td><td>June 2006</td></tr>
-                        <tr><td>42</td><td>CMS Cement Bintulu - HV & LV Relay calibration</td><td>July 2006</td></tr>
-                        <tr><td>43</td><td>MLNG Bintulu - Module 1 Turnaround Shutdown (HV & LV protective relay calibration</td><td>July 2006</td></tr>
-                        <tr><td>44</td><td>Magna Foremost Bintulu - LV protective relay calibration</td><td>July 2006</td></tr>
-                        <tr><td>45</td><td>1st Silicon Kuching - HV Protective relay calibration</td><td>August 2006</td></tr>
-                        <tr><td>46</td><td>MLNG Bintulu - Module 5 Turnaround Shutdown (HV & LV protective relay calibration</td><td>August 2006</td></tr>
-                        <tr><td>47</td><td>Daiken Miri - HV & LV protective relay calibration, 33/6.6kV power transformer testing, 6.6/0.433kV power transformer testing, 33kV & 6.6kV VCB hipot & ductor test</td><td>September 2006</td></tr>
-                        <tr><td>48</td><td>General Hospital, Sarawak - LV protective relay calibration - SGH, Serian, Sentosa, Betong, Sri Aman, Lundu, Bau, Mukah, Daro, Limbang, Saratok, Dalat, Kanowit, Miri, Sarikei</td><td>October 2006 – November 2006</td></tr>
-                        <tr><td>49</td><td>Regency Hotel, Bintulu - LV protective relay calibration</td><td>December 2006</td></tr>
-                        <tr><td>50</td><td>Purnama Hotel, Limbang - MSB, SSB & AMF Board general servicing and calibration</td><td>January 2007</td></tr>
-                        <tr><td>51</td><td>Bintulu Port (Admin Building) - ACB test</td><td>January 2007</td></tr>
-                        <tr><td>52</td><td>FFM Flour Mill, Kuching - Relay Calibration</td><td>January 2007</td></tr>
-                        <tr><td>53</td><td>Sarawak Clinker - 33/6kV power transformer test</td><td>February 2007</td></tr>
-                        <tr><td>54</td><td>Pangkalan TUDM, Kuching - LV protective relay calibration</td><td>February 2007</td></tr>
-                        <tr><td>55</td><td>IKM, Kuching - LV protective relay calibration</td><td>March 2007</td></tr>
-                        <tr><td>56</td><td>Sarawak Clinker - Transformer Oil Dielectric test, 6/0.433kV transformer bushing gasket replacements</td><td>March 2007</td></tr>
-                        <tr><td>57</td><td>CMS Cement Bintulu - HV & LV Relay calibration</td><td>March 2007</td></tr>
-                        <tr><td>58</td><td>UPM Bintulu - VCB ductor test</td><td>March 2007</td></tr>
-                        <tr><td>59</td><td>Shell Lutong - HV & LV Protective Relay calibration</td><td>April 2007</td></tr>
-                        <tr><td>60</td><td>Daiken Miri - 33/6.6kV power transformer testing</td><td>April 2007</td></tr>
-                        <tr><td>61</td><td>Pangkalan TUDM, Kuching - MSB & AMF Board general servicing</td><td>May 2007</td></tr>
-                        <tr><td>62</td><td>PS Terminal Bintulu - LV Protective Relay calibration</td><td>April 2007</td></tr>
-                        <tr><td>63</td><td>Jabatan Kimia Malaysia, Bintulu - LV Protective Relay calibration</td><td>May 2007</td></tr>
-                        <tr><td>64</td><td>Samling Plywood Bintulu - LV Protective Relay calibration</td><td>May 2007</td></tr>
-                        <tr><td>65</td><td>UNIMAS - 11kV switchgear general servicing</td><td>May 2007</td></tr>
-                        <tr><td>66</td><td>GT Plywood Bintulu - Protective relay calibration</td><td>June 2007</td></tr>
-                        <tr><td>67</td><td>Centre Point Shopping Complex, Kuching - MSB general servicing</td><td>July 2007</td></tr>
-                        <tr><td>68</td><td>Manuply Wood Bintulu - HV & LV protective relay calibration, 11kV VCB hipot & ductor test</td><td>August 2007</td></tr>
-                        <tr><td>69</td><td>CAIRNFIELD Factory - HV & LV protective relay calibration, 11kV VCB hipot & ductor test</td><td>August 2007</td></tr>
-                        <tr><td>70</td><td>Purnama Hotel Limbang - LV System Power Quality Analysis</td><td>September 2007</td></tr>
-                        <tr><td>71</td><td>UPM Campus, Bintulu - HV & LV protective relay calibration</td><td>September 2007</td></tr>
-                        <tr><td>72</td><td>Daiken Miri - HV & LV protective relay calibration, 6.6/0.433kV power transformer testing, 33kV & 6.6kV VCB hipot & ductor test</td><td>September 2007</td></tr>
-                        <tr><td>73</td><td>Shih Yang Plywood Miri - HV & LV protective relay calibration</td><td>October 2007</td></tr>
-                        <tr><td>74</td><td>Daiken Sarawak, Bintulu - HV & LV protective relay calibration, 33/6.6kV power transformer testing, 6.6/0.433kV power transformer testing, 33kV & 6.6kV VCB hipot & ductor test</td><td>November 2007</td></tr>
-                        <tr><td>75</td><td>Hwang-DBS Securities, Kuching - LV protective relay calibration</td><td>December 2007</td></tr>
-                        <tr><td>76</td><td>UPM Campus, Bintulu (MIS) - HV & LV protective relay calibration, 11/0.433kV power transformer test</td><td>November 2007</td></tr>
-                        <tr><td>77</td><td>Limbang Airport - LV protective relay calibration, Switchboard general servicing, Thermal Imaging</td><td>December 2007</td></tr>
-                        <tr><td>78</td><td>New Court Kuching - LV protective relay calibration</td><td>January 2008</td></tr>
-                        <tr><td>79</td><td>UNIMAS - MIS 11kV switchgear general servicing</td><td>February 2008</td></tr>
-                        <tr><td>80</td><td>Everrise BDC - LV protective relay calibration, Switchboard general servicing, Power quality analysis</td><td>March 2008</td></tr>
-                        <tr><td>81</td><td>Pangkalan TUDM, Kuching - MSB & AMF Board general servicing</td><td>May 2008</td></tr>
-                        <tr><td>82</td><td>Kolej Komunity Kuching - LV protective relay calibration</td><td>July 2008</td></tr>
-                        <tr><td>83</td><td>Menara MAA, Kuching - LV protective relay calibration</td><td>July 2008</td></tr>
-                        <tr><td>84</td><td>Daiken Miri - HV & LV protective relay calibration, 33/6.6kV power transformer testing, 6.6/0.433kV power transformer testing, 33kV & 6.6kV VCB hipot & ductor test</td><td>September 2008</td></tr>
-                        <tr><td>85</td><td>Limbang Airport - LV protective relay calibration, Switchboard general servicing, Thermal Imaging</td><td>November 2008</td></tr>
-                        <tr><td>86</td><td>Masjid Jamek Kuching - LV protective relay calibration</td><td>December 2008</td></tr>
-                        <tr><td>87</td><td>FFM Flour Mill, Kuching - Relay Calibration</td><td>December 2008</td></tr>
-                        <tr><td>88</td><td>IKBN, Miri - LV protective relay calibration, Switchboard general servicing</td><td>December 2008</td></tr>
-                        <tr><td>89</td><td>Satria Court, Kuching - LV protective relay calibration</td><td>January 2009</td></tr>
+                    <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">1</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Manuply Wood Sdn Bhd - 11KV Main Intake, 415V Switchboard</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">June 2001, June 2004</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">2</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">UPM, Bintulu - 11KV Main Intake, 11KV Sub-Main</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">August 2001</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">3</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Bright Wood Sdn Bhd - 11KV Main Intake</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">September 2001, December 2002, November 2003</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">4</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Kinjun 33/11KV S/S, Bintulu</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">September 2001</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">5</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Saratok 33/11KV S/S</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">September 2001</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">6</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Kindurong 33/11KV S/S, Bintulu</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">September 2001</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">7</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Medan 33/11KV S/S, Bintulu</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">September 2001</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">8</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Alan Road 33/11KV S/S, Sibu</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">September 2001</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">9</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Town 33/11 KV S/S, Bintulu</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">September 2001</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">10</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">SESCO Western Region 33/11Kv S/S - Battery Capacity Test, DC Charger Commissioning</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">September 2002</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">11</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">TEMBUNGO "A" Offshore Platform, KK - Relay Calibration Test</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">October 2002</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">12</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">1st Silicon (M) Sdn Bhd - 33KV Switchgear – Relay Maintenance works</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">November 2002</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">13</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Bypass 33/11Kv S/S, Kuching</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">December 2002</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">14</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">CHOICE Super Mall, LV MSB</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">January 2003</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">15</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">132Kv Power Cable, Kidurong Bintulu - Sheath Test</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">February 2003</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">16</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Tukau Quarters "A" Offshore Platform - CT and VT Primary Injection Test, LV Busbar Conductivity Test, Neutral Earthing Test</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">February 2003</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">17</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">ERB WEST Offshore Platform, KK - Protective Relay Calibration Test At EWG-A, EWQ-A & EWP-A.</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">April 2003</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">18</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">SESCO SARAWAK REGIONS - 33Kv Substations Directional O/C and E/F Relay Secondary Injection Test</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">June 2003</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">19</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">FURNAMA HOTEL, LIMBANG - MSB & AMF relay testing and switchboard servicing.</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">July 2003</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">20</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">1st SILICON (M) SDN BHD - MV/LV Protective Relay Calibration Test.</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">April 2004</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">21</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">ERB WEST Offshore Platform, KK - Lightning & earthing systems test</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">May 2004</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">22</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Nestle Noodle Plant Kuching - MSB & AMF Board Servicing</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">June 2004</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">23</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Baronia Offshore Platform - HV & LV Protective Relay Calibration Test</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">August 2004</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">24</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">RIHGA Hotel, Miri - MSB primary injection test</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">October 2004</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">25</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Purnama Hotel, Limbang - MSB, SSB & AMF Board general servicing and calibration</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">November 2004</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">26</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Balai Polis & Perumahan, Tebedu - Relay calibration</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">December 2004</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">27</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">FFM Flour Mill, Kuching - Relay Calibration</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">February 2005</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">28</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Samling Plywood (Baramas) Miri - HV & LV relay calibration</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">May 2005</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">29</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Sibu Hospital - UPS System Battery Discharge Test</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">June 2005</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">30</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">CMS Cement Bintulu - Relay calibration</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">July 2005</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">31</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">MLNG Bintulu - LPG / Module 4 – HV & LV protective relay calibration</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">August 2005</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">32</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">New Court Kuching - LV protective relay calibration</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">August 2005</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">33</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Samling Plywood, Miri - HV & LV relay calibration</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">September 2005</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">34</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Hwang-DBS Securities, Kuching - LV protective relay calibration</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">November 2005</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">35</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Komag USA, Kuching - LV ACB maintenance</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">January 2006</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">36</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">LPG Bottling Plant, Bintulu - LV protective relay calibration</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">January 2006</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">37</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">FFM Flour Mill, Kuching - Relay Calibration</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">February 2006</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">38</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">GT plywood Bintulu - HV & LV relay calibration</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">March 2006</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">39</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">MLNG Bintulu - Module 8 Turnaround Shutdown (HV & LV protective relay calibration</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">March 2006</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">40</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">GT Plywood Bintulu - Protective relay calibration, VCB hipot test, CT test</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">April 2006</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">41</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">GT Plywood & Brightwood - HV & LV Protective relay calibration</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">June 2006</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">42</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">CMS Cement Bintulu - HV & LV Relay calibration</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">July 2006</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">43</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">MLNG Bintulu - Module 1 Turnaround Shutdown (HV & LV protective relay calibration</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">July 2006</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">44</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Magna Foremost Bintulu - LV protective relay calibration</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">July 2006</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">45</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">1st Silicon Kuching - HV Protective relay calibration</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">August 2006</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">46</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">MLNG Bintulu - Module 5 Turnaround Shutdown (HV & LV protective relay calibration</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">August 2006</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">47</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Daiken Miri - HV & LV protective relay calibration, 33/6.6kV power transformer testing, 6.6/0.433kV power transformer testing, 33kV & 6.6kV VCB hipot & ductor test</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">September 2006</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">48</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">General Hospital, Sarawak - LV protective relay calibration - SGH, Serian, Sentosa, Betong, Sri Aman, Lundu, Bau, Mukah, Daro, Limbang, Saratok, Dalat, Kanowit, Miri, Sarikei</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">October 2006 – November 2006</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">49</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Regency Hotel, Bintulu - LV protective relay calibration</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">December 2006</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">50</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Purnama Hotel, Limbang - MSB, SSB & AMF Board general servicing and calibration</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">January 2007</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">51</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Bintulu Port (Admin Building) - ACB test</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">January 2007</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">52</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">FFM Flour Mill, Kuching - Relay Calibration</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">January 2007</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">53</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Sarawak Clinker - 33/6kV power transformer test</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">February 2007</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">54</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Pangkalan TUDM, Kuching - LV protective relay calibration</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">February 2007</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">55</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">IKM, Kuching - LV protective relay calibration</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">March 2007</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">56</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Sarawak Clinker - Transformer Oil Dielectric test, 6/0.433kV transformer bushing gasket replacements</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">March 2007</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">57</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">CMS Cement Bintulu - HV & LV Relay calibration</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">March 2007</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">58</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">UPM Bintulu - VCB ductor test</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">March 2007</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">59</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Shell Lutong - HV & LV Protective Relay calibration</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">April 2007</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">60</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Daiken Miri - 33/6.6kV power transformer testing</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">April 2007</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">61</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Pangkalan TUDM, Kuching - MSB & AMF Board general servicing</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">May 2007</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">62</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">PS Terminal Bintulu - LV Protective Relay calibration</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">April 2007</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">63</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Jabatan Kimia Malaysia, Bintulu - LV Protective Relay calibration</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">May 2007</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">64</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Samling Plywood Bintulu - LV Protective Relay calibration</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">May 2007</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">65</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">UNIMAS - 11kV switchgear general servicing</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">May 2007</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">66</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">GT Plywood Bintulu - Protective relay calibration</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">June 2007</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">67</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Centre Point Shopping Complex, Kuching - MSB general servicing</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">July 2007</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">68</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Manuply Wood Bintulu - HV & LV protective relay calibration, 11kV VCB hipot & ductor test</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">August 2007</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">69</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">CAIRNFIELD Factory - HV & LV protective relay calibration, 11kV VCB hipot & ductor test</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">August 2007</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">70</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Purnama Hotel Limbang - LV System Power Quality Analysis</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">September 2007</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">71</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">UPM Campus, Bintulu - HV & LV protective relay calibration</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">September 2007</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">72</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Daiken Miri - HV & LV protective relay calibration, 6.6/0.433kV power transformer testing, 33kV & 6.6kV VCB hipot & ductor test</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">September 2007</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">73</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Shih Yang Plywood Miri - HV & LV protective relay calibration</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">October 2007</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">74</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Daiken Sarawak, Bintulu - HV & LV protective relay calibration, 33/6.6kV power transformer testing, 6.6/0.433kV power transformer testing, 33kV & 6.6kV VCB hipot & ductor test</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">November 2007</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">75</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Hwang-DBS Securities, Kuching - LV protective relay calibration</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">December 2007</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">76</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">UPM Campus, Bintulu (MIS) - HV & LV protective relay calibration, 11/0.433kV power transformer test</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">November 2007</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">77</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Limbang Airport - LV protective relay calibration, Switchboard general servicing, Thermal Imaging</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">December 2007</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">78</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">New Court Kuching - LV protective relay calibration</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">January 2008</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">79</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">UNIMAS - MIS 11kV switchgear general servicing</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">February 2008</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">80</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Everrise BDC - LV protective relay calibration, Switchboard general servicing, Power quality analysis</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">March 2008</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">81</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Pangkalan TUDM, Kuching - MSB & AMF Board general servicing</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">May 2008</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">82</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Kolej Komunity Kuching - LV protective relay calibration</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">July 2008</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">83</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Menara MAA, Kuching - LV protective relay calibration</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">July 2008</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">84</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Daiken Miri - HV & LV protective relay calibration, 33/6.6kV power transformer testing, 6.6/0.433kV power transformer testing, 33kV & 6.6kV VCB hipot & ductor test</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">September 2008</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">85</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Limbang Airport - LV protective relay calibration, Switchboard general servicing, Thermal Imaging</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">November 2008</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">86</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Masjid Jamek Kuching - LV protective relay calibration</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">December 2008</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">87</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">FFM Flour Mill, Kuching - Relay Calibration</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">December 2008</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">88</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">IKBN, Miri - LV protective relay calibration, Switchboard general servicing</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">December 2008</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">89</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Satria Court, Kuching - LV protective relay calibration</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">January 2009</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2001 UPS Protection Sdn. Bhd. (540889-K) All rights reserved.</p>
         </div>
-    </footer>
+        
+        <div class="mt-12 text-center">
+            <div class="inline-flex items-center px-6 py-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+                <span class="material-icons-outlined text-primary mr-2" data-translate="info">info</span>
+                <span class="text-slate-700 dark:text-slate-300">89 <span data-translate="maintenanceProjectsCompleted">maintenance projects completed from 2001 to 2009</span></span>
+            </div>
+        </div>
+    </div>
+</section>
 
-    <script src="script.js"></script>
+<footer class="bg-slate-900 text-slate-400 py-12">
+    <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center pb-12 border-b border-slate-800">
+            <div class="mb-8 md:mb-0">
+                <img alt="UPS Protection Logo" class="h-8 brightness-0 invert" src="logo1.png"/>
+            </div>
+            <div class="flex space-x-8 text-sm uppercase tracking-widest font-semibold">
+                <a class="hover:text-white transition-colors" href="/" data-translate="home">Home</a>
+                <a class="hover:text-white transition-colors" href="/equipment" data-translate="equipment">Equipment</a>
+                <a class="hover:text-white transition-colors" href="/about" data-translate="about">About</a>
+                <a class="hover:text-white transition-colors" href="/contact" data-translate="contact">Contact</a>
+            </div>
+        </div>
+        <div class="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs md:text-sm">
+            <p>© 2001 - <span id="copyright-year">2026</span> UPS Protection Sdn. Bhd. (540889-K) All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+</script>
+
 </body>
 </html>

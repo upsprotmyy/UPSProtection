@@ -1,123 +1,357 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="scroll-smooth" lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Substation Testing and Commissioning - UPS Protection Malaysia</title>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Substation Testing and Commissioning - UPS Protection SDN BHD</title>
     <link rel="icon" type="image/x-icon" href="UPS Logo.ico">
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1E40AF",
+                        "background-light": "#F8FAFC",
+                        "background-dark": "#0F172A",
+                        "slate-accent": "#475569",
+                    },
+                    fontFamily: {
+                        display: ["Lexend", "sans-serif"],
+                        sans: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                        'xl': "1rem",
+                    },
+                },
+            },
+        };
+    </script>
+    <script>
+        const translations = {
+            en: {
+                home: "Home",
+                projectPortfolio: "Project Portfolio",
+                substationTesting: "Substation Testing and Commissioning",
+                maintenanceProject: "Maintenance Project",
+                transformerTesting: "Power Transformer Testing and Commissioning",
+                testEquipment: "Test Equipment",
+                aboutUs: "About Us",
+                contactUs: "Contact Us",
+                projectsCompleted: "Projects Completed",
+                substationTesting2: "Substation Testing",
+                commissioning: "& Commissioning",
+                comprehensiveTesting: "Comprehensive testing and commissioning of electrical substations up to 275KV across Malaysia",
+                no: "No.",
+                substationName: "Substation Name (Testing & Commissioning)",
+                switchgearType: "Switchgear Type",
+                completionDate: "Completion Date",
+                info: "info",
+                substationProjectsCompleted: "substation projects completed from 2001 onwards",
+                equipment: "Equipment",
+                about: "About",
+                contact: "Contact"
+            },
+            ms: {
+                home: "Laman Utama",
+                projectPortfolio: "Portfolio Projek",
+                substationTesting: "Ujian dan Pentauliahan Pencawang",
+                maintenanceProject: "Projek Penyelenggaraan",
+                transformerTesting: "Ujian dan Pentauliahan Transformer Kuasa",
+                testEquipment: "Peralatan Ujian",
+                aboutUs: "Tentang Kami",
+                contactUs: "Hubungi Kami",
+                projectsCompleted: "Projek Selesai",
+                substationTesting2: "Ujian Pencawang",
+                commissioning: "& Pentauliahan",
+                comprehensiveTesting: "Ujian dan pentauliahan menyeluruh pencawang elektrik sehingga 275KV di seluruh Malaysia",
+                no: "No.",
+                substationName: "Nama Pencawang (Ujian & Pentauliahan)",
+                switchgearType: "Jenis Switchgear",
+                completionDate: "Tarikh Siap",
+                info: "maklumat",
+                substationProjectsCompleted: "projek pencawang selesai dari 2001 dan seterusnya",
+                equipment: "Peralatan",
+                about: "Tentang",
+                contact: "Hubungi"
+            },
+            zh: {
+                home: "首页",
+                projectPortfolio: "项目组合",
+                substationTesting: "变电站测试和调试",
+                maintenanceProject: "维护项目",
+                transformerTesting: "电力变压器测试和调试",
+                testEquipment: "测试设备",
+                aboutUs: "关于我们",
+                contactUs: "联系我们",
+                projectsCompleted: "项目完成",
+                substationTesting2: "变电站测试",
+                commissioning: "和调试",
+                comprehensiveTesting: "对马来西亚各地高达275KV的电力变电站进行全面测试和调试",
+                no: "编号",
+                substationName: "变电站名称（测试和调试）",
+                switchgearType: "开关设备类型",
+                completionDate: "完成日期",
+                info: "信息",
+                substationProjectsCompleted: "个变电站项目从2001年开始完成",
+                equipment: "设备",
+                about: "关于",
+                contact: "联系"
+            }
+        };
+        
+        function switchLanguage(lang) {
+            const t = translations[lang];
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (t[key]) {
+                    element.textContent = t[key];
+                }
+            });
+        }
+        
+        function updateCopyright() {
+            const currentYear = new Date().getFullYear();
+            const copyrightElement = document.getElementById('copyright-year');
+            if (copyrightElement) {
+                copyrightElement.textContent = currentYear;
+            }
+        }
+        document.addEventListener('DOMContentLoaded', updateCopyright);
+    </script>
     <style>
-        .table-container {
-            padding: 2rem 0;
-            overflow-x: auto;
-        }
-        
-        .project-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 2rem 0;
-            font-size: 0.9rem;
-        }
-        
-        .project-table th,
-        .project-table td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-            vertical-align: top;
-        }
-        
-        .project-table th {
-            background-color: #1e40af;
-            color: white;
-            font-weight: bold;
-            position: sticky;
-            top: 0;
-        }
-        
-        .project-table tr:nth-child(even) {
-            background-color: #f8fafc;
-        }
-        
-        .project-table tr:hover {
-            background-color: #e2e8f0;
-        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Lexend', sans-serif; }
     </style>
 </head>
-<body>
-    <header>
-        <div class="container">
-            <div class="logo">
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 transition-colors duration-300">
+
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="flex items-center space-x-3">
+            <div class="flex items-center">
                 <a href="/">
-                    <img src="logo1.png" alt="UPS Protection Malaysia" height="50">
+                    <img alt="UPS Protection Logo" class="h-10 object-contain" src="logo1.png"/>
                 </a>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li class="dropdown">
-                        <a href="#portfolio">Project Portfolio</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/substation">Substation Testing and Commissioning</a></li>
-                            <li><a href="/maintenance">Maintenance Project</a></li>
-                            <li><a href="/transformer">Power Transformer Testing and Commissioning</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="/equipment">Test Equipment</a></li>
-                    <li><a href="/about">About Us</a></li>
-                    <li><a href="/contact">Contact Us</a></li>
-                </ul>
-            </nav>
         </div>
-    </header>
+        <nav class="hidden md:flex space-x-8">
+            <a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="/" data-translate="home">Home</a>
+            <div class="relative group">
+                <a class="text-primary font-semibold cursor-pointer" data-translate="projectPortfolio">Project Portfolio</a>
+                <div class="absolute top-full left-0 mt-2 w-64 bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-slate-200 dark:border-slate-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                    <a href="/substation" class="block px-4 py-3 text-sm text-primary font-semibold hover:bg-slate-50 dark:hover:bg-slate-700 rounded-t-lg" data-translate="substationTesting">Substation Testing and Commissioning</a>
+                    <a href="/maintenance" class="block px-4 py-3 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700" data-translate="maintenanceProject">Maintenance Project</a>
+                    <a href="/transformer" class="block px-4 py-3 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 rounded-b-lg" data-translate="transformerTesting">Power Transformer Testing and Commissioning</a>
+                </div>
+            </div>
+            <a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="/equipment" data-translate="testEquipment">Test Equipment</a>
+            <a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="/about" data-translate="aboutUs">About Us</a>
+            <a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="/contact" data-translate="contactUs">Contact Us</a>
+        </nav>
+        <div class="flex items-center space-x-4">
+            <div class="relative group">
+                <button class="flex items-center space-x-1 text-slate-600 hover:text-primary transition-colors">
+                    <span class="material-icons-outlined text-sm">language</span>
+                    <span class="text-sm">EN</span>
+                </button>
+                <div class="absolute top-full right-0 mt-2 w-32 bg-white rounded-lg shadow-lg border border-slate-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                    <button onclick="switchLanguage('en')" class="block w-full px-4 py-2 text-left text-sm text-slate-700 hover:bg-slate-50 rounded-t-lg">English</button>
+                    <button onclick="switchLanguage('ms')" class="block w-full px-4 py-2 text-left text-sm text-slate-700 hover:bg-slate-50">Bahasa Malaysia</button>
+                    <button onclick="switchLanguage('zh')" class="block w-full px-4 py-2 text-left text-sm text-slate-700 hover:bg-slate-50 rounded-b-lg">中文</button>
+                </div>
+            </div>
+            <button class="md:hidden" id="mobile-menu-toggle">
+                <span class="material-icons-outlined">menu</span>
+            </button>
+        </div>
+    </div>
+</header>
 
-    <main style="margin-top: 80px;">
-        <section class="table-container">
-            <div class="container">
-                <h1 style="color: #1e40af; margin-bottom: 2rem;">Substation Testing and Commissioning Projects</h1>
-                
-                <table class="project-table">
-                    <thead>
+<!-- Hero Section -->
+<section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+    <div class="absolute inset-0 z-0">
+        <img alt="Substation Projects" class="w-full h-full object-cover opacity-10 dark:opacity-20" src="Image/Electrical.jpg"/>
+        <div class="absolute inset-0 bg-gradient-to-r from-background-light via-background-light/80 to-transparent dark:from-background-dark dark:via-background-dark/80"></div>
+    </div>
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="max-w-3xl">
+            <span class="inline-block px-4 py-1.5 mb-6 text-sm font-semibold tracking-wider text-primary uppercase bg-blue-50 dark:bg-blue-900/30 rounded-full" data-translate="projectsCompleted">
+                15 Projects Completed
+            </span>
+            <h1 class="text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white mb-6 leading-tight">
+                <span data-translate="substationTesting2">Substation Testing</span> <br/>
+                <span class="text-primary" data-translate="commissioning">& Commissioning</span>
+            </h1>
+            <p class="text-lg lg:text-xl text-slate-600 dark:text-slate-400 mb-10 leading-relaxed max-w-2xl" data-translate="comprehensiveTesting">
+                Comprehensive testing and commissioning of electrical substations up to 275KV across Malaysia
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Table -->
+<section class="py-20 bg-white dark:bg-slate-900/50">
+    <div class="container mx-auto px-6">
+        <div class="bg-background-light dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead class="bg-primary text-white">
                         <tr>
-                            <th>No.</th>
-                            <th>Substation Name (Testing & Commissioning)</th>
-                            <th>Switchgear Type</th>
-                            <th>Completion Date</th>
+                            <th class="px-6 py-4 text-left font-semibold" data-translate="no">No.</th>
+                            <th class="px-6 py-4 text-left font-semibold" data-translate="substationName">Substation Name (Testing & Commissioning)</th>
+                            <th class="px-6 py-4 text-left font-semibold" data-translate="switchgearType">Switchgear Type</th>
+                            <th class="px-6 py-4 text-left font-semibold" data-translate="completionDate">Completion Date</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr><td>1</td><td>UPM 33/11KV S/S, Bintulu</td><td>LKH AIS</td><td>March 2001</td></tr>
-                        <tr><td>2</td><td>Krokop 33/11KV S/S</td><td>ABB / EPE</td><td>April 2001</td></tr>
-                        <tr><td>3</td><td>Sarikei P/S 11KV S/S</td><td>ABB GIS</td><td>May 2001</td></tr>
-                        <tr><td>4</td><td>Kim Hin 11KV S/S (Extension)</td><td>ABB AIS</td><td>June 2001</td></tr>
-                        <tr><td>5</td><td>UiTM 11KV Main Intake</td><td>TAMCO</td><td>July 2001</td></tr>
-                        <tr><td>6</td><td>Civic Centre11KV S/S</td><td>ALSTOM AIS</td><td>July 2001</td></tr>
-                        <tr><td>7</td><td>KPA 11KV S/S</td><td>ALSTOM AIS</td><td>August 2001</td></tr>
-                        <tr><td>8</td><td>Kota Samarahan Light Industrial 33/11KV S/S</td><td>TAMCO AIS</td><td>October 2001</td></tr>
-                        <tr><td>9</td><td>Kuala Baram 11KV S/S D2</td><td>TAMCO AIS</td><td>October 2001</td></tr>
-                        <tr><td>10</td><td>Curtin – Tudan O/H Line (Incoming 11KV Supply)</td><td>TAMCO AIS</td><td>October 2001</td></tr>
-                        <tr><td>11</td><td>Bau 33/11KV S/S</td><td>ABB GIS</td><td>October 2001</td></tr>
-                        <tr><td>12</td><td>Mukah 33/11KV S/S</td><td>ABB GIS</td><td>November 2001</td></tr>
-                        <tr><td>13</td><td>Sarikei Light Industrial 33/11KV S/S</td><td>ABB GIS</td><td>November 2001</td></tr>
-                        <tr><td>14</td><td>CurtinUniversity, Sarawak</td><td>ABB AIS</td><td>December 2001</td></tr>
-                        <tr><td>15</td><td>UPM, Bintulu – 11KV Switchroom</td><td>TAMCO AIS</td><td>December 2001</td></tr>
-                        <tr><td>16</td><td>Pujut 33KV S/S Load Shedding Scheme Commissioning</td><td>ABB GIS</td><td>Jan 2002</td></tr>
-                        <tr><td>17</td><td>Sibu New Airport 33/11KV S/S (Extension)</td><td>TAMCO AIS</td><td>Jan 2002</td></tr>
-                        <tr><td>18</td><td>Miri Power Station GT Set ( Set 10, 11, 14, 15, 16 and 17) GE BBC ASEA</td><td>-</td><td>Jan 2002</td></tr>
-                        <tr><td>19</td><td>Kuching Airport 33/11KV S/S</td><td>TAMCO AIS</td><td>March 2002</td></tr>
-                        <tr><td>20</td><td>Bintangor 11KV S/S</td><td>LKH AIS</td><td>April 2002</td></tr>
+                    <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">1</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">UPM 33/11KV S/S, Bintulu</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">LKH AIS</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">March 2001</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">2</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Krokop 33/11KV S/S</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">ABB / EPE</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">April 2001</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">3</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Sarikei P/S 11KV S/S</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">ABB GIS</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">May 2001</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">4</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Kim Hin 11KV S/S (Extension)</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">ABB AIS</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">June 2001</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">5</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">UiTM 11KV Main Intake</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">TAMCO</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">July 2001</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">6</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Civic Centre11KV S/S</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">ALSTOM AIS</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">July 2001</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">7</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">KPA 11KV S/S</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">ALSTOM AIS</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">August 2001</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">8</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Kota Samarahan Light Industrial 33/11KV S/S</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">TAMCO AIS</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">October 2001</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">9</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Kuala Baram 11KV S/S D2</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">TAMCO AIS</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">October 2001</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">10</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Curtin – Tudan O/H Line (Incoming 11KV Supply)</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">TAMCO AIS</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">October 2001</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">11</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Bau 33/11KV S/S</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">ABB GIS</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">October 2001</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">12</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Mukah 33/11KV S/S</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">ABB GIS</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">November 2001</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">13</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Sarikei Light Industrial 33/11KV S/S</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">ABB GIS</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">November 2001</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">14</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">CurtinUniversity, Sarawak</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">ABB AIS</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">December 2001</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">15</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">UPM, Bintulu – 11KV Switchroom</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">TAMCO AIS</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">December 2001</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2001 UPS Protection Sdn. Bhd. (540889-K) All rights reserved.</p>
         </div>
-    </footer>
+        
+        <div class="mt-12 text-center">
+            <div class="inline-flex items-center px-6 py-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+                <span class="material-icons-outlined text-primary mr-2" data-translate="info">info</span>
+                <span class="text-slate-700 dark:text-slate-300">15 <span data-translate="substationProjectsCompleted">substation projects completed from 2001 onwards</span></span>
+            </div>
+        </div>
+    </div>
+</section>
 
-    <script src="script.js"></script>
+<footer class="bg-slate-900 text-slate-400 py-12">
+    <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center pb-12 border-b border-slate-800">
+            <div class="mb-8 md:mb-0">
+                <img alt="UPS Protection Logo" class="h-8 brightness-0 invert" src="logo1.png"/>
+            </div>
+            <div class="flex space-x-8 text-sm uppercase tracking-widest font-semibold">
+                <a class="hover:text-white transition-colors" href="/" data-translate="home">Home</a>
+                <a class="hover:text-white transition-colors" href="/equipment" data-translate="equipment">Equipment</a>
+                <a class="hover:text-white transition-colors" href="/about" data-translate="about">About</a>
+                <a class="hover:text-white transition-colors" href="/contact" data-translate="contact">Contact</a>
+            </div>
+        </div>
+        <div class="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs md:text-sm">
+            <p>© 2001 - <span id="copyright-year">2026</span> UPS Protection Sdn. Bhd. (540889-K) All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Theme toggle
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+    } else {
+        document.documentElement.classList.remove('dark');
+    }
+    themeToggleBtn.addEventListener('click', () => {
+        if (document.documentElement.classList.contains('dark')) {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+        } else {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+        }
+    });
+</script>
+
 </body>
 </html>

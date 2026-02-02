@@ -1,108 +1,298 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="scroll-smooth" lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Power Transformer Testing and Commissioning - UPS Protection Malaysia</title>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Power Transformer Testing and Commissioning - UPS Protection SDN BHD</title>
     <link rel="icon" type="image/x-icon" href="UPS Logo.ico">
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1E40AF",
+                        "background-light": "#F8FAFC",
+                        "background-dark": "#0F172A",
+                        "slate-accent": "#475569",
+                    },
+                    fontFamily: {
+                        display: ["Lexend", "sans-serif"],
+                        sans: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                        'xl': "1rem",
+                    },
+                },
+            },
+        };
+    </script>
+    <script>
+        const translations = {
+            en: {
+                home: "Home",
+                projectPortfolio: "Project Portfolio",
+                substationTesting: "Substation Testing and Commissioning",
+                maintenanceProject: "Maintenance Project",
+                transformerTesting: "Power Transformer Testing and Commissioning",
+                testEquipment: "Test Equipment",
+                aboutUs: "About Us",
+                contactUs: "Contact Us",
+                projectsCompleted: "Projects Completed",
+                powerTransformer: "Power Transformer",
+                testingCommissioning: "Testing & Commissioning",
+                specializedTesting: "Specialized testing and commissioning of power transformers and related equipment",
+                no: "No.",
+                transformerFeeder: "33/11KV Power Transformer Feeder Commissioning",
+                completionDate: "Completion Date",
+                info: "info",
+                transformerProjectsCompleted: "power transformer projects completed from 2001 to 2006",
+                equipment: "Equipment",
+                about: "About",
+                contact: "Contact"
+            },
+            ms: {
+                home: "Laman Utama",
+                projectPortfolio: "Portfolio Projek",
+                substationTesting: "Ujian dan Pentauliahan Pencawang",
+                maintenanceProject: "Projek Penyelenggaraan",
+                transformerTesting: "Ujian dan Pentauliahan Transformer Kuasa",
+                testEquipment: "Peralatan Ujian",
+                aboutUs: "Tentang Kami",
+                contactUs: "Hubungi Kami",
+                projectsCompleted: "Projek Selesai",
+                powerTransformer: "Transformer Kuasa",
+                testingCommissioning: "Ujian & Pentauliahan",
+                specializedTesting: "Ujian dan pentauliahan khusus transformer kuasa dan peralatan berkaitan",
+                no: "No.",
+                transformerFeeder: "Pentauliahan Feeder Transformer Kuasa 33/11KV",
+                completionDate: "Tarikh Siap",
+                info: "maklumat",
+                transformerProjectsCompleted: "projek transformer kuasa selesai dari 2001 hingga 2006",
+                equipment: "Peralatan",
+                about: "Tentang",
+                contact: "Hubungi"
+            },
+            zh: {
+                home: "首页",
+                projectPortfolio: "项目组合",
+                substationTesting: "变电站测试和调试",
+                maintenanceProject: "维护项目",
+                transformerTesting: "电力变压器测试和调试",
+                testEquipment: "测试设备",
+                aboutUs: "关于我们",
+                contactUs: "联系我们",
+                projectsCompleted: "项目完成",
+                powerTransformer: "电力变压器",
+                testingCommissioning: "测试和调试",
+                specializedTesting: "专业的电力变压器和相关设备测试和调试",
+                no: "编号",
+                transformerFeeder: "33/11KV电力变压器馈线调试",
+                completionDate: "完成日期",
+                info: "信息",
+                transformerProjectsCompleted: "个电力变压器项目于2001年至2006年完成",
+                equipment: "设备",
+                about: "关于",
+                contact: "联系"
+            }
+        };
+        
+        function switchLanguage(lang) {
+            const t = translations[lang];
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (t[key]) {
+                    element.textContent = t[key];
+                }
+            });
+        }
+        
+        function updateCopyright() {
+            const currentYear = new Date().getFullYear();
+            const copyrightElement = document.getElementById('copyright-year');
+            if (copyrightElement) {
+                copyrightElement.textContent = currentYear;
+            }
+        }
+        document.addEventListener('DOMContentLoaded', updateCopyright);
+    </script>
     <style>
-        .table-container {
-            padding: 2rem 0;
-            overflow-x: auto;
-        }
-        
-        .project-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 2rem 0;
-            font-size: 0.9rem;
-        }
-        
-        .project-table th,
-        .project-table td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-            vertical-align: top;
-        }
-        
-        .project-table th {
-            background-color: #1e40af;
-            color: white;
-            font-weight: bold;
-            position: sticky;
-            top: 0;
-        }
-        
-        .project-table tr:nth-child(even) {
-            background-color: #f8fafc;
-        }
-        
-        .project-table tr:hover {
-            background-color: #e2e8f0;
-        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Lexend', sans-serif; }
     </style>
 </head>
-<body>
-    <header>
-        <div class="container">
-            <div class="logo">
-                <img src="logo1.png" alt="UPS Protection Malaysia" height="50">
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 transition-colors duration-300">
+
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="flex items-center space-x-3">
+            <div class="flex items-center">
+                <a href="/">
+                    <img alt="UPS Protection Logo" class="h-10 object-contain" src="logo1.png"/>
+                </a>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li class="dropdown">
-                        <a href="#portfolio">Project Portfolio</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/substation">Substation Testing and Commissioning</a></li>
-                            <li><a href="/maintenance">Maintenance Project</a></li>
-                            <li><a href="/transformer">Power Transformer Testing and Commissioning</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="/equipment">Test Equipment</a></li>
-                    <li><a href="/about">About Us</a></li>
-                    <li><a href="/contact">Contact Us</a></li>
-                </ul>
-            </nav>
         </div>
-    </header>
+        <nav class="hidden md:flex space-x-8">
+            <a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="/" data-translate="home">Home</a>
+            <div class="relative group">
+                <a class="text-primary font-semibold cursor-pointer" data-translate="projectPortfolio">Project Portfolio</a>
+                <div class="absolute top-full left-0 mt-2 w-64 bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-slate-200 dark:border-slate-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                    <a href="/substation" class="block px-4 py-3 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 rounded-t-lg" data-translate="substationTesting">Substation Testing and Commissioning</a>
+                    <a href="/maintenance" class="block px-4 py-3 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700" data-translate="maintenanceProject">Maintenance Project</a>
+                    <a href="/transformer" class="block px-4 py-3 text-sm text-primary font-semibold hover:bg-slate-50 dark:hover:bg-slate-700 rounded-b-lg" data-translate="transformerTesting">Power Transformer Testing and Commissioning</a>
+                </div>
+            </div>
+            <a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="/equipment" data-translate="testEquipment">Test Equipment</a>
+            <a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="/about" data-translate="aboutUs">About Us</a>
+            <a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="/contact" data-translate="contactUs">Contact Us</a>
+        </nav>
+        <div class="flex items-center space-x-4">
+            <div class="relative group">
+                <button class="flex items-center space-x-1 text-slate-600 hover:text-primary transition-colors">
+                    <span class="material-icons-outlined text-sm">language</span>
+                    <span class="text-sm">EN</span>
+                </button>
+                <div class="absolute top-full right-0 mt-2 w-32 bg-white rounded-lg shadow-lg border border-slate-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                    <button onclick="switchLanguage('en')" class="block w-full px-4 py-2 text-left text-sm text-slate-700 hover:bg-slate-50 rounded-t-lg">English</button>
+                    <button onclick="switchLanguage('ms')" class="block w-full px-4 py-2 text-left text-sm text-slate-700 hover:bg-slate-50">Bahasa Malaysia</button>
+                    <button onclick="switchLanguage('zh')" class="block w-full px-4 py-2 text-left text-sm text-slate-700 hover:bg-slate-50 rounded-b-lg">中文</button>
+                </div>
+            </div>
+            <button class="md:hidden" id="mobile-menu-toggle">
+                <span class="material-icons-outlined">menu</span>
+            </button>
+        </div>
+    </div>
+</header>
 
-    <main style="margin-top: 80px;">
-        <section class="table-container">
-            <div class="container">
-                <h1 style="color: #1e40af; margin-bottom: 2rem;">Power Transformer Testing and Commissioning</h1>
-                
-                <table class="project-table">
-                    <thead>
+<!-- Hero Section -->
+<section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+    <div class="absolute inset-0 z-0">
+        <img alt="Transformer Projects" class="w-full h-full object-cover opacity-10 dark:opacity-20" src="Image/Electrical.jpg"/>
+        <div class="absolute inset-0 bg-gradient-to-r from-background-light via-background-light/80 to-transparent dark:from-background-dark dark:via-background-dark/80"></div>
+    </div>
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="max-w-3xl">
+            <span class="inline-block px-4 py-1.5 mb-6 text-sm font-semibold tracking-wider text-primary uppercase bg-blue-50 dark:bg-blue-900/30 rounded-full" data-translate="projectsCompleted">
+                7 Projects Completed
+            </span>
+            <h1 class="text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white mb-6 leading-tight">
+                <span data-translate="powerTransformer">Power Transformer</span> <br/>
+                <span class="text-primary" data-translate="testingCommissioning">Testing & Commissioning</span>
+            </h1>
+            <p class="text-lg lg:text-xl text-slate-600 dark:text-slate-400 mb-10 leading-relaxed max-w-2xl" data-translate="specializedTesting">
+                Specialized testing and commissioning of power transformers and related equipment
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Table -->
+<section class="py-20 bg-white dark:bg-slate-900/50">
+    <div class="container mx-auto px-6">
+        <div class="bg-background-light dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead class="bg-primary text-white">
                         <tr>
-                            <th>No.</th>
-                            <th>33/11KV Power Transformer Feeder Commissioning</th>
-                            <th>Completion Date</th>
-
+                            <th class="px-6 py-4 text-left font-semibold" data-translate="no">No.</th>
+                            <th class="px-6 py-4 text-left font-semibold" data-translate="transformerFeeder">33/11KV Power Transformer Feeder Commissioning</th>
+                            <th class="px-6 py-4 text-left font-semibold" data-translate="completionDate">Completion Date</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr><td>1</td><td>Town 33/11KV S/S, Bintulu</td><td>April 2001</td></tr>
-                        <tr><td>2</td><td>Housing 33/11KV S/S, Bintulu</td><td>May 2001</td></tr>
-                        <tr><td>3</td><td>Wisma Bapa Malaysia 11KV Switch Room</td><td>March 2002</td></tr>
-                        <tr><td>4</td><td>Sejinkat No.3 33/11Kv S/S - Transformer Stability test</td><td>July 2002</td></tr>
-                        <tr><td>5</td><td>Kim Hin 33/11Kv S/S - Transformer Stability test</td><td>August 2002</td></tr>
-                        <tr><td>6</td><td>Lundu 33/11Kv S/S, Kuching</td><td>December 2002</td></tr>
-                        <tr><td>7</td><td>Airport 33/11kV S/S, Kuching</td><td>July 2006</td></tr>
+                    <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">1</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Town 33/11KV S/S, Bintulu</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">April 2001</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">2</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Housing 33/11KV S/S, Bintulu</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">May 2001</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">3</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Wisma Bapa Malaysia 11KV Switch Room</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">March 2002</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">4</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Sejinkat No.3 33/11Kv S/S - Transformer Stability test</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">July 2002</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">5</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Kim Hin 33/11Kv S/S - Transformer Stability test</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">August 2002</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">6</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Lundu 33/11Kv S/S, Kuching</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">December 2002</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">7</td>
+                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Airport 33/11kV S/S, Kuching</td>
+                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">July 2006</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2001 UPS Protection Sdn. Bhd. (540889-K) All rights reserved.</p>
         </div>
-    </footer>
+        
+        <div class="mt-12 text-center">
+            <div class="inline-flex items-center px-6 py-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+                <span class="material-icons-outlined text-primary mr-2" data-translate="info">info</span>
+                <span class="text-slate-700 dark:text-slate-300">7 <span data-translate="transformerProjectsCompleted">power transformer projects completed from 2001 to 2006</span></span>
+            </div>
+        </div>
+    </div>
+</section>
 
-    <script src="script.js"></script>
+<footer class="bg-slate-900 text-slate-400 py-12">
+    <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center pb-12 border-b border-slate-800">
+            <div class="mb-8 md:mb-0">
+                <img alt="UPS Protection Logo" class="h-8 brightness-0 invert" src="logo1.png"/>
+            </div>
+            <div class="flex space-x-8 text-sm uppercase tracking-widest font-semibold">
+                <a class="hover:text-white transition-colors" href="/" data-translate="home">Home</a>
+                <a class="hover:text-white transition-colors" href="/equipment" data-translate="equipment">Equipment</a>
+                <a class="hover:text-white transition-colors" href="/about" data-translate="about">About</a>
+                <a class="hover:text-white transition-colors" href="/contact" data-translate="contact">Contact</a>
+            </div>
+        </div>
+        <div class="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs md:text-sm">
+            <p>© 2001 - <span id="copyright-year">2026</span> UPS Protection Sdn. Bhd. (540889-K) All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Theme toggle
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+    } else {
+        document.documentElement.classList.remove('dark');
+    }
+    themeToggleBtn.addEventListener('click', () => {
+        if (document.documentElement.classList.contains('dark')) {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+        } else {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+        }
+    });
+</script>
+
 </body>
 </html>
