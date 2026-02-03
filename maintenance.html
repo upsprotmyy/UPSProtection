@@ -102,6 +102,7 @@
         };
         
         function switchLanguage(lang) {
+            localStorage.setItem('selectedLanguage', lang);
             const t = translations[lang];
             document.querySelectorAll('[data-translate]').forEach(element => {
                 const key = element.getAttribute('data-translate');
@@ -109,6 +110,8 @@
                     element.textContent = t[key];
                 }
             });
+            const langDisplay = document.getElementById('lang-display');
+            if (langDisplay) langDisplay.textContent = (lang || 'en').toUpperCase();
         }
         
         function updateCopyright() {
@@ -152,9 +155,9 @@
         </nav>
         <div class="flex items-center space-x-4">
             <div class="relative group">
-                <button class="flex items-center space-x-1 text-slate-600 hover:text-primary transition-colors">
+                <button class="flex items-center space-x-1 px-3 py-2 text-slate-600 hover:text-primary hover:bg-slate-100 rounded transition-colors" id="lang-toggle" aria-label="Change language">
                     <span class="material-icons-outlined text-sm">language</span>
-                    <span class="text-sm">EN</span>
+                    <span class="text-sm font-medium hidden sm:inline" id="lang-display">EN</span>
                 </button>
                 <div class="absolute top-full right-0 mt-2 w-32 bg-white rounded-lg shadow-lg border border-slate-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                     <button onclick="switchLanguage('en')" class="block w-full px-4 py-2 text-left text-sm text-slate-700 hover:bg-slate-50 rounded-t-lg">English</button>
@@ -167,11 +170,10 @@
             </button>
         </div>
     </div>
-</header>
-
-<!-- Mobile Menu -->
-<div class="md:hidden hidden absolute top-full left-0 right-0 bg-white border-b border-slate-200 max-h-[calc(100vh-80px)] overflow-y-auto" id="mobile-menu">
-    <div class="px-6 py-4 container mx-auto">
+    
+    <!-- Mobile Menu -->
+    <div class="md:hidden hidden absolute top-full left-0 right-0 bg-white border-b border-slate-200 max-h-[calc(100vh-80px)] overflow-y-auto" id="mobile-menu">
+        <div class="px-6 py-4 container mx-auto">
         <a href="/" class="block py-2 text-primary font-semibold hover:text-primary/80 transition-colors" data-translate="home">Home</a>
         <div class="py-2">
             <span class="text-slate-600 font-medium block py-2" data-translate="projectPortfolio">Project Portfolio</span>
@@ -186,6 +188,7 @@
         <a href="/contact" class="block py-2 text-slate-600 hover:text-primary transition-colors" data-translate="contactUs">Contact Us</a>
     </div>
 </div>
+</header>
 
 <!-- Hero Section -->
 <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
@@ -702,22 +705,47 @@
 </footer>
 
 <script>
-    // Mobile menu toggle
-    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-    if (mobileMenuToggle && mobileMenu) {
-        mobileMenuToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-        
-        // Close mobile menu when a link is clicked
-        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-        mobileMenuLinks.forEach(link => {
-            link.addEventListener('click', () => {
+    // Mobile menu and language toggle (robust)
+    document.addEventListener('DOMContentLoaded', () => {
+        const mobileMenu = document.getElementById('mobile-menu');
+        const langToggle = document.getElementById('lang-toggle');
+        const langDisplay = document.getElementById('lang-display');
+        const langMenu = langToggle ? langToggle.closest('.relative').querySelector('div') : null;
+
+        const savedLang = localStorage.getItem('selectedLanguage') || 'en';
+        if (langDisplay) langDisplay.textContent = savedLang.toUpperCase();
+        if (typeof updateContent === 'function') updateContent(savedLang);
+
+        document.addEventListener('click', (e) => {
+            const toggle = e.target.closest('#mobile-menu-toggle');
+            if (toggle && mobileMenu) {
+                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.add('z-50');
+            }
+
+            const link = e.target.closest('#mobile-menu a');
+            if (link && mobileMenu) {
                 mobileMenu.classList.add('hidden');
-            });
+            }
+
+            const langBtn = e.target.closest('#lang-toggle');
+            if (langBtn && langMenu) {
+                if (langMenu.classList.contains('opacity-0')) {
+                    langMenu.classList.remove('opacity-0', 'invisible');
+                    langMenu.classList.add('opacity-100', 'visible');
+                } else {
+                    langMenu.classList.add('opacity-0', 'invisible');
+                    langMenu.classList.remove('opacity-100', 'visible');
+                }
+                return;
+            }
+
+            if (!e.target.closest('.relative') && langMenu) {
+                langMenu.classList.add('opacity-0', 'invisible');
+                langMenu.classList.remove('opacity-100', 'visible');
+            }
         });
-    }
+    });
 </script>
 
 </body>

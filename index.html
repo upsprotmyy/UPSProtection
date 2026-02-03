@@ -481,19 +481,45 @@ i<!DOCTYPE html>
 </footer>
 
 <script>
-    // Mobile menu toggle
-    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
-    mobileMenuToggle.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-    });
-    
-    // Close mobile menu when a link is clicked
-    const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-    mobileMenuLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            mobileMenu.classList.add('hidden');
+    // Mobile menu and language toggle (robust)
+    document.addEventListener('DOMContentLoaded', () => {
+        const mobileMenu = document.getElementById('mobile-menu');
+        const langToggle = document.getElementById('lang-toggle');
+        const langDisplay = document.getElementById('lang-display');
+        const langMenu = langToggle ? langToggle.closest('.relative').querySelector('div') : null;
+
+        const savedLang = localStorage.getItem('selectedLanguage') || 'en';
+        if (langDisplay) langDisplay.textContent = savedLang.toUpperCase();
+        if (typeof updateContent === 'function') updateContent(savedLang);
+
+        document.addEventListener('click', (e) => {
+            const toggle = e.target.closest('#mobile-menu-toggle');
+            if (toggle && mobileMenu) {
+                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.add('z-50');
+            }
+
+            const link = e.target.closest('#mobile-menu a');
+            if (link && mobileMenu) {
+                mobileMenu.classList.add('hidden');
+            }
+
+            const langBtn = e.target.closest('#lang-toggle');
+            if (langBtn && langMenu) {
+                if (langMenu.classList.contains('opacity-0')) {
+                    langMenu.classList.remove('opacity-0', 'invisible');
+                    langMenu.classList.add('opacity-100', 'visible');
+                } else {
+                    langMenu.classList.add('opacity-0', 'invisible');
+                    langMenu.classList.remove('opacity-100', 'visible');
+                }
+                return;
+            }
+
+            if (!e.target.closest('.relative') && langMenu) {
+                langMenu.classList.add('opacity-0', 'invisible');
+                langMenu.classList.remove('opacity-100', 'visible');
+            }
         });
     });
 
