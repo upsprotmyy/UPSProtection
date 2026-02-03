@@ -52,7 +52,7 @@
                 contactUs: "Contact Us",
                 getInTouch: "Get In Touch",
                 contact: "Contact",
-                upsProtection: "UPS Protection",
+                upsProtection: "UPS PROTECTION",
                 readyToDiscuss: "Ready to discuss your electrical testing and maintenance needs? We're here to help.",
                 mainOffice: "Main Office",
                 bintulu: "Bintulu Branch",
@@ -83,7 +83,7 @@
                 contactUs: "Hubungi Kami",
                 getInTouch: "Hubungi Kami",
                 contact: "Hubungi",
-                upsProtection: "UPS Protection",
+                upsProtection: "UPS PROTECTION",
                 readyToDiscuss: "Bersedia untuk membincangkan keperluan ujian dan penyelenggaraan elektrik anda? Kami di sini untuk membantu.",
                 mainOffice: "Pejabat Utama",
                 bintulu: "Cawangan Bintulu",
@@ -114,7 +114,7 @@
                 contactUs: "联系我们",
                 getInTouch: "联系我们",
                 contact: "联系",
-                upsProtection: "UPS Protection",
+                upsProtection: "UPS PROTECTION",
                 readyToDiscuss: "准备讨论您的电气测试和维护需求？我们在这里帮助您。",
                 mainOffice: "总办事处",
                 bintulu: "民都鲁分行",
@@ -199,7 +199,7 @@
                     <button onclick="switchLanguage('zh')" class="block w-full px-4 py-2 text-left text-sm text-slate-700 hover:bg-slate-50 rounded-b-lg">中文</button>
                 </div>
             </div>
-            <button class="md:hidden" id="mobile-menu-toggle">
+            <button class="md:hidden p-2 hover:bg-slate-100 rounded transition-colors" id="mobile-menu-toggle" aria-label="Toggle menu">
                 <span class="material-icons-outlined">menu</span>
             </button>
         </div>
@@ -219,7 +219,7 @@
             </span>
             <h1 class="text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight">
                 <span data-translate="contact">Contact</span> <br/>
-                <span class="text-primary" data-translate="upsProtection">UPS Protection</span>
+                <span class="text-primary" data-translate="upsProtection">UPS PROTECTION</span>
             </h1>
             <p class="text-lg lg:text-xl text-slate-600 mb-10 leading-relaxed max-w-2xl" data-translate="readyToDiscuss">
                 Ready to discuss your electrical testing and maintenance needs? We're here to help.
@@ -384,6 +384,14 @@
     if (mobileMenuToggle && mobileMenu) {
         mobileMenuToggle.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when a link is clicked
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
         });
     }
 </script>
