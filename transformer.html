@@ -12,13 +12,11 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
     <script>
         tailwind.config = {
-            darkMode: "class",
             theme: {
                 extend: {
                     colors: {
                         primary: "#1E40AF",
                         "background-light": "#F8FAFC",
-                        "background-dark": "#0F172A",
                         "slate-accent": "#475569",
                     },
                     fontFamily: {
@@ -127,9 +125,9 @@
         h1, h2, h3 { font-family: 'Lexend', sans-serif; }
     </style>
 </head>
-<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 transition-colors duration-300">
+<body class="bg-background-light text-slate-900">
 
-<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+<header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
     <div class="container mx-auto px-6 py-4 flex justify-between items-center">
         <div class="flex items-center space-x-3">
             <div class="flex items-center">
@@ -139,18 +137,18 @@
             </div>
         </div>
         <nav class="hidden md:flex space-x-8">
-            <a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="/" data-translate="home">Home</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/" data-translate="home">Home</a>
             <div class="relative group">
                 <a class="text-primary font-semibold cursor-pointer" data-translate="projectPortfolio">Project Portfolio</a>
-                <div class="absolute top-full left-0 mt-2 w-64 bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-slate-200 dark:border-slate-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                    <a href="/substation" class="block px-4 py-3 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 rounded-t-lg" data-translate="substationTesting">Substation Testing and Commissioning</a>
-                    <a href="/maintenance" class="block px-4 py-3 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700" data-translate="maintenanceProject">Maintenance Project</a>
-                    <a href="/transformer" class="block px-4 py-3 text-sm text-primary font-semibold hover:bg-slate-50 dark:hover:bg-slate-700 rounded-b-lg" data-translate="transformerTesting">Power Transformer Testing and Commissioning</a>
+                <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-slate-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                    <a href="/substation" class="block px-4 py-3 text-sm text-slate-700 hover:bg-slate-50 rounded-t-lg" data-translate="substationTesting">Substation Testing and Commissioning</a>
+                    <a href="/maintenance" class="block px-4 py-3 text-sm text-slate-700 hover:bg-slate-50" data-translate="maintenanceProject">Maintenance Project</a>
+                    <a href="/transformer" class="block px-4 py-3 text-sm text-primary font-semibold hover:bg-slate-50 rounded-b-lg" data-translate="transformerTesting">Power Transformer Testing and Commissioning</a>
                 </div>
             </div>
-            <a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="/equipment" data-translate="testEquipment">Test Equipment</a>
-            <a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="/about" data-translate="aboutUs">About Us</a>
-            <a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="/contact" data-translate="contactUs">Contact Us</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/equipment" data-translate="testEquipment">Test Equipment</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/about" data-translate="aboutUs">About Us</a>
+            <a class="text-slate-600 hover:text-primary transition-colors" href="/contact" data-translate="contactUs">Contact Us</a>
         </nav>
         <div class="flex items-center space-x-4">
             <div class="relative group">
@@ -174,19 +172,19 @@
 <!-- Hero Section -->
 <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
     <div class="absolute inset-0 z-0">
-        <img alt="Transformer Projects" class="w-full h-full object-cover opacity-10 dark:opacity-20" src="Image/Electrical.jpg"/>
-        <div class="absolute inset-0 bg-gradient-to-r from-background-light via-background-light/80 to-transparent dark:from-background-dark dark:via-background-dark/80"></div>
+        <img alt="Transformer Projects" class="w-full h-full object-cover opacity-10" src="Image/Electrical.jpg"/>
+        <div class="absolute inset-0 bg-gradient-to-r from-background-light via-background-light/80 to-transparent"></div>
     </div>
     <div class="container mx-auto px-6 relative z-10">
         <div class="max-w-3xl">
-            <span class="inline-block px-4 py-1.5 mb-6 text-sm font-semibold tracking-wider text-primary uppercase bg-blue-50 dark:bg-blue-900/30 rounded-full" data-translate="projectsCompleted">
+            <span class="inline-block px-4 py-1.5 mb-6 text-sm font-semibold tracking-wider text-primary uppercase bg-blue-50 rounded-full" data-translate="projectsCompleted">
                 7 Projects Completed
             </span>
-            <h1 class="text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white mb-6 leading-tight">
+            <h1 class="text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight">
                 <span data-translate="powerTransformer">Power Transformer</span> <br/>
                 <span class="text-primary" data-translate="testingCommissioning">Testing & Commissioning</span>
             </h1>
-            <p class="text-lg lg:text-xl text-slate-600 dark:text-slate-400 mb-10 leading-relaxed max-w-2xl" data-translate="specializedTesting">
+            <p class="text-lg lg:text-xl text-slate-600 mb-10 leading-relaxed max-w-2xl" data-translate="specializedTesting">
                 Specialized testing and commissioning of power transformers and related equipment
             </p>
         </div>
@@ -194,9 +192,9 @@
 </section>
 
 <!-- Projects Table -->
-<section class="py-20 bg-white dark:bg-slate-900/50">
+<section class="py-20 bg-white">
     <div class="container mx-auto px-6">
-        <div class="bg-background-light dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+        <div class="bg-background-light rounded-xl border border-slate-200 overflow-hidden">
             <div class="overflow-x-auto">
                 <table class="w-full">
                     <thead class="bg-primary text-white">
@@ -206,41 +204,41 @@
                             <th class="px-6 py-4 text-left font-semibold" data-translate="completionDate">Completion Date</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
-                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
-                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">1</td>
-                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Town 33/11KV S/S, Bintulu</td>
-                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">April 2001</td>
+                    <tbody class="divide-y divide-slate-200">
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900">1</td>
+                            <td class="px-6 py-4 text-sm text-slate-700">Town 33/11KV S/S, Bintulu</td>
+                            <td class="px-6 py-4 text-sm text-slate-600">April 2001</td>
                         </tr>
-                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
-                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">2</td>
-                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Housing 33/11KV S/S, Bintulu</td>
-                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">May 2001</td>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900">2</td>
+                            <td class="px-6 py-4 text-sm text-slate-700">Housing 33/11KV S/S, Bintulu</td>
+                            <td class="px-6 py-4 text-sm text-slate-600">May 2001</td>
                         </tr>
-                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
-                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">3</td>
-                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Wisma Bapa Malaysia 11KV Switch Room</td>
-                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">March 2002</td>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900">3</td>
+                            <td class="px-6 py-4 text-sm text-slate-700">Wisma Bapa Malaysia 11KV Switch Room</td>
+                            <td class="px-6 py-4 text-sm text-slate-600">March 2002</td>
                         </tr>
-                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
-                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">4</td>
-                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Sejinkat No.3 33/11Kv S/S - Transformer Stability test</td>
-                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">July 2002</td>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900">4</td>
+                            <td class="px-6 py-4 text-sm text-slate-700">Sejinkat No.3 33/11Kv S/S - Transformer Stability test</td>
+                            <td class="px-6 py-4 text-sm text-slate-600">July 2002</td>
                         </tr>
-                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
-                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">5</td>
-                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Kim Hin 33/11Kv S/S - Transformer Stability test</td>
-                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">August 2002</td>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900">5</td>
+                            <td class="px-6 py-4 text-sm text-slate-700">Kim Hin 33/11Kv S/S - Transformer Stability test</td>
+                            <td class="px-6 py-4 text-sm text-slate-600">August 2002</td>
                         </tr>
-                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
-                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">6</td>
-                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Lundu 33/11Kv S/S, Kuching</td>
-                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">December 2002</td>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900">6</td>
+                            <td class="px-6 py-4 text-sm text-slate-700">Lundu 33/11Kv S/S, Kuching</td>
+                            <td class="px-6 py-4 text-sm text-slate-600">December 2002</td>
                         </tr>
-                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
-                            <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">7</td>
-                            <td class="px-6 py-4 text-sm text-slate-700 dark:text-slate-300">Airport 33/11kV S/S, Kuching</td>
-                            <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">July 2006</td>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-slate-900">7</td>
+                            <td class="px-6 py-4 text-sm text-slate-700">Airport 33/11kV S/S, Kuching</td>
+                            <td class="px-6 py-4 text-sm text-slate-600">July 2006</td>
                         </tr>
                     </tbody>
                 </table>
@@ -248,9 +246,9 @@
         </div>
         
         <div class="mt-12 text-center">
-            <div class="inline-flex items-center px-6 py-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+            <div class="inline-flex items-center px-6 py-3 bg-blue-50 rounded-lg border border-blue-200">
                 <span class="material-icons-outlined text-primary mr-2" data-translate="info">info</span>
-                <span class="text-slate-700 dark:text-slate-300">7 <span data-translate="transformerProjectsCompleted">power transformer projects completed from 2001 to 2006</span></span>
+                <span class="text-slate-700">7 <span data-translate="transformerProjectsCompleted">power transformer projects completed from 2001 to 2006</span></span>
             </div>
         </div>
     </div>
@@ -276,22 +274,6 @@
 </footer>
 
 <script>
-    // Theme toggle
-    const themeToggleBtn = document.getElementById('theme-toggle');
-    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark');
-    } else {
-        document.documentElement.classList.remove('dark');
-    }
-    themeToggleBtn.addEventListener('click', () => {
-        if (document.documentElement.classList.contains('dark')) {
-            document.documentElement.classList.remove('dark');
-            localStorage.setItem('theme', 'light');
-        } else {
-            document.documentElement.classList.add('dark');
-            localStorage.setItem('theme', 'dark');
-        }
-    });
 </script>
 
 </body>
